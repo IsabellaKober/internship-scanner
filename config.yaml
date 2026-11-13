@@ -1,0 +1,318 @@
+# =====================================================================
+#  Internship scanner — all settings live here. Edit on github.com
+#  (pencil icon) and commit; the next run uses the new values.
+#  Keywords are matched case- and accent-insensitively, as whole words.
+# =====================================================================
+
+# Private repo holding your statuses & notes (synced across devices).
+# Left empty on purpose (this file is public): type "<username>/internship-scanner-state"
+# once per device in the dashboard's Settings instead.
+state_repo: ""
+
+# ---------------------------------------------------------------- dates
+dates:
+  ideal_start: 2027-05-01
+  ideal_end: 2027-07-30
+  earliest_start: 2027-04-20     # start before this  -> hidden
+  latest_start: 2027-06-30       # start after this   -> hidden
+  max_months: 3                  # stated duration longer than this -> hidden
+  # phrases that mean "long internship" -> hidden unless a duration <= max_months
+  # is also stated
+  long_phrases: ["cesure", "gap year", "stage de cesure"]
+  hide_end_of_studies: true      # "stage de fin d'etudes" (usually 6 months)
+  boost_months: [2, 3]           # explicit 2-3 month internships get a boost
+  boost_start_months: [4, 5]     # start in April / May get a boost
+
+# ---------------------------------------------------------------- location
+location:
+  # postal-code prefixes and place names that are accepted
+  postal_prefixes: ["75", "92", "93", "94"]
+  places: [paris, la defense, puteaux, courbevoie, nanterre, boulogne-billancourt,
+    boulogne, issy-les-moulineaux, neuilly-sur-seine, levallois-perret, levallois,
+    clichy, rueil-malmaison, suresnes, montrouge, malakoff, vanves, clamart,
+    meudon, sevres, saint-cloud, colombes, asnieres-sur-seine, gennevilliers,
+    bagneux, chatillon, antony, sceaux, bois-colombes, la garenne-colombes,
+    chaville, garches, saint-denis, la plaine saint-denis, saint-ouen,
+    saint-ouen-sur-seine, montreuil, aubervilliers, pantin, bagnolet, les lilas,
+    noisy-le-grand, bobigny, romainville, rosny-sous-bois, ivry-sur-seine,
+    vincennes, saint-mande, charenton-le-pont, creteil, vitry-sur-seine,
+    gentilly, arcueil, cachan, le kremlin-bicetre, kremlin-bicetre, villejuif,
+    maisons-alfort, saint-maur-des-fosses, nogent-sur-marne,
+    fontenay-sous-bois, rungis, joinville-le-pont, alfortville, hauts-de-seine,
+    seine-saint-denis, val-de-marne]
+  # generic "Ile-de-France" / "Greater Paris" is kept but tagged "Check location"
+  unclear_places: [ile-de-france, idf, greater paris, region parisienne, paris region]
+  exclude_remote_only: true
+
+# ---------------------------------------------------------------- contract
+contract:
+  internship_terms: [stage, stagiaire, intern, internship, interns, praktikum,
+    summer analyst, summer associate, off-cycle, off cycle, "stage h/f",
+    "stage f/h"]
+  exclude_terms: [alternance, alternant, alternante, apprentissage, apprenti,
+    apprentie, apprentice, apprenticeship, work-study, work study, cdi, cdd,
+    freelance, freelancer, v.i.e, volontariat international,
+    "contrat pro", contrat de professionnalisation, permanent, full-time permanent,
+    werkstudent, working student, these, phd, cifre, graduate programme,
+    graduate program]
+
+# ---------------------------------------------------------------- pay
+pay:
+  min_monthly_eur: 1000          # stated pay below this -> hidden
+  legal_minimum_counts_as_low: true   # "gratification legale" (~670 EUR) -> hidden
+
+# ---------------------------------------------------------------- roles
+# Priority order = list order. `score` is the role score (0-100).
+categories:
+  - key: fintech
+    label: Fintech
+    score: 100
+    # any business role at a company with type: fintech, OR these keywords at
+    # banks / insurers
+    keywords: [fintech, payments, paiement, paiements, open banking, embedded finance,
+      neobank, neo-banque, crypto, blockchain, digital assets, actifs numeriques,
+      tokenization, insurtech, regtech, wealthtech, digital banking, banque digitale,
+      innovation, venture, digital transformation, api, psd2, instant payment,
+      cards, cartes, wallet, lending, credit tech]
+  - key: sales
+    label: Sales
+    score: 90
+    keywords: [sales, vente, ventes, commercial, commerciale, account executive,
+      account manager, business developer sales, sdr, bdr, sales development,
+      inside sales, key account, grands comptes, sales ops, sales operations,
+      revenue operations, revops, pre-sales, avant-vente, sales strategy]
+  - key: strategy
+    label: Strategy
+    score: 80
+    keywords: [strategy, strategie, strategic, strategique, corporate development,
+      corp dev, ops strategy, strategy & operations, strategy and operations,
+      bizops, business operations, product strategy, business analyst,
+      chief of staff, transformation, consulting, conseil, strategy analyst,
+      program manager, project manager, chef de projet, pmo, operations analyst]
+  - key: ecommerce
+    label: E-commerce
+    score: 70
+    keywords: [e-commerce, ecommerce, e-commerce manager, growth, growth marketing,
+      marketplace, retail media, digital marketing, marketing digital, acquisition,
+      crm, performance marketing, seo, sea, category manager, merchandising,
+      trade marketing, online sales, d2c, dtc, conversion]
+  - key: bizdev
+    label: BizDev
+    score: 65
+    keywords: [business development, business developer, developpement commercial,
+      bizdev, partnerships, partenariats, partner manager, alliances,
+      channel partnerships, expansion, launch, go-to-market, gtm]
+  - key: finance
+    label: Finance
+    score: 45                      # lower priority by default...
+    concrete_score: 85             # ...boosted when the mission is concrete
+    concrete_min_hits: 2           # how many concrete-finance keywords needed
+    concrete_keywords: [financial model, financial modeling, financial modelling,
+      modelisation financiere, modelisation, valuation, valorisation, lbo, dcf,
+      due diligence, deal, deals, transaction, transactions, m&a, fusions,
+      acquisitions, pitch, investment memo, business plan, fp&a, budget, forecast,
+      forecasting, closing, reporting financier, financial planning,
+      controle de gestion, controlling, deal sourcing, portfolio monitoring,
+      cap table, fundraising, levee de fonds]
+    keywords: [finance, financial, financier, financiere, corporate finance,
+      m&a, merger, mergers, private equity, venture capital, vc, investment,
+      investissement, investment banking, fp&a, controlling, controle de gestion,
+      controller, audit, treasury, tresorerie, accounting, comptabilite,
+      financial analyst, analyste financier, equity research, asset management,
+      gestion d'actifs, transaction services, capital markets, structured finance,
+      summer analyst, credit analyst, risk, risques]
+
+# Pharma companies (type: pharma): only these kinds of roles are kept.
+pharma_allowed_keywords: [commercial, commerciale, business development, bizdev,
+  strategy, strategie, strategic, market access, brand, marketing strategy,
+  finance, financial, controlling, controle de gestion, controller, fp&a,
+  business analyst, sales, ventes, key account, insights, forecasting,
+  pricing, new product planning, portfolio]
+
+# Pharma roles with these words in the title are hidden even if they also say
+# "strategy" etc. (regulatory, quality, clinical, manufacturing...).
+pharma_excluded_keywords: [regulatory, reglementaire, reglementaires, cmc, quality,
+  qualite, clinical, clinique, medical, medicale, pharmacovigilance, manufacturing,
+  production, laboratory, laboratoire, r&d, research, recherche, scientific]
+
+# Hidden completely (matched on the TITLE).
+exclude_roles:
+  customer_support: [customer support, customer success, customer care,
+    service client, support client, relation client, customer service,
+    customer experience agent, help desk, helpdesk, charge de clientele,
+    customer operations]
+  hr: [hr, human resources, ressources humaines, rh, recruiting, recruiter,
+    recrutement, recrutement, talent acquisition, talent, people, people ops,
+    people partner, payroll, paie, sirh, chargee de recrutement]
+  non_business: [software engineer, software engineering, software developer,
+    web developer, developpeur web, developpeur logiciel, developpeuse, backend, back-end, frontend, front-end, fullstack, full-stack,
+    devops, sre, data engineer, data scientist, machine learning, ml engineer,
+    ai engineer, qa, test automation, designer, ux, ui,
+    security engineer, cybersecurite, mobile developer, ios, android,
+    infrastructure, embedded, hardware, laboratoire, laboratory, chemist,
+    biologist, clinical research, pharmacovigilance, regulatory affairs,
+    affaires reglementaires, medical affairs, scientific, scientist, research
+    scientist, juriste, legal counsel, avocat, solutions architect, architect,
+    cloud, security specialist, physical security, it support]
+
+# ---------------------------------------------------------------- language
+language:
+  english_markers: [working language is english, "working language: english",
+    english-speaking, english speaking environment, fluent english,
+    fluency in english, english is our working language, international team,
+    anglais courant, anglais professionnel, langue de travail est l'anglais]
+  scores: {english: 100, french: 60, german: 60, unknown: 60}
+
+# ---------------------------------------------------------------- company types
+company_type_scores: {fintech: 100, ecommerce: 80, bank: 70, insurance: 70,
+  asset_management: 65, pharma: 60, other: 50}
+
+# ---------------------------------------------------------------- clarity
+clarity:
+  action_verbs: [analyze, analyse, analyser, build, construire, create, creer,
+    prepare, preparer, elaborer, develop, developper, manage, gerer, piloter,
+    lead, drive, conduct, mener, design, concevoir, launch, lancer, optimize,
+    optimiser, monitor, suivre, present, presenter, produce, produire, model,
+    modeliser, identify, identifier, negotiate, negocier, support, own, map,
+    benchmark, structure, structurer, deliver, livrer, track, report]
+  team_markers: [reporting to, report to, you will report, rattache, rattachee,
+    au sein de l'equipe, within the, you will join, vous rejoindrez,
+    sous la responsabilite, under the supervision, manager, mentor, tuteur,
+    tutrice, head of, directeur, directrice]
+  tools: [excel, powerpoint, google sheets, sql, python, tableau, power bi,
+    looker, salesforce, hubspot, notion, figma, bloomberg, capital iq, pitchbook,
+    factset, sap, vba, crm, jira, amplitude, google analytics, metabase]
+  kpi_markers: [kpi, kpis, okr, okrs, objectives, objectifs, target, targets,
+    quota, pipeline, revenue, chiffre d'affaires, conversion, deliverable,
+    deliverables, livrable, livrables, roi, arr, mrr, nps, churn, growth rate]
+  vague_phrases: [missions variees, various projects, divers projets,
+    projets varies, support the team, assist the team, soutien a l'equipe,
+    taches diverses, ad hoc, ad-hoc, other tasks, autres missions,
+    toute autre mission, various tasks, polyvalent, polyvalente]
+
+# ---------------------------------------------------------------- score
+weights:            # must add up to 1.0
+  role: 0.35
+  clarity: 0.25
+  dates: 0.20
+  language: 0.10
+  company: 0.10
+
+# ---------------------------------------------------------------- outputs
+notifications:
+  min_score: 75                  # "top tier": only new offers >= this get a push
+  max_per_run: 10                # safety cap
+
+dashboard:
+  new_badge_days: 3              # "NEW" tag for offers first seen in the last N days
+  keep_unlisted_days: 60         # keep offers that disappeared, flagged "No longer listed"
+
+enrichment:
+  model: claude-haiku-5-5        # only used if ANTHROPIC_API_KEY is set
+  max_per_run: 60                # cost guard
+  max_description_chars: 15000
+
+# "Search elsewhere" links (LinkedIn, Indeed, Welcome to the Jungle).
+search_links:
+  roles: ["fintech", "sales", "strategy", "e-commerce", "business development",
+    "corporate finance"]
+
+# ---------------------------------------------------------------- sources
+sources:
+  ats: {enabled: true}
+  smartrecruiters:
+    enabled: true
+    ignore_robots: false         # robots.txt blocks bots -> off unless you set true
+  francetravail:
+    enabled: true                # runs only when FT_CLIENT_ID/SECRET secrets exist
+    keywords: [stage, stagiaire, internship]
+    departements: ["75", "92", "93", "94"]
+
+# ---------------------------------------------------------------- companies
+# name: display name.  type: fintech | bank | insurance | asset_management |
+#   ecommerce | pharma | other.
+# Optional: careers_url (helps auto-detection), slugs (ATS names to try),
+#   or force the platform with  ats: greenhouse|lever|ashby|workable|teamtailor|
+#   smartrecruiters|workday|successfactors  and  id: <board id or URL>.
+companies:
+  # ---------------------------------------------------------- fintech
+  - {name: Qonto, type: fintech}
+  - {name: Pennylane, type: fintech}
+  - {name: Swile, type: fintech}
+  - {name: Spendesk, type: fintech}
+  - {name: Agicap, type: fintech}
+  - {name: "Sumeria (ex-Lydia)", type: fintech, slugs: [lydia, sumeria, lydiasolutions], careers_url: "https://lydia-app.com/en/careers"}
+  - {name: Shine, type: fintech}
+  - {name: Mangopay, type: fintech}
+  - {name: Lemonway, type: fintech, careers_url: "https://www.lemonway.com/en/careers"}
+  - {name: Treezor, type: fintech, careers_url: "https://www.treezor.com/careers/"}
+  - {name: Swan, type: fintech, slugs: [swanio, swan]}
+  - {name: Younited, type: fintech, slugs: [younited, younited-credit]}
+  - {name: October, type: fintech, careers_url: "https://october.eu/careers"}
+  - {name: Pretto, type: fintech}
+  - {name: Libeo, type: fintech}
+  - {name: "Youtrust (ex-Yousign)", type: fintech, slugs: [yousign, youtrust]}
+  - {name: Powens, type: fintech}
+  - {name: Bridge, type: fintech, slugs: [bridgeapi, bridge]}
+  - {name: Fintecture, type: fintech}
+  - {name: PayPlug, type: fintech}
+  - {name: Lyra, type: fintech, slugs: [lyra, lyranetwork, lyra-network]}
+  - {name: Mooncard, type: fintech}
+  - {name: Pixpay, type: fintech}
+  - {name: Silvr, type: fintech}
+  - {name: Karmen, type: fintech}
+  - {name: Defacto, type: fintech, slugs: [defacto, getdefacto]}
+  - {name: Indy, type: fintech}
+  - {name: Ramify, type: fintech}
+  - {name: Yomoni, type: fintech}
+  - {name: Nalo, type: fintech}
+  - {name: Goodvest, type: fintech}
+  - {name: Ledger, type: fintech}
+  - {name: Kiln, type: fintech, ats: ashby, id: kiln.fi}
+  - {name: Coinhouse, type: fintech}
+  - {name: Alan, type: fintech}
+  - {name: Leocare, type: fintech}
+  - {name: Seyna, type: fintech}
+  - {name: Stripe, type: fintech}
+  - {name: Adyen, type: fintech}
+  - {name: Checkout.com, type: fintech, ats: ashby, id: checkout.com}
+  - {name: Revolut, type: fintech, careers_url: "https://www.revolut.com/careers/"}
+  - {name: Trade Republic, type: fintech, slugs: [traderepublic, traderepublicbank]}
+  - {name: N26, type: fintech}
+  # ---------------------------------------------------------- banks / insurance / AM
+  # These run their own in-house career sites (no public ATS API, BNP's site
+  # blocks bots) -> they appear as one-click links in "Search elsewhere".
+  - {name: BNP Paribas, type: bank, ats: links, careers_url: "https://group.bnpparibas/en/careers/all-job-offers?contract_type=internship&location=paris"}
+  - {name: Société Générale, type: bank, ats: links, careers_url: "https://careers.societegenerale.com/en/search?refinementList%5BjobType%5D%5B0%5D=INTERNSHIP"}
+  - {name: Crédit Agricole CIB, type: bank, ats: links, careers_url: "https://jobs.ca-cib.com/"}
+  - {name: Natixis, type: bank, ats: links, careers_url: "https://www.natixis.com/en/careers"}
+  - {name: AXA, type: insurance, ats: links, careers_url: "https://recrutement.axa.fr/"}
+  - {name: Amundi, type: asset_management, ats: links, careers_url: "https://jobs.amundi.com/"}
+  # ---------------------------------------------------------- e-commerce
+  - {name: Vinted, type: ecommerce, ats: links, careers_url: "https://careers.vinted.com/"}
+  - {name: Back Market, type: ecommerce, slugs: [backmarket]}
+  - {name: ManoMano, type: ecommerce, ats: links, careers_url: "https://careers.manomano.com/"}
+  - {name: Veepee, type: ecommerce}
+  - {name: Vestiaire Collective, type: ecommerce, slugs: [vestiairecollective]}
+  - {name: Showroomprivé, type: ecommerce, ats: links, careers_url: "https://careers.showroomprive.com/"}
+  - {name: Sézane, type: ecommerce, ats: links, careers_url: "https://careers.sezane.com/"}
+  - {name: Mirakl, type: ecommerce}
+  - {name: Contentsquare, type: ecommerce}
+  - {name: Zalando, type: ecommerce, ats: links, careers_url: "https://jobs.zalando.com/en/jobs?location=Paris"}
+  - {name: Amazon, type: ecommerce, ats: amazonjobs, id: FRA}
+  # ---------------------------------------------------------- pharma / health
+  - {name: Sanofi, type: pharma, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
+  - {name: Servier, type: pharma, ats: links, careers_url: "https://servier.com/en/careers/"}
+  - {name: Ipsen, type: pharma, ats: workday, id: "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers"}
+  - {name: Novartis France, type: pharma, ats: workday, id: "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers"}
+  - {name: Pfizer France, type: pharma, ats: workday, id: "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers"}
+  - {name: MSD France, type: pharma, ats: workday, id: "https://msd.wd5.myworkdayjobs.com/SearchJobs"}
+  - {name: AstraZeneca France, type: pharma, ats: workday, id: "https://astrazeneca.wd3.myworkdayjobs.com/Careers"}
+  - {name: GSK France, type: pharma, ats: workday, id: "https://gsk.wd5.myworkdayjobs.com/GSKCareers"}
+  - {name: Roche France, type: pharma, ats: workday, id: "https://roche.wd3.myworkdayjobs.com/roche-ext"}
+  - {name: Johnson & Johnson France, type: pharma, ats: workday, id: "https://jj.wd5.myworkdayjobs.com/JJ"}
+  - {name: Bristol Myers Squibb France, type: pharma, ats: workday, id: "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS"}
+  - {name: Lilly France, type: pharma, ats: links, careers_url: "https://careers.lilly.com/"}
+  - {name: Boehringer Ingelheim France, type: pharma, ats: links, careers_url: "https://jobs.boehringer-ingelheim.com/"}
+  - {name: Doctolib, type: other}
+  - {name: Owkin, type: other}

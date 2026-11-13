@@ -1,0 +1,8 @@
+# personal profile — lives in the PROFILE_YAML GitHub secret, never in git
+profile.local.yaml
+*.local.yaml
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/

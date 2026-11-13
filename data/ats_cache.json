@@ -1,0 +1,539 @@
+{
+  "AXA": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Adyen": {
+    "ats": "greenhouse",
+    "ats_id": "adyen",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 251
+  },
+  "Agicap": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "agicap",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 19
+  },
+  "Alan": {
+    "ats": "ashby",
+    "ats_id": "alan",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 137
+  },
+  "Amazon": {
+    "ats": "amazonjobs",
+    "ats_host": null,
+    "ats_id": "FRA",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Amundi": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "AstraZeneca France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://astrazeneca.wd3.myworkdayjobs.com/Careers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "BNP Paribas": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Back Market": {
+    "ats": "ashby",
+    "ats_id": "backmarket",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 33
+  },
+  "Boehringer Ingelheim France": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Bridge": {
+    "ats": "teamtailor",
+    "ats_id": "bridge",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 2
+  },
+  "Bristol Myers Squibb France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Checkout.com": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "checkout.com",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Coinhouse": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Contentsquare": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "contentsquare",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 28
+  },
+  "Crédit Agricole CIB": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Defacto": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Doctolib": {
+    "ats": "ashby",
+    "ats_id": "doctolib",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 161
+  },
+  "Fintecture": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "GSK France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://gsk.wd5.myworkdayjobs.com/GSKCareers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Goodvest": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Indy": {
+    "ats": "teamtailor",
+    "ats_id": "indy",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 11
+  },
+  "Ipsen": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Johnson & Johnson France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://jj.wd5.myworkdayjobs.com/JJ",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Karmen": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Kiln": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "kiln.fi",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Ledger": {
+    "ats": "ashby",
+    "ats_id": "ledger",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 12
+  },
+  "Lemonway": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Leocare": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Libeo": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Lilly France": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Lyra": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "MSD France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://msd.wd5.myworkdayjobs.com/SearchJobs",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Mangopay": {
+    "ats": "teamtailor",
+    "ats_id": "mangopay",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 6
+  },
+  "ManoMano": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Mirakl": {
+    "ats": "greenhouse",
+    "ats_id": "mirakl",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 22
+  },
+  "Mooncard": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "N26": {
+    "ats": "greenhouse",
+    "ats_id": "n26",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 34
+  },
+  "Nalo": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Natixis": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Novartis France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "October": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Owkin": {
+    "ats": "ashby",
+    "ats_id": "owkin",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 10
+  },
+  "PayPlug": {
+    "ats": "teamtailor",
+    "ats_id": "payplug",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 13
+  },
+  "Pennylane": {
+    "ats": "ashby",
+    "ats_id": "pennylane",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 199
+  },
+  "Pfizer France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Pixpay": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Powens": {
+    "ats": "teamtailor",
+    "ats_id": "powens",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 6
+  },
+  "Pretto": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Qonto": {
+    "ats": "ashby",
+    "ats_id": "qonto",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 61
+  },
+  "Ramify": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Revolut": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Roche France": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://roche.wd3.myworkdayjobs.com/roche-ext",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Sanofi": {
+    "ats": "workday",
+    "ats_host": null,
+    "ats_id": "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers",
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Servier": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Seyna": {
+    "ats": "ashby",
+    "ats_id": "seyna",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 12
+  },
+  "Shine": {
+    "ats": "teamtailor",
+    "ats_id": "shine",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 41
+  },
+  "Showroomprivé": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Silvr": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Société Générale": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Spendesk": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Stripe": {
+    "ats": "greenhouse",
+    "ats_id": "stripe",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 787
+  },
+  "Sumeria (ex-Lydia)": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Swan": {
+    "ats": "teamtailor",
+    "ats_id": "swanio",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 30
+  },
+  "Swile": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "swile",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 27
+  },
+  "Sézane": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Trade Republic": {
+    "ats": "greenhouse",
+    "ats_id": "traderepublicbank",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 39
+  },
+  "Treezor": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Veepee": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "veepee",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 101
+  },
+  "Vestiaire Collective": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "vestiairecollective",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 16
+  },
+  "Vinted": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  },
+  "Yomoni": {
+    "ats": "unknown",
+    "confidence": "none",
+    "detected": "2026-11-13",
+    "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Younited": {
+    "ats": "lever",
+    "ats_host": "https://api.lever.co",
+    "ats_id": "younited",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 8
+  },
+  "Youtrust (ex-Yousign)": {
+    "ats": "teamtailor",
+    "ats_id": "yousign",
+    "confidence": "high",
+    "detected": "2026-11-13",
+    "france_jobs": true,
+    "jobs": 24
+  },
+  "Zalando": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-13"
+  }
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a78d6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Internships">
+<title>Internship Scanner</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img src="icons/icon.svg" alt="" width="28" height="28">
+    <div>
+      <h1>Internship Scanner</h1>
+      <div class="sub" id="updated">Paris · May–July 2027</div>
+    </div>
+  </div>
+  <div class="top-actions">
+    <span class="sync" id="sync-state" title="Status sync"></span>
+    <button class="icon-btn" id="btn-settings" aria-label="Settings">⚙︎</button>
+  </div>
+</header>
+
+<!-- Lock screen -->
+<main id="lock" class="lock" hidden>
+  <div class="card lock-card">
+    <h2>Locked</h2>
+    <p class="muted">The offers are encrypted. Enter your dashboard password to unlock them on this device.</p>
+    <form id="lock-form">
+      <input type="password" id="lock-password" autocomplete="current-password" placeholder="Dashboard password" required>
+      <label class="check"><input type="checkbox" id="lock-remember" checked> Remember on this device</label>
+      <button type="submit" class="btn primary">Unlock</button>
+      <div class="error" id="lock-error" role="alert"></div>
+    </form>
+  </div>
+</main>
+
+<main id="app" hidden>
+  <div id="warnings"></div>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><div class="stat-label">New today</div><div class="stat-value" id="st-new">–</div></div>
+    <div class="stat"><div class="stat-label">Total matches</div><div class="stat-value" id="st-total">–</div></div>
+    <div class="stat"><div class="stat-label">Strong matches</div><div class="stat-value" id="st-strong">–</div></div>
+    <div class="stat"><div class="stat-label">Applied</div><div class="stat-value" id="st-applied">–</div></div>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-tab="offers">Offers</button>
+    <button role="tab" class="tab" data-tab="elsewhere">Search elsewhere</button>
+    <button role="tab" class="tab" data-tab="sources">Sources</button>
+  </nav>
+
+  <!-- OFFERS -->
+  <section id="tab-offers">
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Search title, company, mission…" aria-label="Search">
+      <select id="sort" aria-label="Sort">
+        <option value="score">Sort: score</option>
+        <option value="posted">Sort: date posted</option>
+        <option value="deadline">Sort: deadline</option>
+      </select>
+      <button class="btn" id="btn-filters" aria-expanded="false">Filters <span id="filter-count"></span></button>
+    </div>
+    <div class="filters" id="filters" hidden>
+      <label>Category
+        <select id="f-cat"><option value="">All</option></select></label>
+      <label>Status
+        <select id="f-status"><option value="">All</option></select></label>
+      <label>Source
+        <select id="f-source"><option value="">All</option></select></label>
+      <label>Language
+        <select id="f-lang"><option value="">All</option><option value="en">English</option><option value="fr">French</option><option value="de">German</option><option value="unknown">Unknown</option></select></label>
+      <label>Score from <output id="f-min-out">0</output>
+        <input type="range" id="f-min" min="0" max="100" step="5" value="0"></label>
+      <label>Score to <output id="f-max-out">100</output>
+        <input type="range" id="f-max" min="0" max="100" step="5" value="100"></label>
+      <label class="check"><input type="checkbox" id="f-new"> NEW only</label>
+      <label class="check"><input type="checkbox" id="f-hide" checked> Hide applied / rejected / not interested</label>
+      <label class="check"><input type="checkbox" id="f-unlisted"> Show offers no longer listed</label>
+      <button class="btn" id="btn-reset">Reset filters</button>
+    </div>
+    <div class="result-count" id="result-count"></div>
+    <div id="offers" class="offers"></div>
+  </section>
+
+  <!-- SEARCH ELSEWHERE -->
+  <section id="tab-elsewhere" hidden>
+    <p class="muted">LinkedIn and Indeed aren't scraped. These links open pre-filled searches (internship · Paris · last 24h) for each priority role.</p>
+    <div id="elsewhere"></div>
+    <h3>Companies without a public job feed</h3>
+    <p class="muted">These companies use in-house career sites or Welcome to the Jungle, which can't be scanned legitimately. Check them directly.</p>
+    <div id="company-links" class="link-grid"></div>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="tab-sources" hidden>
+    <div id="sources"></div>
+  </section>
+</main>
+
+<!-- Settings -->
+<dialog id="settings">
+  <form method="dialog" class="settings-form" id="settings-form">
+    <h2>Settings</h2>
+    <h3>Status sync across devices</h3>
+    <p class="muted small">Statuses and notes are saved in your private repo <code id="state-repo-label"></code> through a fine-grained GitHub token that can only access that repo. Paste the token once per device; it stays in this browser only.</p>
+    <label>State repository
+      <input type="text" id="set-repo" placeholder="owner/internship-scanner-state" autocomplete="off"></label>
+    <label>GitHub token
+      <input type="password" id="set-token" placeholder="github_pat_…" autocomplete="off"></label>
+    <div class="row">
+      <button class="btn" id="btn-test" type="button">Test &amp; sync now</button>
+      <span id="test-result" class="small"></span>
+    </div>
+    <h3>This device</h3>
+    <div class="row">
+      <button class="btn" id="btn-lock" type="button">Lock (forget password)</button>
+      <button class="btn" id="btn-forget-token" type="button">Forget token</button>
+    </div>
+    <div class="row end">
+      <button class="btn primary" id="btn-save" value="save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<template id="tpl-offer">
+  <article class="offer card">
+    <div class="offer-head">
+      <div class="offer-title">
+        <h3><a class="title-link" target="_blank" rel="noopener"></a></h3>
+        <div class="meta"></div>
+      </div>
+      <div class="score" title="Score out of 100">
+        <span class="score-num"></span>
+        <span class="meter"><span class="meter-fill"></span></span>
+      </div>
+    </div>
+    <div class="tags"></div>
+    <div class="facts"></div>
+    <p class="why"></p>
+    <details class="more">
+      <summary>Mission, skills &amp; score breakdown</summary>
+      <h4>Mission</h4><ul class="mission"></ul>
+      <h4>Required skills</h4><div class="skills"></div>
+      <h4>Score breakdown</h4><div class="breakdown"></div>
+    </details>
+    <div class="offer-actions">
+      <a class="btn primary apply" target="_blank" rel="noopener">Apply ↗</a>
+      <select class="status" aria-label="Status"></select>
+    </div>
+    <textarea class="note" rows="1" placeholder="Personal note…" aria-label="Note"></textarea>
+  </article>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>

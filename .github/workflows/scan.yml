@@ -1,0 +1,82 @@
+name: Daily internship scan
+
+on:
+  schedule:
+    # GitHub cron is UTC. 07:00 Paris = 05:00 UTC in summer (CEST),
+    # 06:00 UTC in winter (CET). Both fire; the "Paris time" step keeps one.
+    - cron: "0 5 * * *"
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}      # the "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: internship-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Paris time check (skip the duplicate cron)
+        id: gate
+        run: |
+          OFFSET=$(TZ=Europe/Paris date +%z)
+          RUN=true
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$OFFSET" = "+0200" ] && [ "${{ github.event.schedule }}" != "0 5 * * *" ]; then RUN=false; fi
+            if [ "$OFFSET" = "+0100" ] && [ "${{ github.event.schedule }}" != "0 6 * * *" ]; then RUN=false; fi
+          fi
+          echo "run=$RUN" >> "$GITHUB_OUTPUT"
+          echo "Paris offset $OFFSET, schedule '${{ github.event.schedule }}' -> run=$RUN"
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Scan, score and build dashboard data
+        id: scan
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true   # still commit whatever succeeded
+        env:
+          DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+          PROFILE_YAML: ${{ secrets.PROFILE_YAML }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FT_CLIENT_ID: ${{ secrets.FT_CLIENT_ID }}
+          FT_CLIENT_SECRET: ${{ secrets.FT_CLIENT_SECRET }}
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          export DASHBOARD_URL="https://${OWNER,,}.github.io/${{ github.event.repository.name }}/"
+          python -m scanner.run --report
+
+      - name: Commit results
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "internship-scanner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data data
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily scan $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Fail the run if the scan step failed
+        if: steps.gate.outputs.run == 'true' && steps.scan.outcome == 'failure'
+        run: |
+          echo "::error::The scan step failed - see its log above. Data from sources that worked was still committed."
+          exit 1

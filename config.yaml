@@ -285,6 +285,22 @@ companies:
   - {name: Revolut, type: fintech, careers_url: "https://www.revolut.com/careers/"}
   - {name: Trade Republic, type: fintech, slugs: [traderepublic, traderepublicbank]}
   - {name: N26, type: fintech}
+  # added Nov 2026 (auto-detected, boards with jobs in France)
+  - {name: Alma, type: fintech, ats: ashby, id: alma}
+  - {name: Upflow, type: fintech, ats: ashby, id: upflow}
+  - {name: Pigment, type: fintech, ats: lever, id: pigment}
+  - {name: Memo Bank, type: fintech, ats: teamtailor, id: memobank}
+  - {name: Finary, type: fintech, ats: ashby, id: finary}
+  - {name: Ornikar, type: fintech, ats: teamtailor, id: ornikar}
+  - {name: SumUp, type: fintech, ats: greenhouse, id: sumup}
+  - {name: Airwallex, type: fintech, ats: ashby, id: airwallex}
+  - {name: Ebury, type: fintech, ats: greenhouse, id: ebury}
+  - {name: Deblock, type: fintech, ats: workable, id: deblock}
+  - {name: Bitstack, type: fintech, ats: ashby, id: bitstack}
+  - {name: Morpho, type: fintech, ats: ashby, id: morpho}
+  - {name: Flowdesk, type: fintech, ats: greenhouse, id: flowdesk}
+  - {name: Kaiko, type: fintech, ats: lever, id: kaiko}
+  - {name: Sunday, type: fintech, ats: teamtailor, id: sunday}
   # ---------------------------------------------------------- banks / insurance / AM
   # These run their own in-house career sites (no public ATS API, BNP's site
   # blocks bots) -> they appear as one-click links in "Search elsewhere".
@@ -306,6 +322,9 @@ companies:
   - {name: Contentsquare, type: ecommerce}
   - {name: Zalando, type: ecommerce, ats: links, careers_url: "https://jobs.zalando.com/en/jobs?location=Paris"}
   - {name: Amazon, type: ecommerce, ats: amazonjobs, id: FRA}
+  - {name: Ankorstore, type: ecommerce, ats: ashby, id: ankorstore}
+  - {name: Malt, type: ecommerce, ats: lever, id: malt}
+  - {name: BlaBlaCar, type: ecommerce, ats: lever, id: blablacar}
   # ---------------------------------------------------------- pharma / health
   - {name: Sanofi, type: pharma, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
   - {name: Servier, type: pharma, ats: links, careers_url: "https://servier.com/en/careers/"}

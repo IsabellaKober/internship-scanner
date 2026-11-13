@@ -23,7 +23,9 @@ def role_score(title: str, description: str, company_type: str, clarity: int,
         if key == "fintech":
             hit = company_type == "fintech" or (
                 company_type in ("bank", "insurance", "asset_management") and
-                (title_hit or len(desc_hits) >= 2))
+                (title_hit or len(desc_hits) >= 2)) or (
+                # unknown companies (e.g. from Adzuna): judge by the offer text
+                company_type == "other" and (title_hit or len(desc_hits) >= 3))
         else:
             hit = bool(title_hit) or len(desc_hits) >= 3
         if not hit:

@@ -214,6 +214,11 @@ function renderOffer(o) {
   const src = (o.sources || [o.source]).join(" + ");
   $(".meta", node).textContent =
     `${o.company} · ${o.location || "Location not stated"} · ${src} · posted ${fmtDate(o.posted)}`;
+  if ((o.sources || [o.source]).includes("adzuna")) {          // attribution required by Adzuna
+    const ad = el("a", null, " · Jobs by Adzuna");
+    ad.href = "https://www.adzuna.fr"; ad.target = "_blank"; ad.rel = "noopener";
+    $(".meta", node).append(ad);
+  }
   $(".score-num", node).textContent = o.score;
   $(".meter-fill", node).style.width = o.score + "%";
 

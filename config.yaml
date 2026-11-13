@@ -223,6 +223,12 @@ sources:
   smartrecruiters:
     enabled: true
     ignore_robots: false         # robots.txt blocks bots -> off unless you set true
+  adzuna:
+    enabled: true                # runs only when ADZUNA_APP_ID/KEY secrets exist
+    queries: [stage, stagiaire, internship, "summer internship"]
+    distance_km: 15              # around Paris
+    max_days_old: 30
+    max_pages: 4                 # x 50 results per query
   francetravail:
     enabled: true                # runs only when FT_CLIENT_ID/SECRET secrets exist
     keywords: [stage, stagiaire, internship]

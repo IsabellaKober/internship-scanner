@@ -1,5 +1,24 @@
 # Internship scanner
 
+> ## 📌 iPhone setup (pinned)
+> The same guide is on the dashboard: tap **📱 Setup guide** on the lock screen or in ⚙︎ Settings
+> (`/internship-scanner/setup.html`).
+>
+> **Dashboard as an app**
+> 1. Open the dashboard link in **Safari**.
+> 2. Tap **Share** (□↑) → **Add to Home Screen** → **Add**.
+> 3. Open **Internships** from the home screen, enter your dashboard password and keep "Remember on this device" ticked.
+>
+> **Notifications**
+> 1. Install **ntfy** from the App Store.
+> 2. Tap **+** and type your topic, exactly the `NTFY_TOPIC` secret. Leave the server as ntfy.sh.
+> 3. Tap **Subscribe**, then **Allow** notifications. If you missed the prompt: Settings → Notifications → ntfy.
+>
+> **Sync statuses with your computer** (free GitHub token, one for all devices)
+> 1. github.com → Settings → Developer settings → Fine-grained tokens → **Generate new token**.
+> 2. Choose: expiration 1 year · only repo `internship-scanner-state` · Contents: Read and write.
+> 3. In the dashboard: ⚙︎ → repo `<username>/internship-scanner-state` + paste the token → **Test & sync now** → **Save**.
+
 Every morning at 07:00 (Paris time) GitHub runs a scan of company career pages for
 **short (≤ 3 months) business internships in Paris / La Défense / 92-93-94**.
 It ranks matches 0–100 and publishes them to a password-protected dashboard that
@@ -94,7 +113,8 @@ Use something long and random.
 | `PROFILE_YAML` | yes | Your profile (contents of `profile.local.yaml`) for "Why I fit" |
 | `NTFY_TOPIC` | yes | Your ntfy topic name |
 | `ANTHROPIC_API_KEY` | optional | Better mission summaries and "Why I fit" via Claude Haiku |
-| `FT_CLIENT_ID` / `FT_CLIENT_SECRET` | optional | France Travail API (adds its offers) |
+| `FT_CLIENT_ID` / `FT_CLIENT_SECRET` | optional | France Travail API: all employers posting in France |
+| `ADZUNA_APP_ID` / `ADZUNA_APP_KEY` | optional | Adzuna API: aggregates thousands of job boards and companies (free key at developer.adzuna.com) |
 
 ## Sources & rules
 
@@ -105,7 +125,9 @@ Use something long and random.
 - **Not scanned:** LinkedIn and Indeed (their terms forbid it, so you get links instead).
   Welcome to the Jungle's terms (§10) also forbid automated extraction, so it gets search links too.
   SmartRecruiters' robots.txt blocks bots, so that adapter is off.
-- **France Travail:** optional, turns on when its two secrets exist.
+- **France Travail and Adzuna:** optional, each turns on when its secrets exist. These
+  two aggregators cover companies that aren't in `config.yaml`, so offers from
+  unknown startups are found too, and scored on their content.
 
 ## Running locally (optional)
 

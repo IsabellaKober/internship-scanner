@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a78d6">
+<title>Setup guide · Internship Scanner</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .guide { padding: 16px 18px; margin-bottom: 12px; }
+  .guide h2 { display: flex; gap: 8px; align-items: center; }
+  .guide ol { padding-left: 22px; margin: 8px 0 0; }
+  .guide li { margin: 6px 0; }
+  .guide kbd { font: inherit; font-weight: 600; background: var(--chip); border-radius: 6px; padding: 1px 6px; }
+  .note { font-size: 13px; color: var(--text-secondary); margin-top: 8px; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img src="icons/icon.svg" alt="" width="28" height="28">
+    <div><h1>Setup guide</h1><div class="sub">iPhone · desktop · notifications · sync</div></div>
+  </div>
+  <a class="btn" href="./">← Dashboard</a>
+</header>
+<main>
+  <nav class="toc">
+    <a class="btn" href="#app">📱 Dashboard app</a>
+    <a class="btn" href="#notif">🔔 Notifications</a>
+    <a class="btn" href="#sync">🔄 Sync (token)</a>
+    <a class="btn" href="#desktop">💻 Desktop</a>
+  </nav>
+
+  <section class="card guide" id="app">
+    <h2>📱 iPhone: dashboard as an app</h2>
+    <ol>
+      <li>Open this site in <b>Safari</b> (it must be Safari, not Chrome or the Google app).</li>
+      <li>Tap the <kbd>Share</kbd> button (square with an arrow ↑) at the bottom.</li>
+      <li>Scroll down and tap <kbd>Add to Home Screen</kbd>, then <kbd>Add</kbd>.</li>
+      <li>Open <b>Internships</b> from your home screen. It opens full-screen like an app.</li>
+      <li>Enter your dashboard password and keep <b>Remember on this device</b> ticked.</li>
+    </ol>
+    <p class="note">The password is the <code>DASHBOARD_PASSWORD</code> secret you set on GitHub. If you change it there, re-enter it here after the next scan.</p>
+  </section>
+
+  <section class="card guide" id="notif">
+    <h2>🔔 iPhone: push notifications (ntfy)</h2>
+    <ol>
+      <li>Install <b>ntfy</b> from the App Store (free, by Philipp Heckel).</li>
+      <li>Open it and tap <kbd>+</kbd> (top right).</li>
+      <li>Type your topic name <b>exactly</b>, the same text as the <code>NTFY_TOPIC</code> secret, and leave the server as <i>ntfy.sh</i>.</li>
+      <li>Tap <kbd>Subscribe</kbd>, then <kbd>Allow</kbd> when iOS asks about notifications.</li>
+      <li>Missed the prompt? iPhone <b>Settings → Notifications → ntfy → Allow Notifications</b>.</li>
+    </ol>
+    <p class="note">You get one notification per strong new match (score ≥ 75), showing title, company and score. Tap it to open the offer. Keep the topic name secret: anyone who knows it can read the notifications.</p>
+  </section>
+
+  <section class="card guide" id="sync">
+    <h2>🔄 Sync statuses &amp; notes between iPhone and computer</h2>
+    <p>Create one free GitHub token (no cost, no limit), then paste it on each device.</p>
+    <ol>
+      <li>On github.com: your photo → <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+      <li><b>Token name:</b> <code>internship-dashboard</code>. <b>Expiration:</b> Custom → 1 year.</li>
+      <li><b>Repository access:</b> Only select repositories → <code>internship-scanner-state</code>.</li>
+      <li><b>Permissions → Repository permissions → Contents:</b> Read and write. Leave everything else as it is.</li>
+      <li><kbd>Generate token</kbd> and copy it. GitHub shows it only once, so keep it in Notes or your password manager.</li>
+      <li>In the dashboard tap <kbd>⚙︎</kbd>. Fill in <b>State repository</b> as <code>&lt;your-username&gt;/internship-scanner-state</code> and paste the <b>token</b>. Tap <kbd>Test &amp; sync now</kbd>, then <kbd>Save</kbd>.</li>
+      <li>Repeat step 6 on your other devices with the same token.</li>
+    </ol>
+    <p class="note">When the token expires, the dashboard shows “⚠ Not synced”. Generate a new one the same way and paste it again. Your statuses are never lost; they stay in the private repo and on each device.</p>
+  </section>
+
+  <section class="card guide" id="desktop">
+    <h2>💻 Desktop</h2>
+    <ol>
+      <li><b>App:</b> open the dashboard in Chrome or Edge and click the install icon (⊕ / 🖥) at the right of the address bar.</li>
+      <li><b>Notifications:</b> open <a href="https://ntfy.sh/app" target="_blank" rel="noopener">ntfy.sh/app</a>, click <kbd>Subscribe to topic</kbd>, enter the same topic, then click <kbd>Grant now</kbd> to allow browser notifications. Keep it installed as an app or a pinned tab.</li>
+      <li><b>Sync:</b> ⚙︎ Settings with the same repo and token as on your phone.</li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>

@@ -20,12 +20,12 @@ from urllib.parse import quote, quote_plus
 from . import detect_ats, filters, scoring
 from .config import load_config
 from .crypto import decrypt_json, encrypt_json
-from .dedupe import dedupe
+from .dedupe import company_key, dedupe
 from .enrich import make_enricher, rule_based
 from .http import PoliteSession, RobotsDisallowed
 from .notify import notify
 from .parsing import parse_deadline, parse_duration, parse_pay, parse_start
-from .sources import (amazonjobs, ashby, francetravail, greenhouse, lever,
+from .sources import (adzuna, amazonjobs, ashby, francetravail, greenhouse, lever,
                       smartrecruiters, successfactors, teamtailor, workable, workday)
 from .text import html_to_text, norm
 
@@ -135,24 +135,30 @@ def fetch_all(cfg, session, log=print):
             s["failed"].append({"company": name, "error": msg})
             log(f"  {ats:15} {name:30} FAILED {msg}")
 
-    # France Travail (optional)
-    ft = cfg["sources"].get("francetravail", {})
-    s = st("francetravail")
-    if not ft.get("enabled", True):
-        s["state"] = "disabled"
-    elif not francetravail.configured():
-        s["state"] = "not configured"
-    else:
+    # Aggregators (optional, need free API keys): cover companies NOT in
+    # config.yaml. Offers from known companies inherit that company's type.
+    types = {company_key(c["name"]): c.get("type", "other") for c in cfg["companies"]}
+    for mod, label in ((francetravail, "France Travail API"), (adzuna, "Adzuna API")):
+        sc = cfg["sources"].get(mod.NAME, {})
+        s = st(mod.NAME)
+        if not sc.get("enabled", True):
+            s["state"] = "disabled"
+            continue
+        if not mod.configured():
+            s["state"] = "not configured"
+            continue
         try:
-            offers = francetravail.fetch(session, ft)
+            offers = mod.fetch(session, sc)
+            for o in offers:
+                o.company_type = types.get(company_key(o.company), "other")
             raw.extend(offers)
             s["companies_ok"] = 1
             s["offers"] = len(offers)
-            log(f"  francetravail   {len(offers)} offers")
+            log(f"  {mod.NAME:15} {len(offers)} offers")
         except Exception as e:  # noqa: BLE001
-            s["failed"].append({"company": "France Travail API",
+            s["failed"].append({"company": label,
                                 "error": f"{type(e).__name__}: {str(e)[:150]}"})
-            log(f"  francetravail   FAILED {e}")
+            log(f"  {mod.NAME:15} FAILED {e}")
 
     for s in status.values():
         if s["failed"] and s["state"] == "ok":

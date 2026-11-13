@@ -193,3 +193,13 @@ def test_dedupe_merges_sources():
 def test_pharma_regulatory_strategy_excluded():
     assert not filters.check_role("Stagiaire CMC Regulatory Strategy", "", "pharma", CFG)[0]
     assert not filters.check_role("Associate Solutions Architect Internship", "", "ecommerce", CFG)[0]
+
+
+def test_unknown_company_fintech_by_content():
+    # e.g. an Adzuna offer from a company that is not in config.yaml
+    s, cats = scoring.role_score("Stage Business Developer - Paiements",
+                                 "Fintech spécialisée dans les paiements et l'open banking, API",
+                                 "other", 50, CFG)
+    assert "fintech" in cats and s == 100
+    s, cats = scoring.role_score("Stage Business Developer", "Agence de voyage", "other", 50, CFG)
+    assert "fintech" not in cats

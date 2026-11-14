@@ -285,3 +285,8 @@ def test_final_year_or_masters_only_hidden(desc):
 ])
 def test_open_to_second_years_kept(desc):
     assert filters.check_eligibility(desc, CFG)[0]
+
+
+def test_penultimate_year_counts_as_open():
+    assert filters.check_eligibility(
+        "Être actuellement en avant-dernière ou dernière année de licence ou master.", CFG)[0]

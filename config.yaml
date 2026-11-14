@@ -92,7 +92,8 @@ eligibility:
     master 1, master 2, m1, m2, bac+4, bac+5, bac +4, bac +5, bac + 4, bac + 5,
     bac+5 minimum, grande ecole]
   # any of these keeps the offer: it is open to earlier years
-  year_open_phrases: [2nd year, second year, 2eme annee, deuxieme annee, 2e annee,
+  year_open_phrases: [avant-derniere annee, avant-derniere, avant derniere,
+    penultimate year, penultimate, pre-final year, 2nd year, second year, 2eme annee, deuxieme annee, 2e annee,
     1st year, first year, any year, all years, toutes annees, l2, bac+2, bac +2,
     bac + 2, 3rd year, third year, 3eme annee, troisieme annee]
   bachelor_open_phrases: [bachelor student, bachelor students, bachelor's student,

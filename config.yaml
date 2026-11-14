@@ -12,7 +12,7 @@ state_repo: ""
 # ---------------------------------------------------------------- dates
 dates:
   ideal_start: 2027-05-01
-  ideal_end: 2027-07-30
+  ideal_end: 2027-07-31          # offers whose stated dates fit 1 May - 31 Jul rank highest
   earliest_start: 2027-04-20     # start before this  -> hidden
   latest_start: 2027-06-30       # start after this   -> hidden
   max_months: 3                  # stated duration longer than this -> hidden
@@ -92,10 +92,10 @@ categories:
   - key: ecommerce
     label: E-commerce
     score: 70
-    keywords: [e-commerce, ecommerce, e-commerce manager, growth, growth marketing,
-      marketplace, retail media, digital marketing, marketing digital, acquisition,
-      crm, performance marketing, seo, sea, category manager, merchandising,
-      trade marketing, online sales, d2c, dtc, conversion]
+    keywords: [e-commerce, ecommerce, e-commerce manager,
+      marketplace, retail media, category manager, category management,
+      merchandising, trade marketing, online sales, d2c, dtc, e-merchandising,
+      ecommerce manager, e-retail, retail]
   - key: bizdev
     label: BizDev
     score: 65
@@ -154,6 +154,13 @@ exclude_roles:
     affaires reglementaires, medical affairs, scientific, scientist, research
     scientist, juriste, legal counsel, avocat, solutions architect, architect,
     cloud, security specialist, physical security, it support]
+  # roles outside sales / strategy / e-commerce / bizdev / finance
+  off_path: [scriptwriter, script writer, scenariste, content creator,
+    createur de contenu, createurs de contenu, video, videaste, video editor,
+    monteur, monteuse, motion designer, graphic designer, graphiste, copywriter,
+    redacteur, redactrice, community manager, social media, photographer,
+    photographe, journalist, journaliste, legal, juridique, privacy, paralegal,
+    compliance, conformite, aml, kyc, fraud, fraude, content, contenu]
 
 # ---------------------------------------------------------------- language
 language:
@@ -192,11 +199,18 @@ clarity:
 
 # ---------------------------------------------------------------- score
 weights:            # must add up to 1.0
-  role: 0.35
-  clarity: 0.25
-  dates: 0.20
-  language: 0.10
-  company: 0.10
+  role: 0.40        # is the ROLE itself sales / strategy / e-commerce / bizdev / finance?
+  dates: 0.30       # clear start + end inside 1 May - 31 Jul 2027
+  clarity: 0.15
+  language: 0.08
+  company: 0.07
+
+# How the role score works (scanner/scoring.py):
+role_rules:
+  no_function_score: 10          # title names none of the target functions
+  generic_title_penalty: 20      # e.g. "Summer Internship Program": judged on the description
+  min_role_for_full_score: 40    # roles below this...
+  off_path_cap: 30               # ...can never score more than this overall
 
 # ---------------------------------------------------------------- outputs
 notifications:

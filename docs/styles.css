@@ -173,3 +173,12 @@ dialog::backdrop { background: rgba(0,0,0,.4); }
 .settings-form label { display: grid; gap: 4px; font-size: 13px; color: var(--text-secondary); }
 .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .row.end { justify-content: flex-end; }
+
+/* ---- keep the page centred on phones: nothing may be wider than the screen ---- */
+html, body { max-width: 100%; overflow-x: hidden; overscroll-behavior-x: none; }
+body { touch-action: pan-y pinch-zoom; }          /* vertical scroll only (zoom still works) */
+main, .card, .offer, .offer-head, .offer-title, .facts > *, .toolbar > *, .filters > * { min-width: 0; }
+.offer, .card, .why, .mission, .skills, .facts, .meta { overflow-wrap: anywhere; word-break: break-word; }
+.tag { white-space: normal; max-width: 100%; }
+.src-table { display: block; overflow-x: auto; max-width: 100%; }
+img, video, table, pre { max-width: 100%; }

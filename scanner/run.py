@@ -194,7 +194,7 @@ def process(o, cfg, today: date):
         tags += t
 
     clarity, clarity_why = scoring.clarity_score(text, cfg)
-    role, cats = scoring.role_score(o.title, text, o.company_type, clarity, cfg)
+    role, cats = scoring.role_score(o.title, text, o.company_type, clarity, cfg, o.company)
     dates_s = scoring.date_score(dur, start, cfg)
     lang, lang_s = scoring.language_info(o.title, text, cfg)
     comp_s = cfg["company_type_scores"].get(o.company_type, 50)

@@ -203,3 +203,44 @@ def test_unknown_company_fintech_by_content():
     assert "fintech" in cats and s == 100
     s, cats = scoring.role_score("Stage Business Developer", "Agence de voyage", "other", 50, CFG)
     assert "fintech" not in cats
+
+
+# ------------------------------------------------------------- role must match (Nov 2026)
+@pytest.mark.parametrize("title", [
+    "Scriptwriter intern", "Stage - Social Media Manager", "Privacy Legal Intern",
+    "AML/CFT & Fraud Analyst - Internship", "Content Creator Intern",
+    "Regulatory Compliance Intern",
+])
+def test_off_path_roles_hidden_even_at_fintech(title):
+    assert not filters.check_role(title, "", "fintech", CFG)[0]
+
+
+def test_fintech_company_alone_is_not_enough():
+    s, cats = scoring.role_score("Analytics & Process Engineer - Intern",
+                                 "payments fintech sales strategy", "fintech", 60, CFG)
+    assert s <= 20 and "fintech" not in cats
+    s, cats = scoring.role_score("Sales Development Intern", "", "fintech", 60, CFG)
+    assert s == 100 and cats[0] == "fintech"
+
+
+def test_off_path_total_is_capped():
+    parts = {"role": 10, "clarity": 100, "dates": 100, "language": 100, "company": 100}
+    assert scoring.total_score(parts, CFG) <= 30
+
+
+def test_generic_programme_judged_on_description():
+    s, _ = scoring.role_score("Summer Intern 2027 - Alan Summer Internship Program",
+                              "Join our sales, business development and strategy teams; "
+                              "sales pipeline, strategic projects, partnerships", "insurance", 60, CFG, "Alan")
+    assert 40 <= s < 100
+
+
+def test_dates_clear_window_beats_unstated():
+    from scanner.parsing import parse_duration, parse_start
+    ref = REF
+    clear = scoring.date_score(parse_duration("Stage de 3 mois"),
+                               parse_start("Début : 2 mai 2027", "", ref), CFG)
+    vague = scoring.date_score(parse_duration(""), parse_start("", "", ref), CFG)
+    june = scoring.date_score(parse_duration("3 months"),
+                              parse_start("Start date: June 2027", "", ref), CFG)
+    assert clear == 100 and vague == 0 and clear > june > vague

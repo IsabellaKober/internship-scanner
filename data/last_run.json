@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-11-14T09:20:42+00:00",
- "raw": 6449,
+ "generated_at": "2026-11-14T13:11:29+00:00",
+ "raw": 6448,
  "kept": 4,
  "new": 0,
  "found_per_source": {
   "ashby": 2024,
   "lever": 475,
   "teamtailor": 428,
-  "greenhouse": 3291,
-  "workable": 158,
+  "greenhouse": 3292,
+  "workable": 157,
   "amazonjobs": 50,
-  "workday": 23
+  "workday": 22
  },
  "kept_per_source": {
   "teamtailor": 3,
@@ -19,7 +19,7 @@
  "rejected": {
   "not an internship": 6065,
   "contract": 124,
-  "location": 111,
+  "location": 110,
   "duration 6 months": 53,
   "role excluded": 45,
   "start Jan 2027": 23,
@@ -59,14 +59,14 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3291,
+   "offers": 3292,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 158,
+   "offers": 157,
    "state": "ok"
   },
   {
@@ -78,30 +78,34 @@
   },
   {
    "source": "workday",
-   "companies_ok": 5,
+   "companies_ok": 4,
    "failed": [
+    {
+     "company": "Novartis France",
+     "error": "HTTPError: 401 Client Error: Unauthorized for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
+    },
     {
      "company": "Pfizer France",
      "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     },
     {
      "company": "MSD France",
-     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     },
     {
      "company": "GSK France",
-     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     },
     {
      "company": "Johnson & Johnson France",
-     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     },
     {
      "company": "Bristol Myers Squibb France",
-     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     }
    ],
-   "offers": 23,
+   "offers": 22,
    "state": "partial"
   },
   {

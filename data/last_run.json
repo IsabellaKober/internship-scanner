@@ -1,29 +1,29 @@
 {
- "generated_at": "2026-11-14T13:11:29+00:00",
- "raw": 6448,
+ "generated_at": "2026-11-14T18:39:25+00:00",
+ "raw": 6472,
  "kept": 4,
  "new": 0,
  "found_per_source": {
-  "ashby": 2024,
+  "ashby": 2025,
   "lever": 475,
   "teamtailor": 428,
-  "greenhouse": 3292,
+  "greenhouse": 3289,
   "workable": 157,
   "amazonjobs": 50,
-  "workday": 22
+  "workday": 48
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1
  },
  "rejected": {
-  "not an internship": 6065,
+  "not an internship": 6067,
+  "location": 126,
   "contract": 124,
-  "location": 110,
-  "duration 6 months": 53,
+  "duration 6 months": 54,
   "role excluded": 45,
   "start Jan 2027": 23,
-  "pharma": 10,
+  "pharma": 14,
   "stage de fin d'etudes": 3,
   "Master's students only": 3,
   "start ASAP": 2,
@@ -31,6 +31,7 @@
   "long internship": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
+  "remote-only": 1,
   "start 02 Sep 2024": 1
  },
  "sources": [
@@ -38,7 +39,7 @@
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2024,
+   "offers": 2025,
    "state": "ok"
   },
   {
@@ -59,7 +60,7 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3292,
+   "offers": 3289,
    "state": "ok"
   },
   {
@@ -78,35 +79,10 @@
   },
   {
    "source": "workday",
-   "companies_ok": 4,
-   "failed": [
-    {
-     "company": "Novartis France",
-     "error": "HTTPError: 401 Client Error: Unauthorized for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
-    },
-    {
-     "company": "Pfizer France",
-     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
-    },
-    {
-     "company": "MSD France",
-     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
-    },
-    {
-     "company": "GSK France",
-     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
-    },
-    {
-     "company": "Johnson & Johnson France",
-     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
-    },
-    {
-     "company": "Bristol Myers Squibb France",
-     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
-    }
-   ],
-   "offers": 22,
-   "state": "partial"
+   "companies_ok": 10,
+   "failed": [],
+   "offers": 48,
+   "state": "ok"
   },
   {
    "source": "francetravail",

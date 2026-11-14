@@ -341,3 +341,52 @@ companies:
   - {name: Boehringer Ingelheim France, type: pharma, ats: links, careers_url: "https://jobs.boehringer-ingelheim.com/"}
   - {name: Doctolib, type: other}
   - {name: Owkin, type: other}
+  # ---------------------------------------------------------- added Nov 2026 (2nd discovery pass)
+  - {name: Shift Technology, type: fintech, ats: greenhouse, id: shifttechnology}
+  - {name: Akur8, type: fintech, ats: ashby, id: akur8}
+  - {name: Descartes Underwriting, type: insurance, ats: teamtailor, id: descartesunderwriting}
+  - {name: Stoïk, type: insurance, ats: teamtailor, id: stoik}
+  - {name: Plaid, type: fintech, ats: ashby, id: plaid}
+  - {name: Deliveroo, type: ecommerce, ats: greenhouse, id: deliveroo}
+  - {name: Murfy, type: ecommerce, ats: teamtailor, id: murfy}
+  - {name: Too Good To Go, type: ecommerce, ats: ashby, id: toogoodtogo}
+  - {name: Aroma-Zone, type: ecommerce, ats: teamtailor, id: aromazone}
+  - {name: Airbnb, type: ecommerce, ats: greenhouse, id: airbnb}
+  - {name: Sorare, type: other, ats: ashby, id: sorare}
+  - {name: Botify, type: other, ats: teamtailor, id: botify}
+  - {name: Algolia, type: other, ats: greenhouse, id: algolia}
+  - {name: Lemlist, type: other, ats: ashby, id: lemlist}
+  - {name: Brevo, type: other, ats: lever, id: brevo}
+  - {name: Datadog, type: other, ats: greenhouse, id: datadog}
+  - {name: MongoDB, type: other, ats: greenhouse, id: mongodb}
+  - {name: Elastic, type: other, ats: greenhouse, id: elastic}
+  - {name: Snowflake, type: other, ats: ashby, id: snowflake}
+  - {name: Spotify, type: other, ats: lever, id: spotify}
+  - {name: Ivalua, type: other, ats: greenhouse, id: ivalua}
+  - {name: Dataiku, type: other, ats: greenhouse, id: dataiku}
+  - {name: Hugging Face, type: other, ats: workable, id: huggingface}
+  - {name: Photoroom, type: other, ats: ashby, id: photoroom}
+  - {name: Dust, type: other, ats: ashby, id: dust}
+  - {name: Exotec, type: other, ats: workable, id: exotec}
+  - {name: Welcome to the Jungle, type: other, ats: teamtailor, id: welcometothejungle}
+  # big brands without a public job feed -> one-click links in "Search elsewhere"
+  - {name: PayPal, type: fintech, ats: links, careers_url: "https://careers.pypl.com/"}
+  - {name: Mastercard, type: fintech, ats: links, careers_url: "https://careers.mastercard.com/"}
+  - {name: Visa, type: fintech, ats: links, careers_url: "https://corporate.visa.com/en/jobs/"}
+  - {name: Worldline, type: fintech, ats: links, careers_url: "https://jobs.worldline.com/"}
+  - {name: Edenred, type: fintech, ats: links, careers_url: "https://careers.edenred.com/"}
+  - {name: Lazard, type: bank, ats: links, careers_url: "https://www.lazard.com/careers/"}
+  - {name: Rothschild & Co, type: bank, ats: links, careers_url: "https://www.rothschildandco.com/en/careers/"}
+  - {name: BCG, type: other, ats: links, careers_url: "https://careers.bcg.com/"}
+  - {name: Bain & Company, type: other, ats: links, careers_url: "https://www.bain.com/careers/"}
+  - {name: Roland Berger, type: other, ats: links, careers_url: "https://www.rolandberger.com/en/Join/"}
+  - {name: Kearney, type: other, ats: links, careers_url: "https://www.kearney.com/careers"}
+  - {name: Simon-Kucher, type: other, ats: links, careers_url: "https://www.simon-kucher.com/en/careers"}
+  - {name: L'Oréal, type: ecommerce, ats: links, careers_url: "https://careers.loreal.com/"}
+  - {name: LVMH, type: ecommerce, ats: links, careers_url: "https://www.lvmh.com/join-us/our-job-offers"}
+  - {name: Kering, type: ecommerce, ats: links, careers_url: "https://www.kering.com/en/talent/job-offers/"}
+  - {name: Hermès, type: ecommerce, ats: links, careers_url: "https://hermes.careers/"}
+  - {name: Chanel, type: ecommerce, ats: links, careers_url: "https://careers.chanel.com/"}
+  - {name: Pernod Ricard, type: other, ats: links, careers_url: "https://www.pernod-ricard.com/en/careers"}
+  - {name: Danone, type: other, ats: links, careers_url: "https://careers.danone.com/"}
+  - {name: Criteo, type: other, ats: links, careers_url: "https://careers.criteo.com/"}

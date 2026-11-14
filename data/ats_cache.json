@@ -327,6 +327,13 @@
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
   },
+  "Floa": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "floa",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Flowdesk": {
     "ats": "greenhouse",
     "ats_host": null,
@@ -361,6 +368,13 @@
     "confidence": "config",
     "detected": "2026-11-14"
   },
+  "IDnow": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "idnow",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Indy": {
     "ats": "teamtailor",
     "ats_id": "indy",
@@ -391,9 +405,9 @@
     "detected": "2026-11-14"
   },
   "Kaiko": {
-    "ats": "lever",
+    "ats": "links",
     "ats_host": null,
-    "ats_id": "kaiko",
+    "ats_id": null,
     "confidence": "config",
     "detected": "2026-11-14"
   },
@@ -542,6 +556,13 @@
     "france_jobs": true,
     "jobs": 22
   },
+  "Mollie": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "mollie",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "MongoDB": {
     "ats": "greenhouse",
     "ats_host": null,
@@ -597,6 +618,13 @@
     "confidence": "config",
     "detected": "2026-11-14"
   },
+  "Numbr": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "numbr",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "October": {
     "ats": "unknown",
     "confidence": "none",
@@ -617,6 +645,13 @@
     "detected": "2026-11-13",
     "france_jobs": true,
     "jobs": 10
+  },
+  "PayFit": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "payfit",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "PayPal": {
     "ats": "links",
@@ -781,6 +816,13 @@
     "confidence": "config",
     "detected": "2026-11-14"
   },
+  "Sidetrade": {
+    "ats": "workable",
+    "ats_host": null,
+    "ats_id": "sidetrade",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Silvr": {
     "ats": "unknown",
     "confidence": "none",
@@ -907,6 +949,13 @@
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Trustpair": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "trustpair",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Upflow": {
     "ats": "ashby",

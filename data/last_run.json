@@ -1,32 +1,32 @@
 {
- "generated_at": "2026-11-14T07:19:38+00:00",
- "raw": 6291,
+ "generated_at": "2026-11-14T09:20:42+00:00",
+ "raw": 6449,
  "kept": 4,
  "new": 0,
  "found_per_source": {
-  "ashby": 1976,
-  "lever": 474,
-  "teamtailor": 370,
-  "greenhouse": 3283,
-  "workable": 125,
+  "ashby": 2024,
+  "lever": 475,
+  "teamtailor": 428,
+  "greenhouse": 3291,
+  "workable": 158,
   "amazonjobs": 50,
-  "workday": 13
+  "workday": 23
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1
  },
  "rejected": {
-  "not an internship": 5929,
-  "contract": 113,
-  "location": 105,
+  "not an internship": 6065,
+  "contract": 124,
+  "location": 111,
   "duration 6 months": 53,
   "role excluded": 45,
   "start Jan 2027": 23,
-  "pharma": 6,
+  "pharma": 10,
+  "stage de fin d'etudes": 3,
   "Master's students only": 3,
   "start ASAP": 2,
-  "stage de fin d'etudes": 2,
   "not fully on-site": 2,
   "long internship": 1,
   "duration 5.5 months": 1,
@@ -36,42 +36,37 @@
  "sources": [
   {
    "source": "ashby",
-   "companies_ok": 25,
+   "companies_ok": 26,
    "failed": [],
-   "offers": 1976,
+   "offers": 2024,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
-   "failed": [
-    {
-     "company": "Kaiko",
-     "error": "HTTPError: 404 Client Error: Not Found for url: https://api.lever.co/v0/postings/kaiko?mode=json"
-    }
-   ],
-   "offers": 474,
-   "state": "partial"
+   "failed": [],
+   "offers": 475,
+   "state": "ok"
   },
   {
    "source": "teamtailor",
-   "companies_ok": 17,
+   "companies_ok": 21,
    "failed": [],
-   "offers": 370,
+   "offers": 428,
    "state": "ok"
   },
   {
    "source": "greenhouse",
-   "companies_ok": 17,
+   "companies_ok": 18,
    "failed": [],
-   "offers": 3283,
+   "offers": 3291,
    "state": "ok"
   },
   {
    "source": "workable",
-   "companies_ok": 3,
+   "companies_ok": 4,
    "failed": [],
-   "offers": 125,
+   "offers": 158,
    "state": "ok"
   },
   {
@@ -83,46 +78,30 @@
   },
   {
    "source": "workday",
-   "companies_ok": 1,
+   "companies_ok": 5,
    "failed": [
     {
-     "company": "Sanofi",
-     "error": "blocked by robots.txt"
-    },
-    {
-     "company": "Novartis France",
-     "error": "blocked by robots.txt"
-    },
-    {
      "company": "Pfizer France",
-     "error": "blocked by robots.txt"
+     "error": "site temporarily unavailable (maintenance?) - retried, next scan tries again"
     },
     {
      "company": "MSD France",
-     "error": "HTTPError: 521 Server Error: <none> for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
-    },
-    {
-     "company": "AstraZeneca France",
-     "error": "blocked by robots.txt"
+     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
     },
     {
      "company": "GSK France",
-     "error": "HTTPError: 521 Server Error: <none> for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
-    },
-    {
-     "company": "Roche France",
      "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
     },
     {
      "company": "Johnson & Johnson France",
-     "error": "HTTPError: 521 Server Error: <none> for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
     },
     {
      "company": "Bristol Myers Squibb France",
-     "error": "HTTPError: 521 Server Error: <none> for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
+     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
     }
    ],
-   "offers": 13,
+   "offers": 23,
    "state": "partial"
   },
   {

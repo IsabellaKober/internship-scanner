@@ -244,3 +244,44 @@ def test_dates_clear_window_beats_unstated():
     june = scoring.date_score(parse_duration("3 months"),
                               parse_start("Start date: June 2027", "", ref), CFG)
     assert clear == 100 and vague == 0 and clear > june > vague
+
+
+# ------------------------------------------------------------- on-site only / 2nd-year eligibility
+@pytest.mark.parametrize("loc,desc", [
+    ("Paris (Hybrid)", ""),
+    ("Paris, France (hybrid)", ""),
+    ("Paris", "We work in a hybrid model with 2 days of remote work per week."),
+    ("Paris", "Télétravail possible 2 jours par semaine."),
+    ("Paris", "Remote-friendly culture and flexible hours."),
+])
+def test_hybrid_hidden(loc, desc):
+    assert not filters.check_workplace(loc, desc, CFG)[0]
+
+
+@pytest.mark.parametrize("loc,desc", [
+    ("Paris (OnSite)", "You will join our office in Paris."),
+    ("Paris", "Pas de télétravail : le stage est 100% présentiel."),
+    ("Paris", "This is a full on-site role, no remote work."),
+])
+def test_onsite_kept(loc, desc):
+    assert filters.check_workplace(loc, desc, CFG)[0]
+
+
+@pytest.mark.parametrize("desc", [
+    "You are in the final year of your Bachelor's degree or currently doing a Master's.",
+    "Étudiant(e) en dernière année d'école de commerce.",
+    "Vous êtes étudiant(e) en Master 2 (Bac+5) en école de commerce.",
+    "You are currently enrolled in a Master's program in finance.",
+])
+def test_final_year_or_masters_only_hidden(desc):
+    assert not filters.check_eligibility(desc, CFG)[0]
+
+
+@pytest.mark.parametrize("desc", [
+    "Open to Bachelor or Master students in business or economics.",
+    "Étudiant(e) en école de commerce (Bac+3 à Bac+5).",
+    "We welcome 2nd year students and Master's students alike.",
+    "You master Excel and PowerPoint.",
+])
+def test_open_to_second_years_kept(desc):
+    assert filters.check_eligibility(desc, CFG)[0]

@@ -103,3 +103,46 @@ def check_role(title: str, description: str, company_type: str, cfg: dict):
         if not contains_any(t, cfg["pharma_allowed_keywords"]):
             return False, "pharma: not a commercial/BD/finance role", []
     return True, "", []
+
+
+# ---------------------------------------------------------------- workplace
+def _negated(text: str, start: int, negs: list[str]) -> bool:
+    before = text[max(0, start - 30):start]
+    return any(re.search(rf"(^|\W){re.escape(n)}(\W|$)", before) for n in negs)
+
+
+def check_workplace(location: str, description: str, cfg: dict):
+    """Hide hybrid / remote offers: the internship must be fully on-site."""
+    wc = cfg.get("workplace", {})
+    if not wc.get("exclude_hybrid", True):
+        return True, "", []
+    loc, d = norm(location), norm(description)
+    hit = contains_any(loc, wc.get("location_terms", []))
+    if hit:
+        return False, f"not fully on-site ({hit[0]})", []
+    onsite = contains_any(d, wc.get("onsite_phrases", []))
+    for kw in wc.get("hybrid_phrases", []):
+        for m in re.finditer(r"(?<![a-z0-9])" + re.escape(norm(kw)) + r"(?![a-z0-9])", d):
+            if not _negated(d, m.start(), wc.get("negations", [])):
+                if onsite:      # e.g. "no hybrid: 100% on-site" handled above; mixed -> check
+                    return True, "", ["Check: on-site vs hybrid"]
+                return False, f"not fully on-site ({kw})", []
+    return True, "", (["On-site"] if onsite else [])
+
+
+# ---------------------------------------------------------------- eligibility
+def check_eligibility(description: str, cfg: dict):
+    """Hide offers reserved for final-year / Master's students."""
+    ec = cfg.get("eligibility", {})
+    if not ec.get("hide_final_year_or_masters_only", True):
+        return True, "", []
+    d = norm(description)
+    year_open = contains_any(d, ec.get("year_open_phrases", []))
+    level_open = contains_any(d, ec.get("bachelor_open_phrases", []))
+    final = contains_any(d, ec.get("final_year_phrases", []))
+    if final and not year_open:
+        return False, f"final-year students only ({final[0]})", []
+    masters = contains_any(d, ec.get("masters_phrases", []))
+    if masters and not (year_open or level_open):
+        return False, f"Master's students only ({masters[0]})", []
+    return True, "", []

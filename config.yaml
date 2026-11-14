@@ -56,6 +56,50 @@ contract:
     werkstudent, working student, these, phd, cifre, graduate programme,
     graduate program]
 
+# ---------------------------------------------------------------- workplace
+# School rule: the internship must be FULLY on-site. Hybrid / remote -> hidden.
+workplace:
+  exclude_hybrid: true
+  # job-board "workplace type" shown next to the location, e.g. "Paris (Hybrid)"
+  location_terms: [hybrid, hybride, remote, teletravail, fully]
+  hybrid_phrases: [hybrid, hybride, teletravail, tele-travail, remote work,
+    remote working, remote-friendly, remote friendly, remote-first, remote first,
+    remote days, days remote, day remote, remote day, remote policy, full remote,
+    fully remote, partial remote, partially remote, remote possible,
+    jours de remote, jour de remote, home office, work from home, working from home,
+    wfh, travail a distance, flex office, flexible remote, days in the office,
+    days per week in the office, jours au bureau, jours sur site]
+  negations: [pas de, "no", not, non, sans, aucun, aucune, without, zero]
+  onsite_phrases: [100% on-site, 100% onsite, fully on-site, fully onsite,
+    full on-site, 100% presentiel, 100 % presentiel, 5 days a week in the office,
+    5 days in the office, 5 jours sur site, 5 jours par semaine au bureau]
+
+# ---------------------------------------------------------------- eligibility
+# Hide offers reserved for final-year or Master's students (must be open to 2nd years).
+eligibility:
+  hide_final_year_or_masters_only: true
+  final_year_phrases: [final year, final-year, last year of your, last year of their,
+    last year of a, last year of study, last year of studies, derniere annee,
+    fin de cursus, graduating in 2026, graduating in 2027, class of 2026,
+    class of 2027, recent graduate, recent graduates, recently graduated,
+    jeune diplome, jeune diplomee, jeunes diplomes]
+  masters_phrases: [master's student, masters student, master student,
+    master students, master's students, student in a master, students in a master,
+    enrolled in a master, enrolled in a master's, pursuing a master, pursuing a master's,
+    currently in a master, master's degree student, msc student, mba student,
+    mba students, graduate student, graduate students, postgraduate, post-graduate,
+    etudiant en master, etudiante en master, en master,
+    master 1, master 2, m1, m2, bac+4, bac+5, bac +4, bac +5, bac + 4, bac + 5,
+    bac+5 minimum, grande ecole]
+  # any of these keeps the offer: it is open to earlier years
+  year_open_phrases: [2nd year, second year, 2eme annee, deuxieme annee, 2e annee,
+    1st year, first year, any year, all years, toutes annees, l2, bac+2, bac +2,
+    bac + 2, 3rd year, third year, 3eme annee, troisieme annee]
+  bachelor_open_phrases: [bachelor student, bachelor students, bachelor's student,
+    bachelor's students, bachelor or master, bachelor's or master's, bachelor/master,
+    bachelors or masters, undergraduate, undergraduates, licence, l3, bac+3, bac +3,
+    bac + 3]
+
 # ---------------------------------------------------------------- pay
 pay:
   min_monthly_eur: 1000          # stated pay below this -> hidden
@@ -76,14 +120,14 @@ categories:
       cards, cartes, wallet, lending, credit tech]
   - key: sales
     label: Sales
-    score: 90
+    score: 75
     keywords: [sales, vente, ventes, commercial, commerciale, account executive,
       account manager, business developer sales, sdr, bdr, sales development,
       inside sales, key account, grands comptes, sales ops, sales operations,
       revenue operations, revops, pre-sales, avant-vente, sales strategy]
   - key: strategy
     label: Strategy
-    score: 80
+    score: 70
     keywords: [strategy, strategie, strategic, strategique, corporate development,
       corp dev, ops strategy, strategy & operations, strategy and operations,
       bizops, business operations, product strategy, business analyst,
@@ -91,21 +135,21 @@ categories:
       program manager, project manager, chef de projet, pmo, operations analyst]
   - key: ecommerce
     label: E-commerce
-    score: 70
+    score: 60
     keywords: [e-commerce, ecommerce, e-commerce manager,
       marketplace, retail media, category manager, category management,
       merchandising, trade marketing, online sales, d2c, dtc, e-merchandising,
       ecommerce manager, e-retail, retail]
   - key: bizdev
     label: BizDev
-    score: 65
+    score: 55
     keywords: [business development, business developer, developpement commercial,
       bizdev, partnerships, partenariats, partner manager, alliances,
       channel partnerships, expansion, launch, go-to-market, gtm]
   - key: finance
     label: Finance
     score: 45                      # lower priority by default...
-    concrete_score: 85             # ...boosted when the mission is concrete
+    concrete_score: 80             # ...boosted when the mission is concrete
     concrete_min_hits: 2           # how many concrete-finance keywords needed
     concrete_keywords: [financial model, financial modeling, financial modelling,
       modelisation financiere, modelisation, valuation, valorisation, lbo, dcf,

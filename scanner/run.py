@@ -187,6 +187,8 @@ def process(o, cfg, today: date):
         lambda: filters.check_role(o.title, text, o.company_type, cfg),
         lambda: filters.check_dates(dur, start, cfg),
         lambda: filters.check_pay(pay, cfg),
+        lambda: filters.check_workplace(o.location, text, cfg),
+        lambda: filters.check_eligibility(text, cfg),
     ):
         ok, reason, t = check()
         if not ok:

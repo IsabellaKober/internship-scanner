@@ -17,12 +17,14 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote, quote_plus
 
+import requests
+
 from . import detect_ats, filters, scoring
 from .config import load_config
 from .crypto import decrypt_json, encrypt_json
 from .dedupe import company_key, dedupe
 from .enrich import make_enricher, rule_based
-from .http import PoliteSession, RobotsDisallowed
+from .http import PoliteSession, RobotsDisallowed, SiteUnavailable
 from .notify import notify
 from .parsing import parse_deadline, parse_duration, parse_pay, parse_start
 from .sources import (adzuna, amazonjobs, ashby, francetravail, greenhouse, lever,
@@ -104,14 +106,16 @@ def fetch_all(cfg, session, log=print):
         return status.setdefault(src, {"source": src, "companies_ok": 0,
                                        "failed": [], "offers": 0, "state": "ok"})
 
-    for name, c in by_name.items():
+    retry = []
+
+    def fetch_company(name, c, final):
         det = cache.get(name) or {}
         ats = det.get("ats")
         if ats not in ADAPTERS:
-            continue
+            return
         sc = cfg["sources"].get(ats, {})
         if sc.get("enabled") is False:
-            continue
+            return
         comp = {**c, "ats_id": det.get("ats_id"), "ats_host": det.get("ats_host")}
         s = st(ats)
         t0 = time.time()
@@ -131,9 +135,26 @@ def fetch_all(cfg, session, log=print):
             s["failed"].append({"company": name, "error": "blocked by robots.txt"})
             log(f"  {ats:15} {name:30} BLOCKED by robots.txt")
         except Exception as e:  # noqa: BLE001
-            msg = f"{type(e).__name__}: {str(e)[:150]}"
+            temporary = isinstance(e, (SiteUnavailable, requests.RequestException, ValueError))
+            if temporary and not final:
+                retry.append((name, c))          # site down / maintenance: try again later
+                log(f"  {ats:15} {name:30} unavailable - will retry")
+                return
+            msg = ("site temporarily unavailable (maintenance?) - retried, next scan tries again"
+                   if isinstance(e, SiteUnavailable) or (
+                       isinstance(e, requests.HTTPError) and e.response is not None
+                       and e.response.status_code >= 500)
+                   else f"{type(e).__name__}: {str(e)[:150]}")
             s["failed"].append({"company": name, "error": msg})
             log(f"  {ats:15} {name:30} FAILED {msg}")
+
+    for name, c in by_name.items():
+        fetch_company(name, c, final=False)
+    if retry:
+        log(f"  retrying {len(retry)} unavailable companies in 3 minutes...")
+        time.sleep(180)
+        for name, c in retry:
+            fetch_company(name, c, final=True)
 
     # Aggregators (optional, need free API keys): cover companies NOT in
     # config.yaml. Offers from known companies inherit that company's type.

@@ -6,6 +6,9 @@ on:
     # 06:00 UTC in winter (CET). Both fire; the "Paris time" step keeps one.
     - cron: "0 5 * * *"
     - cron: "0 6 * * *"
+    # Second pass at ~15:00 Paris: catches sites that were down for
+    # maintenance in the morning (Workday often is on weekends).
+    - cron: "0 13 * * *"
   workflow_dispatch: {}      # the "Run workflow" button
 
 permissions:
@@ -25,7 +28,7 @@ jobs:
         run: |
           OFFSET=$(TZ=Europe/Paris date +%z)
           RUN=true
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.event.schedule }}" != "0 13 * * *" ]; then
             if [ "$OFFSET" = "+0200" ] && [ "${{ github.event.schedule }}" != "0 5 * * *" ]; then RUN=false; fi
             if [ "$OFFSET" = "+0100" ] && [ "${{ github.event.schedule }}" != "0 6 * * *" ]; then RUN=false; fi
           fi

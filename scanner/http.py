@@ -2,8 +2,10 @@
 
 - A clear, non-personal User-Agent.
 - robots.txt is checked (and cached) for every host before fetching.
-  Per RFC 9309 a missing robots.txt (4xx) means "allowed"; a 5xx or network
-  failure means "disallowed" for safety.
+  Per RFC 9309 a missing robots.txt (4xx) means "allowed". A 5xx / network
+  failure means the site is down (e.g. Workday's weekend maintenance): we
+  don't crawl it, report it as "temporarily unavailable" and retry later -
+  it is NOT a robots block.
 - Per-host rate limiting (default 1 request / second, or the robots.txt
   Crawl-delay if larger).
 - Timeouts and a small retry on 429/5xx.
@@ -29,6 +31,10 @@ class RobotsDisallowed(Exception):
     pass
 
 
+class SiteUnavailable(Exception):
+    """robots.txt could not be read (site down / maintenance) - retry later."""
+
+
 class PoliteSession:
     def __init__(self, min_delay: float = 1.0, timeout: float = 20.0,
                  respect_robots: bool = True):
@@ -49,23 +55,32 @@ class PoliteSession:
         if base in self._robots:
             return self._robots[base]
         rp = urllib.robotparser.RobotFileParser()
-        try:
-            r = self.s.get(base + "/robots.txt", timeout=10)
-            if r.status_code >= 500:
-                rp.disallow_all = True
-            elif r.status_code >= 400:
-                rp.allow_all = True
-            else:
-                rp.parse(r.text.splitlines())
-        except requests.RequestException:
-            rp.disallow_all = True
+        for attempt in range(3):
+            try:
+                r = self.s.get(base + "/robots.txt", timeout=15,
+                               headers={"User-Agent": USER_AGENT})
+            except requests.RequestException:
+                r = None
+            if r is not None and r.status_code < 500:
+                break
+            if attempt < 2:
+                time.sleep(10 * (attempt + 1))
+        if r is None or r.status_code >= 500:
+            return None                      # down: not cached, retried later
+        if r.status_code >= 400:
+            rp.allow_all = True
+        else:
+            rp.parse(r.text.splitlines())
         self._robots[base] = rp
         return rp
 
     def allowed(self, url: str) -> bool:
         if not self.respect_robots:
             return True
-        return self._robots_for(url).can_fetch(ROBOTS_AGENT, url)
+        rp = self._robots_for(url)
+        if rp is None:
+            raise SiteUnavailable(urlparse(url).netloc)
+        return rp.can_fetch(ROBOTS_AGENT, url)
 
     def _throttle(self, url: str):
         host = urlparse(url).netloc

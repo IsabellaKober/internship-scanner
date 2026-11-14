@@ -358,7 +358,7 @@ companies:
   - {name: Bitstack, type: fintech, ats: ashby, id: bitstack}
   - {name: Morpho, type: fintech, ats: ashby, id: morpho}
   - {name: Flowdesk, type: fintech, ats: greenhouse, id: flowdesk}
-  - {name: Kaiko, type: fintech, ats: lever, id: kaiko}
+  - {name: Kaiko, type: fintech, ats: links, careers_url: "https://www.kaiko.com/careers"}   # Lever board closed (Nov 2026)
   - {name: Sunday, type: fintech, ats: teamtailor, id: sunday}
   # ---------------------------------------------------------- banks / insurance / AM
   # These run their own in-house career sites (no public ATS API, BNP's site
@@ -449,3 +449,11 @@ companies:
   - {name: Pernod Ricard, type: other, ats: links, careers_url: "https://www.pernod-ricard.com/en/careers"}
   - {name: Danone, type: other, ats: links, careers_url: "https://careers.danone.com/"}
   - {name: Criteo, type: other, ats: links, careers_url: "https://careers.criteo.com/"}
+  # ---------------------------------------------------------- added Nov 2026 (3rd pass: fintech)
+  - {name: Mollie, type: fintech, ats: ashby, id: mollie}
+  - {name: Trustpair, type: fintech, ats: teamtailor, id: trustpair}
+  - {name: IDnow, type: fintech, ats: greenhouse, id: idnow}
+  - {name: Floa, type: fintech, ats: teamtailor, id: floa}
+  - {name: PayFit, type: fintech, ats: teamtailor, id: payfit}
+  - {name: Sidetrade, type: fintech, ats: workable, id: sidetrade}
+  - {name: Numbr, type: fintech, ats: teamtailor, id: numbr}

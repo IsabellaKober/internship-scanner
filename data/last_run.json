@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-14T07:16:23+00:00",
- "raw": 6290,
- "kept": 3,
+ "generated_at": "2026-11-14T07:19:38+00:00",
+ "raw": 6291,
+ "kept": 4,
  "new": 0,
  "found_per_source": {
   "ashby": 1976,
-  "lever": 473,
+  "lever": 474,
   "teamtailor": 370,
   "greenhouse": 3283,
   "workable": 125,
@@ -13,10 +13,11 @@
   "workday": 13
  },
  "kept_per_source": {
-  "teamtailor": 3
+  "teamtailor": 3,
+  "amazonjobs": 1
  },
  "rejected": {
-  "not an internship": 5928,
+  "not an internship": 5929,
   "contract": 113,
   "location": 105,
   "duration 6 months": 53,
@@ -30,7 +31,6 @@
   "long internship": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
-  "final-year students only": 1,
   "start 02 Sep 2024": 1
  },
  "sources": [
@@ -50,7 +50,7 @@
      "error": "HTTPError: 404 Client Error: Not Found for url: https://api.lever.co/v0/postings/kaiko?mode=json"
     }
    ],
-   "offers": 473,
+   "offers": 474,
    "state": "partial"
   },
   {

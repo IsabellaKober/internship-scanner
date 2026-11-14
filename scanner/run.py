@@ -237,11 +237,13 @@ def main(argv=None):
     print("== Filtering & scoring")
     kept, reasons = [], Counter()
     found_per_source, kept_per_source = Counter(), Counter()
+    rejected_ids = set()
     for o in raw:
         found_per_source[o.source] += 1
         d, reason = process(o, cfg, today)
         if d is None:
             reasons[reason.split(":")[0].split(" (")[0]] += 1
+            rejected_ids.add(o.id)      # still online but no longer matches the rules
             continue
         kept_per_source[o.source] += 1
         kept.append(d)
@@ -277,7 +279,7 @@ def main(argv=None):
     live_ids = {o["id"] for o in kept}
     keep_days = cfg["dashboard"]["keep_unlisted_days"]
     for pid, po in prev_offers.items():
-        if pid in live_ids:
+        if pid in live_ids or pid in rejected_ids:
             continue
         last = date.fromisoformat(po.get("last_seen", today.isoformat()))
         if today - last <= timedelta(days=keep_days):

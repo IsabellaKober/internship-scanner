@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-14T06:45:36+00:00",
+ "generated_at": "2026-11-14T06:48:46+00:00",
  "raw": 6300,
  "kept": 9,
  "new": 0,
@@ -88,7 +88,7 @@
    "failed": [
     {
      "company": "Pfizer France",
-     "error": "blocked by robots.txt"
+     "error": "HTTPError: 521 Server Error: <none> for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
     },
     {
      "company": "MSD France",

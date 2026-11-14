@@ -4,7 +4,7 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Adyen": {
     "ats": "greenhouse",
@@ -23,6 +23,27 @@
     "france_jobs": true,
     "jobs": 19
   },
+  "Airbnb": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "airbnb",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Airwallex": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "airwallex",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Akur8": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "akur8",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Alan": {
     "ats": "ashby",
     "ats_id": "alan",
@@ -31,33 +52,68 @@
     "france_jobs": true,
     "jobs": 137
   },
+  "Algolia": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "algolia",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Alma": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "alma",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Amazon": {
     "ats": "amazonjobs",
     "ats_host": null,
     "ats_id": "FRA",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Amundi": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Ankorstore": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "ankorstore",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Aroma-Zone": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "aromazone",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "AstraZeneca France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://astrazeneca.wd3.myworkdayjobs.com/Careers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "BCG": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "BNP Paribas": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Back Market": {
     "ats": "ashby",
@@ -67,12 +123,47 @@
     "france_jobs": true,
     "jobs": 33
   },
+  "Bain & Company": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Bitstack": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "bitstack",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "BlaBlaCar": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "blablacar",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Boehringer Ingelheim France": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Botify": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "botify",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Brevo": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "brevo",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Bridge": {
     "ats": "teamtailor",
@@ -87,14 +178,21 @@
     "ats_host": null,
     "ats_id": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Chanel": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Checkout.com": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "checkout.com",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Coinhouse": {
     "ats": "unknown",
@@ -111,18 +209,67 @@
     "france_jobs": true,
     "jobs": 28
   },
+  "Criteo": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Crédit Agricole CIB": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Danone": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Datadog": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "datadog",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Dataiku": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "dataiku",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Deblock": {
+    "ats": "workable",
+    "ats_host": null,
+    "ats_id": "deblock",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Defacto": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Deliveroo": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "deliveroo",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Descartes Underwriting": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "descartesunderwriting",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Doctolib": {
     "ats": "ashby",
@@ -132,24 +279,87 @@
     "france_jobs": true,
     "jobs": 161
   },
+  "Dust": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "dust",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Ebury": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "ebury",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Edenred": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Elastic": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "elastic",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Exotec": {
+    "ats": "workable",
+    "ats_host": null,
+    "ats_id": "exotec",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Finary": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "finary",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Fintecture": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
   },
+  "Flowdesk": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "flowdesk",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "GSK France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://gsk.wd5.myworkdayjobs.com/GSKCareers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Goodvest": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Hermès": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Hugging Face": {
+    "ats": "workable",
+    "ats_host": null,
+    "ats_id": "huggingface",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Indy": {
     "ats": "teamtailor",
@@ -164,14 +374,28 @@
     "ats_host": null,
     "ats_id": "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Ivalua": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "ivalua",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Johnson & Johnson France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://jj.wd5.myworkdayjobs.com/JJ",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Kaiko": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "kaiko",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Karmen": {
     "ats": "unknown",
@@ -179,12 +403,47 @@
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
   },
+  "Kearney": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Kering": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Kiln": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "kiln.fi",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "L'Oréal": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "LVMH": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Lazard": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Ledger": {
     "ats": "ashby",
@@ -193,6 +452,13 @@
     "detected": "2026-11-13",
     "france_jobs": true,
     "jobs": 12
+  },
+  "Lemlist": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "lemlist",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Lemonway": {
     "ats": "unknown",
@@ -217,7 +483,7 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Lyra": {
     "ats": "unknown",
@@ -230,7 +496,14 @@
     "ats_host": null,
     "ats_id": "https://msd.wd5.myworkdayjobs.com/SearchJobs",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Malt": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "malt",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Mangopay": {
     "ats": "teamtailor",
@@ -245,7 +518,21 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Mastercard": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Memo Bank": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "memobank",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Mirakl": {
     "ats": "greenhouse",
@@ -255,11 +542,32 @@
     "france_jobs": true,
     "jobs": 22
   },
+  "MongoDB": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "mongodb",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Mooncard": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Morpho": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "morpho",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Murfy": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "murfy",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "N26": {
     "ats": "greenhouse",
@@ -280,20 +588,27 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Novartis France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "October": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Ornikar": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "ornikar",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Owkin": {
     "ats": "ashby",
@@ -302,6 +617,13 @@
     "detected": "2026-11-13",
     "france_jobs": true,
     "jobs": 10
+  },
+  "PayPal": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "PayPlug": {
     "ats": "teamtailor",
@@ -319,18 +641,46 @@
     "france_jobs": true,
     "jobs": 199
   },
+  "Pernod Ricard": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Pfizer France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Photoroom": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "photoroom",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Pigment": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "pigment",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Pixpay": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Plaid": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "plaid",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Powens": {
     "ats": "teamtailor",
@@ -371,21 +721,35 @@
     "ats_host": null,
     "ats_id": "https://roche.wd3.myworkdayjobs.com/roche-ext",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Roland Berger": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Rothschild & Co": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Sanofi": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers",
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Servier": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Seyna": {
     "ats": "ashby",
@@ -394,6 +758,13 @@
     "detected": "2026-11-13",
     "france_jobs": true,
     "jobs": 12
+  },
+  "Shift Technology": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "shifttechnology",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Shine": {
     "ats": "teamtailor",
@@ -408,7 +779,7 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   },
   "Silvr": {
     "ats": "unknown",
@@ -416,18 +787,53 @@
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
   },
+  "Simon-Kucher": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Snowflake": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "snowflake",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Société Générale": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Sorare": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "sorare",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Spendesk": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Spotify": {
+    "ats": "lever",
+    "ats_host": null,
+    "ats_id": "spotify",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Stoïk": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "stoik",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Stripe": {
     "ats": "greenhouse",
@@ -437,11 +843,25 @@
     "france_jobs": true,
     "jobs": 787
   },
+  "SumUp": {
+    "ats": "greenhouse",
+    "ats_host": null,
+    "ats_id": "sumup",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
   "Sumeria (ex-Lydia)": {
     "ats": "unknown",
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Sunday": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "sunday",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Swan": {
     "ats": "teamtailor",
@@ -465,7 +885,14 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Too Good To Go": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "toogoodtogo",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Trade Republic": {
     "ats": "greenhouse",
@@ -480,6 +907,13 @@
     "confidence": "none",
     "detected": "2026-11-13",
     "note": "no public ATS board found; set `careers_url` or `ats`/`id` in config.yaml"
+  },
+  "Upflow": {
+    "ats": "ashby",
+    "ats_host": null,
+    "ats_id": "upflow",
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Veepee": {
     "ats": "lever",
@@ -504,7 +938,28 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
+  },
+  "Visa": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Welcome to the Jungle": {
+    "ats": "teamtailor",
+    "ats_host": null,
+    "ats_id": "welcometothejungle",
+    "confidence": "config",
+    "detected": "2026-11-14"
+  },
+  "Worldline": {
+    "ats": "links",
+    "ats_host": null,
+    "ats_id": null,
+    "confidence": "config",
+    "detected": "2026-11-14"
   },
   "Yomoni": {
     "ats": "unknown",
@@ -534,6 +989,6 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-13"
+    "detected": "2026-11-14"
   }
 }

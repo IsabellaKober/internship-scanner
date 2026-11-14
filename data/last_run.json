@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-11-14T05:49:17+00:00",
+ "raw": 6300,
+ "kept": 14,
+ "new": 14,
+ "found_per_source": {
+  "ashby": 1976,
+  "lever": 473,
+  "teamtailor": 370,
+  "greenhouse": 3283,
+  "workable": 125,
+  "amazonjobs": 50,
+  "workday": 23
+ },
+ "kept_per_source": {
+  "ashby": 5,
+  "teamtailor": 4,
+  "greenhouse": 3,
+  "amazonjobs": 1,
+  "workday": 1
+ },
+ "rejected": {
+  "not an internship": 5929,
+  "contract": 113,
+  "location": 110,
+  "duration 6 months": 59,
+  "role excluded": 29,
+  "start Jan 2027": 25,
+  "pharma": 11,
+  "start ASAP": 3,
+  "stage de fin d'etudes": 2,
+  "long internship": 1,
+  "start Jul 2027": 1,
+  "duration 5.5 months": 1,
+  "duration 5–6 months": 1,
+  "start 02 Sep 2024": 1
+ },
+ "sources": [
+  {
+   "source": "ashby",
+   "companies_ok": 25,
+   "failed": [],
+   "offers": 1976,
+   "state": "ok"
+  },
+  {
+   "source": "lever",
+   "companies_ok": 11,
+   "failed": [
+    {
+     "company": "Kaiko",
+     "error": "HTTPError: 404 Client Error: Not Found for url: https://api.lever.co/v0/postings/kaiko?mode=json"
+    }
+   ],
+   "offers": 473,
+   "state": "partial"
+  },
+  {
+   "source": "teamtailor",
+   "companies_ok": 17,
+   "failed": [],
+   "offers": 370,
+   "state": "ok"
+  },
+  {
+   "source": "greenhouse",
+   "companies_ok": 17,
+   "failed": [],
+   "offers": 3283,
+   "state": "ok"
+  },
+  {
+   "source": "workable",
+   "companies_ok": 3,
+   "failed": [],
+   "offers": 125,
+   "state": "ok"
+  },
+  {
+   "source": "amazonjobs",
+   "companies_ok": 1,
+   "failed": [],
+   "offers": 50,
+   "state": "ok"
+  },
+  {
+   "source": "workday",
+   "companies_ok": 5,
+   "failed": [
+    {
+     "company": "Pfizer France",
+     "error": "blocked by robots.txt"
+    },
+    {
+     "company": "MSD France",
+     "error": "HTTPError: 521 Server Error: <none> for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
+    },
+    {
+     "company": "GSK France",
+     "error": "HTTPError: 521 Server Error: <none> for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
+    },
+    {
+     "company": "Johnson & Johnson France",
+     "error": "HTTPError: 521 Server Error: <none> for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+    },
+    {
+     "company": "Bristol Myers Squibb France",
+     "error": "HTTPError: 521 Server Error: <none> for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
+    }
+   ],
+   "offers": 23,
+   "state": "partial"
+  },
+  {
+   "source": "francetravail",
+   "companies_ok": 0,
+   "failed": [],
+   "offers": 0,
+   "state": "not configured"
+  },
+  {
+   "source": "adzuna",
+   "companies_ok": 0,
+   "failed": [],
+   "offers": 0,
+   "state": "not configured"
+  }
+ ],
+ "enrichment": "rules"
+}

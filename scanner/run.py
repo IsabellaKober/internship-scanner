@@ -141,7 +141,7 @@ def fetch_all(cfg, session, log=print):
                 log(f"  {ats:15} {name:30} unavailable - will retry")
                 return
             msg = ("site temporarily unavailable (maintenance?) - retried, next scan tries again"
-                   if isinstance(e, SiteUnavailable) or (
+                   if isinstance(e, (SiteUnavailable, ValueError)) or (
                        isinstance(e, requests.HTTPError) and e.response is not None
                        and e.response.status_code >= 500)
                    else f"{type(e).__name__}: {str(e)[:150]}")

@@ -8,7 +8,7 @@ import requests
 
 
 def notify(offers: list[dict], cfg: dict, dashboard_url: str | None = None) -> int:
-    topic = os.environ.get("NTFY_TOPIC")
+    topic = (os.environ.get("NTFY_TOPIC") or "").strip()
     if not topic:
         print("NTFY_TOPIC not set - skipping notifications")
         return 0
@@ -17,7 +17,7 @@ def notify(offers: list[dict], cfg: dict, dashboard_url: str | None = None) -> i
     picks.sort(key=lambda o: -o["score"])
     sent = 0
     for o in picks[:nc["max_per_run"]]:
-        title = f"{o['score']}/100 · {o['company']}"
+        title = f"{o['score']}/100 Â· {o['company']}"
         body = f"{o['title']}\n{o['location']}"
         if o.get("why_fit"):
             body += f"\n{o['why_fit']}"

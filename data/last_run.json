@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-14T06:48:46+00:00",
- "raw": 6300,
- "kept": 9,
+ "generated_at": "2026-11-14T07:16:23+00:00",
+ "raw": 6290,
+ "kept": 3,
  "new": 0,
  "found_per_source": {
   "ashby": 1976,
@@ -10,28 +10,27 @@
   "greenhouse": 3283,
   "workable": 125,
   "amazonjobs": 50,
-  "workday": 23
+  "workday": 13
  },
  "kept_per_source": {
-  "ashby": 2,
-  "teamtailor": 3,
-  "greenhouse": 2,
-  "amazonjobs": 1,
-  "workday": 1
+  "teamtailor": 3
  },
  "rejected": {
-  "not an internship": 5929,
+  "not an internship": 5928,
   "contract": 113,
-  "location": 110,
+  "location": 105,
   "duration 6 months": 53,
   "role excluded": 45,
   "start Jan 2027": 23,
-  "pharma": 10,
+  "pharma": 6,
+  "Master's students only": 3,
   "start ASAP": 2,
   "stage de fin d'etudes": 2,
+  "not fully on-site": 2,
   "long internship": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
+  "final-year students only": 1,
   "start 02 Sep 2024": 1
  },
  "sources": [
@@ -84,19 +83,35 @@
   },
   {
    "source": "workday",
-   "companies_ok": 5,
+   "companies_ok": 1,
    "failed": [
     {
+     "company": "Sanofi",
+     "error": "blocked by robots.txt"
+    },
+    {
+     "company": "Novartis France",
+     "error": "blocked by robots.txt"
+    },
+    {
      "company": "Pfizer France",
-     "error": "HTTPError: 521 Server Error: <none> for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
+     "error": "blocked by robots.txt"
     },
     {
      "company": "MSD France",
      "error": "HTTPError: 521 Server Error: <none> for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
     },
     {
+     "company": "AstraZeneca France",
+     "error": "blocked by robots.txt"
+    },
+    {
      "company": "GSK France",
      "error": "HTTPError: 521 Server Error: <none> for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
+    },
+    {
+     "company": "Roche France",
+     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
     },
     {
      "company": "Johnson & Johnson France",
@@ -107,7 +122,7 @@
      "error": "HTTPError: 521 Server Error: <none> for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 23,
+   "offers": 13,
    "state": "partial"
   },
   {

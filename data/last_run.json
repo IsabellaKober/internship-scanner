@@ -1,13 +1,13 @@
 {
- "generated_at": "2026-11-15T13:39:06+00:00",
- "raw": 6465,
+ "generated_at": "2026-11-15T19:14:29+00:00",
+ "raw": 6464,
  "kept": 4,
  "new": 0,
  "found_per_source": {
   "ashby": 2023,
   "lever": 475,
   "teamtailor": 428,
-  "greenhouse": 3285,
+  "greenhouse": 3284,
   "workable": 157,
   "amazonjobs": 50,
   "workday": 47
@@ -17,7 +17,7 @@
   "amazonjobs": 1
  },
  "rejected": {
-  "not an internship": 6062,
+  "not an internship": 6061,
   "contract": 124,
   "location": 124,
   "duration 6 months": 54,
@@ -60,7 +60,7 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3285,
+   "offers": 3284,
    "state": "ok"
   },
   {

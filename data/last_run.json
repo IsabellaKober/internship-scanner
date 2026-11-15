@@ -1,25 +1,25 @@
 {
- "generated_at": "2026-11-14T18:39:25+00:00",
- "raw": 6472,
+ "generated_at": "2026-11-15T13:39:06+00:00",
+ "raw": 6465,
  "kept": 4,
  "new": 0,
  "found_per_source": {
-  "ashby": 2025,
+  "ashby": 2023,
   "lever": 475,
   "teamtailor": 428,
-  "greenhouse": 3289,
+  "greenhouse": 3285,
   "workable": 157,
   "amazonjobs": 50,
-  "workday": 48
+  "workday": 47
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1
  },
  "rejected": {
-  "not an internship": 6067,
-  "location": 126,
+  "not an internship": 6062,
   "contract": 124,
+  "location": 124,
   "duration 6 months": 54,
   "role excluded": 45,
   "start Jan 2027": 23,
@@ -39,7 +39,7 @@
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2025,
+   "offers": 2023,
    "state": "ok"
   },
   {
@@ -60,7 +60,7 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3289,
+   "offers": 3285,
    "state": "ok"
   },
   {
@@ -81,7 +81,7 @@
    "source": "workday",
    "companies_ok": 10,
    "failed": [],
-   "offers": 48,
+   "offers": 47,
    "state": "ok"
   },
   {

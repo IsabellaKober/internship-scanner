@@ -1,50 +1,48 @@
 {
- "generated_at": "2026-11-16T05:04:00+00:00",
- "raw": 7010,
- "kept": 145,
- "new": 141,
+ "generated_at": "2026-11-16T15:11:37+00:00",
+ "raw": 6944,
+ "kept": 130,
+ "new": 18,
  "found_per_source": {
-  "ashby": 2026,
-  "lever": 473,
+  "ashby": 2019,
+  "lever": 463,
   "teamtailor": 428,
-  "greenhouse": 3281,
-  "workable": 157,
+  "greenhouse": 3270,
+  "workable": 153,
   "amazonjobs": 50,
-  "workday": 33,
-  "adzuna": 562
+  "workday": 2,
+  "adzuna": 559
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1,
-  "adzuna": 152
+  "adzuna": 136
  },
  "rejected": {
-  "not an internship": 6312,
-  "contract": 147,
-  "location": 127,
-  "duration 6 months": 95,
+  "not an internship": 6279,
+  "contract": 161,
+  "location": 109,
+  "duration 6 months": 96,
   "role excluded": 75,
-  "start Jan 2027": 31,
-  "pharma": 12,
+  "start Jan 2027": 30,
   "stage de fin d'etudes": 11,
   "long internship": 9,
+  "pharma": 4,
   "start Mar 2027": 4,
   "start ASAP": 3,
-  "not fully on-site": 3,
-  "pay €800/month": 3,
-  "start Feb 2027": 3,
-  "Master's students only": 2,
+  "Master's students only": 3,
+  "not fully on-site": 2,
+  "start Feb 2027": 2,
   "duration 5 months": 2,
+  "final-year students only": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
-  "remote-only": 1,
   "start 02 Sep 2024": 1,
+  "duration 4–6 months": 1,
   "pay €616/month": 1,
   "start Dec 2026, Sep 2027": 1,
+  "pay €800/month": 1,
   "start Aug 2027": 1,
-  "start Mar 2027, 26 Mar 2027": 1,
-  "start 26 Mar 2027": 1,
-  "start Jan 2027, 26 Mar 2027": 1,
   "start 03 Nov 2026, Jan 2027": 1,
   "start 03 Nov 2026, Mar 2027": 1,
   "start Jul 2027": 1,
@@ -56,14 +54,14 @@
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2026,
+   "offers": 2019,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 473,
+   "offers": 463,
    "state": "ok"
   },
   {
@@ -77,14 +75,14 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3281,
+   "offers": 3270,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 157,
+   "offers": 153,
    "state": "ok"
   },
   {
@@ -96,14 +94,46 @@
   },
   {
    "source": "workday",
-   "companies_ok": 9,
+   "companies_ok": 1,
    "failed": [
+    {
+     "company": "Sanofi",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/jobs"
+    },
     {
      "company": "Ipsen",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/jobs"
+    },
+    {
+     "company": "Novartis France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
+    },
+    {
+     "company": "Pfizer France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
+    },
+    {
+     "company": "MSD France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
+    },
+    {
+     "company": "AstraZeneca France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs"
+    },
+    {
+     "company": "Roche France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
+    },
+    {
+     "company": "Johnson & Johnson France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+    },
+    {
+     "company": "Bristol Myers Squibb France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 33,
+   "offers": 2,
    "state": "partial"
   },
   {
@@ -122,7 +152,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 562,
+   "offers": 559,
    "state": "ok"
   }
  ],

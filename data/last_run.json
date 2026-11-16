@@ -1,88 +1,92 @@
 {
- "generated_at": "2026-11-16T15:11:37+00:00",
- "raw": 6944,
- "kept": 130,
- "new": 18,
+ "generated_at": "2026-11-16T22:44:18+00:00",
+ "raw": 6955,
+ "kept": 137,
+ "new": 16,
  "found_per_source": {
-  "ashby": 2019,
-  "lever": 463,
-  "teamtailor": 428,
-  "greenhouse": 3270,
-  "workable": 153,
+  "ashby": 2021,
+  "lever": 467,
+  "teamtailor": 420,
+  "greenhouse": 3271,
+  "workable": 152,
   "amazonjobs": 50,
-  "workday": 2,
-  "adzuna": 559
+  "workday": 14,
+  "adzuna": 560
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1,
-  "adzuna": 136
+  "adzuna": 143
  },
  "rejected": {
-  "not an internship": 6279,
+  "not an internship": 6264,
   "contract": 161,
-  "location": 109,
-  "duration 6 months": 96,
-  "role excluded": 75,
-  "start Jan 2027": 30,
+  "location": 116,
+  "duration 6 months": 95,
+  "role excluded": 78,
+  "start Jan 2027": 29,
   "stage de fin d'etudes": 11,
-  "long internship": 9,
-  "pharma": 4,
+  "long internship": 10,
+  "pharma": 8,
+  "Master's students only": 4,
   "start Mar 2027": 4,
   "start ASAP": 3,
-  "Master's students only": 3,
   "not fully on-site": 2,
+  "duration 4–6 months": 2,
   "start Feb 2027": 2,
   "duration 5 months": 2,
   "final-year students only": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
   "start 02 Sep 2024": 1,
-  "duration 4–6 months": 1,
-  "pay €616/month": 1,
+  "start 22 Jul 2026": 1,
+  "start Sep 2026": 1,
+  "start Sep 2027": 1,
+  "start 04 Nov 2026": 1,
+  "start Nov 2026": 1,
+  "start 12 Jun 2026": 1,
   "start Dec 2026, Sep 2027": 1,
+  "pay €616/month": 1,
   "pay €800/month": 1,
   "start Aug 2027": 1,
   "start 03 Nov 2026, Jan 2027": 1,
   "start 03 Nov 2026, Mar 2027": 1,
-  "start Jul 2027": 1,
-  "start 29 Oct 2026": 1,
-  "start 30 Oct 2026, Jan 2027": 1
+  "start Jul 2027": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2019,
+   "offers": 2021,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 463,
+   "offers": 467,
    "state": "ok"
   },
   {
    "source": "teamtailor",
    "companies_ok": 21,
    "failed": [],
-   "offers": 428,
+   "offers": 420,
    "state": "ok"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3270,
+   "offers": 3271,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 153,
+   "offers": 152,
    "state": "ok"
   },
   {
@@ -94,7 +98,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 1,
+   "companies_ok": 3,
    "failed": [
     {
      "company": "Sanofi",
@@ -110,11 +114,7 @@
     },
     {
      "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
-    },
-    {
-     "company": "MSD France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/job/France---Rives-de-Paris/Integrated"
     },
     {
      "company": "AstraZeneca France",
@@ -125,15 +125,11 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
     },
     {
-     "company": "Johnson & Johnson France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
-    },
-    {
      "company": "Bristol Myers Squibb France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 2,
+   "offers": 14,
    "state": "partial"
   },
   {
@@ -152,7 +148,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 559,
+   "offers": 560,
    "state": "ok"
   }
  ],

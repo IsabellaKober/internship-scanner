@@ -1,62 +1,66 @@
 {
- "generated_at": "2026-11-17T15:40:54+00:00",
- "raw": 6910,
- "kept": 133,
- "new": 58,
+ "generated_at": "2026-11-17T21:30:42+00:00",
+ "raw": 6893,
+ "kept": 114,
+ "new": 11,
  "found_per_source": {
-  "ashby": 2031,
-  "lever": 463,
+  "ashby": 2028,
+  "lever": 460,
   "teamtailor": 415,
-  "greenhouse": 3242,
-  "workable": 150,
+  "greenhouse": 3227,
+  "workable": 151,
   "amazonjobs": 51,
-  "workday": 1,
-  "adzuna": 557
+  "workday": 3,
+  "adzuna": 558
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1,
-  "adzuna": 141
+  "adzuna": 123
  },
  "rejected": {
-  "not an internship": 6239,
-  "contract": 152,
-  "location": 100,
-  "duration 6 months": 94,
-  "role excluded": 92,
-  "start Jan 2027": 29,
-  "stage de fin d'etudes": 20,
+  "not an internship": 6263,
+  "contract": 146,
+  "location": 101,
+  "duration 6 months": 89,
+  "role excluded": 85,
+  "start Jan 2027": 27,
+  "stage de fin d'etudes": 13,
   "long internship": 11,
   "not fully on-site": 7,
   "Master's students only": 3,
-  "start ASAP": 2,
   "duration 4–6 months": 2,
   "start Mar 2027": 2,
   "duration 5 months": 2,
   "final-year students only": 1,
+  "start ASAP": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
+  "pharma": 1,
   "start 02 Sep 2024": 1,
-  "remote-only": 1,
+  "start 16 Nov 2026": 1,
+  "pay €924/month": 1,
   "pay €600/month": 1,
   "start Feb 2027": 1,
   "start 03 Nov 2026, Jan 2027": 1,
   "start 03 Nov 2026, Mar 2027": 1,
-  "start Jul 2027": 1
+  "start Jul 2027": 1,
+  "start 29 Oct 2026": 1,
+  "start 30 Oct 2026, Jan 2027": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2031,
+   "offers": 2028,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 463,
+   "offers": 460,
    "state": "ok"
   },
   {
@@ -75,14 +79,14 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3242,
+   "offers": 3227,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 150,
+   "offers": 151,
    "state": "ok"
   },
   {
@@ -96,10 +100,6 @@
    "source": "workday",
    "companies_ok": 1,
    "failed": [
-    {
-     "company": "Sanofi",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/job/Paris/stage-6-mois-fiscalit_R28711"
-    },
     {
      "company": "Ipsen",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/jobs"
@@ -131,9 +131,13 @@
     {
      "company": "Johnson & Johnson France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+    },
+    {
+     "company": "Bristol Myers Squibb France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 1,
+   "offers": 3,
    "state": "partial"
   },
   {
@@ -152,7 +156,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 557,
+   "offers": 558,
    "state": "ok"
   }
  ],

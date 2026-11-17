@@ -1,54 +1,45 @@
 {
- "generated_at": "2026-11-16T22:44:18+00:00",
- "raw": 6955,
- "kept": 137,
- "new": 16,
+ "generated_at": "2026-11-17T15:40:54+00:00",
+ "raw": 6910,
+ "kept": 133,
+ "new": 58,
  "found_per_source": {
-  "ashby": 2021,
-  "lever": 467,
-  "teamtailor": 420,
-  "greenhouse": 3271,
-  "workable": 152,
-  "amazonjobs": 50,
-  "workday": 14,
-  "adzuna": 560
+  "ashby": 2031,
+  "lever": 463,
+  "teamtailor": 415,
+  "greenhouse": 3242,
+  "workable": 150,
+  "amazonjobs": 51,
+  "workday": 1,
+  "adzuna": 557
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1,
-  "adzuna": 143
+  "adzuna": 141
  },
  "rejected": {
-  "not an internship": 6264,
-  "contract": 161,
-  "location": 116,
-  "duration 6 months": 95,
-  "role excluded": 78,
+  "not an internship": 6239,
+  "contract": 152,
+  "location": 100,
+  "duration 6 months": 94,
+  "role excluded": 92,
   "start Jan 2027": 29,
-  "stage de fin d'etudes": 11,
-  "long internship": 10,
-  "pharma": 8,
-  "Master's students only": 4,
-  "start Mar 2027": 4,
-  "start ASAP": 3,
-  "not fully on-site": 2,
+  "stage de fin d'etudes": 20,
+  "long internship": 11,
+  "not fully on-site": 7,
+  "Master's students only": 3,
+  "start ASAP": 2,
   "duration 4–6 months": 2,
-  "start Feb 2027": 2,
+  "start Mar 2027": 2,
   "duration 5 months": 2,
   "final-year students only": 1,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
   "start 02 Sep 2024": 1,
-  "start 22 Jul 2026": 1,
-  "start Sep 2026": 1,
-  "start Sep 2027": 1,
-  "start 04 Nov 2026": 1,
-  "start Nov 2026": 1,
-  "start 12 Jun 2026": 1,
-  "start Dec 2026, Sep 2027": 1,
-  "pay €616/month": 1,
-  "pay €800/month": 1,
-  "start Aug 2027": 1,
+  "remote-only": 1,
+  "pay €600/month": 1,
+  "start Feb 2027": 1,
   "start 03 Nov 2026, Jan 2027": 1,
   "start 03 Nov 2026, Mar 2027": 1,
   "start Jul 2027": 1
@@ -58,51 +49,56 @@
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2021,
+   "offers": 2031,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 467,
+   "offers": 463,
    "state": "ok"
   },
   {
    "source": "teamtailor",
-   "companies_ok": 21,
-   "failed": [],
-   "offers": 420,
-   "state": "ok"
+   "companies_ok": 20,
+   "failed": [
+    {
+     "company": "Welcome to the Jungle",
+     "error": "blocked by robots.txt"
+    }
+   ],
+   "offers": 415,
+   "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3271,
+   "offers": 3242,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 152,
+   "offers": 150,
    "state": "ok"
   },
   {
    "source": "amazonjobs",
    "companies_ok": 1,
    "failed": [],
-   "offers": 50,
+   "offers": 51,
    "state": "ok"
   },
   {
    "source": "workday",
-   "companies_ok": 3,
+   "companies_ok": 1,
    "failed": [
     {
      "company": "Sanofi",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/jobs"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/job/Paris/stage-6-mois-fiscalit_R28711"
     },
     {
      "company": "Ipsen",
@@ -114,22 +110,30 @@
     },
     {
      "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/job/France---Rives-de-Paris/Integrated"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
+    },
+    {
+     "company": "MSD France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
     },
     {
      "company": "AstraZeneca France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs"
     },
     {
+     "company": "GSK France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
+    },
+    {
      "company": "Roche France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
     },
     {
-     "company": "Bristol Myers Squibb France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
+     "company": "Johnson & Johnson France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
     }
    ],
-   "offers": 14,
+   "offers": 1,
    "state": "partial"
   },
   {
@@ -148,7 +152,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 560,
+   "offers": 557,
    "state": "ok"
   }
  ],

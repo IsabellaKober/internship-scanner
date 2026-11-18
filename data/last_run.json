@@ -1,66 +1,61 @@
 {
- "generated_at": "2026-11-17T21:30:42+00:00",
- "raw": 6893,
- "kept": 114,
- "new": 11,
+ "generated_at": "2026-11-18T15:19:43+00:00",
+ "raw": 6848,
+ "kept": 141,
+ "new": 70,
  "found_per_source": {
-  "ashby": 2028,
-  "lever": 460,
-  "teamtailor": 415,
-  "greenhouse": 3227,
-  "workable": 151,
-  "amazonjobs": 51,
-  "workday": 3,
-  "adzuna": 558
+  "ashby": 2022,
+  "lever": 468,
+  "teamtailor": 414,
+  "greenhouse": 3214,
+  "workable": 150,
+  "amazonjobs": 52,
+  "workday": 2,
+  "adzuna": 526
  },
  "kept_per_source": {
   "teamtailor": 3,
   "amazonjobs": 1,
-  "adzuna": 123
+  "adzuna": 157
  },
  "rejected": {
-  "not an internship": 6263,
-  "contract": 146,
-  "location": 101,
-  "duration 6 months": 89,
-  "role excluded": 85,
+  "not an internship": 6163,
+  "contract": 143,
+  "location": 106,
+  "duration 6 months": 92,
+  "role excluded": 88,
   "start Jan 2027": 27,
-  "stage de fin d'etudes": 13,
-  "long internship": 11,
-  "not fully on-site": 7,
-  "Master's students only": 3,
-  "duration 4–6 months": 2,
-  "start Mar 2027": 2,
-  "duration 5 months": 2,
-  "final-year students only": 1,
-  "start ASAP": 1,
+  "stage de fin d'etudes": 14,
+  "duration 5 months": 13,
+  "long internship": 12,
+  "duration 4–6 months": 5,
+  "not fully on-site": 3,
+  "pay €800/month": 3,
+  "duration 7 months": 3,
+  "start Mar 2027": 3,
+  "start ASAP": 2,
+  "start Jul 2027": 2,
+  "duration 4 months": 2,
   "duration 5.5 months": 1,
   "duration 5–6 months": 1,
-  "pharma": 1,
   "start 02 Sep 2024": 1,
-  "start 16 Nov 2026": 1,
-  "pay €924/month": 1,
-  "pay €600/month": 1,
-  "start Feb 2027": 1,
+  "duration 18 months": 1,
   "start 03 Nov 2026, Jan 2027": 1,
-  "start 03 Nov 2026, Mar 2027": 1,
-  "start Jul 2027": 1,
-  "start 29 Oct 2026": 1,
-  "start 30 Oct 2026, Jan 2027": 1
+  "start 03 Nov 2026, Mar 2027": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 26,
    "failed": [],
-   "offers": 2028,
+   "offers": 2022,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 460,
+   "offers": 468,
    "state": "ok"
   },
   {
@@ -72,34 +67,38 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 415,
+   "offers": 414,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3227,
+   "offers": 3214,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 151,
+   "offers": 150,
    "state": "ok"
   },
   {
    "source": "amazonjobs",
    "companies_ok": 1,
    "failed": [],
-   "offers": 51,
+   "offers": 52,
    "state": "ok"
   },
   {
    "source": "workday",
    "companies_ok": 1,
    "failed": [
+    {
+     "company": "Sanofi",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/jobs"
+    },
     {
      "company": "Ipsen",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/jobs"
@@ -121,10 +120,6 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs"
     },
     {
-     "company": "GSK France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
-    },
-    {
      "company": "Roche France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
     },
@@ -137,7 +132,7 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 3,
+   "offers": 2,
    "state": "partial"
   },
   {
@@ -156,7 +151,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 558,
+   "offers": 526,
    "state": "ok"
   }
  ],

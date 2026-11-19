@@ -20,6 +20,10 @@ def check_location(location: str, description: str, cfg: dict):
     tags = []
     # postal codes 75xxx / 92xxx / ...
     pc_ok = any(re.search(rf"(?<!\d){p}\d{{3}}(?!\d)", loc) for p in lc["postal_prefixes"])
+    # "San Francisco 94105 United States" is not Val-de-Marne
+    if pc_ok and re.search(r"united states|\busa?\b|united kingdom|canada|australia|"
+                           r"\bindia\b|germany|spain|italy", loc):
+        pc_ok = False
     place_ok = bool(contains_any(loc, lc["places"]))
     unclear = bool(contains_any(loc, lc["unclear_places"]))
     remote_only = bool(re.search(r"\b(remote|teletravail|full remote|100% remote|"
@@ -57,12 +61,17 @@ def check_contract(title: str, employment_type: str, cfg: dict):
 
 
 # ---------------------------------------------------------------- dates
-def check_dates(dur: DurationInfo, start: StartInfo, cfg: dict):
+def check_dates(dur: DurationInfo, start: StartInfo, cfg: dict, top_role: bool = False):
+    """top_role: a core role with a high role score may last up to
+    `top_role_max_months` (4) instead of `max_months` (3); it is tagged."""
     dc = cfg["dates"]
     tags = []
     max_m = dc["max_months"]
     if dur.stated and dur.min_months > max_m + 0.25:   # 13 weeks = 3.0 months
-        return False, f"duration {dur.label()}", tags
+        top_m = dc.get("top_role_max_months", max_m)
+        if not (top_role and dur.min_months <= top_m + 0.25):
+            return False, f"duration {dur.label()}", tags
+        tags.append(f"⚠ {dur.label()} — longer than 3 months")
     if not dur.stated and dur.long_flags:
         return False, f"long internship ({dur.long_flags[0]})", tags
     if not (dur.stated and dur.min_months <= max_m) and dur.end_of_studies and \
@@ -90,19 +99,13 @@ def check_pay(pay: PayInfo, cfg: dict):
 
 
 # ---------------------------------------------------------------- roles
-def check_role(title: str, description: str, company_type: str, cfg: dict):
-    t = norm(title)
-    for group, kws in cfg["exclude_roles"].items():
-        hit = contains_any(t, kws)
-        if hit:
-            return False, f"role excluded ({group}: {hit[0]})", []
-    if company_type == "pharma":
-        bad = contains_any(t, cfg.get("pharma_excluded_keywords", []))
-        if bad:
-            return False, f"pharma: {bad[0]} role", []
-        if not contains_any(t, cfg["pharma_allowed_keywords"]):
-            return False, "pharma: not a commercial/BD/finance role", []
-    return True, "", []
+# Role + company relevance (sector gate, excluded functions) lives in
+# relevance.py; check_role is kept as a thin wrapper for tests / callers.
+def check_role(title: str, description: str, company_type: str, cfg: dict,
+               company: str = ""):
+    from .relevance import evaluate
+    res, reason = evaluate(title, description, company, company_type, cfg)
+    return (True, "", []) if res else (False, reason, [])
 
 
 # ---------------------------------------------------------------- workplace

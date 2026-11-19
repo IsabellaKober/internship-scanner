@@ -1,6 +1,6 @@
 // Service worker: app shell cached for offline/fast start; offer data is
 // network-first (falls back to the last cached copy when offline).
-const CACHE = "isc-v3";
+const CACHE = "isc-v4";
 const SHELL = ["./", "index.html", "setup.html", "styles.css", "app.js", "manifest.webmanifest",
   "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-180.png"];
 

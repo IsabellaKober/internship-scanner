@@ -15,7 +15,9 @@ dates:
   ideal_end: 2027-07-31          # offers whose stated dates fit 1 May - 31 Jul rank highest
   earliest_start: 2027-04-20     # start before this  -> hidden
   latest_start: 2027-06-30       # start after this   -> hidden
-  max_months: 3                  # stated duration longer than this -> hidden
+  max_months: 3                  # stated duration longer than this -> hidden...
+  top_role_max_months: 4         # ...except TOP roles (core function, role score >= below):
+  top_role_min_score: 80         #    up to 4 months is shown, tagged "4-month internship"
   # phrases that mean "long internship" -> hidden unless a duration <= max_months
   # is also stated
   long_phrases: ["cesure", "gap year", "stage de cesure"]
@@ -106,106 +108,553 @@ pay:
   min_monthly_eur: 1000          # stated pay below this -> hidden
   legal_minimum_counts_as_low: true   # "gratification legale" (~670 EUR) -> hidden
 
-# ---------------------------------------------------------------- roles
-# Priority order = list order. `score` is the role score (0-100).
-categories:
-  - key: fintech
-    label: Fintech
-    score: 100
-    # any business role at a company with type: fintech, OR these keywords at
-    # banks / insurers
-    keywords: [fintech, payments, paiement, paiements, open banking, embedded finance,
-      neobank, neo-banque, crypto, blockchain, digital assets, actifs numeriques,
-      tokenization, insurtech, regtech, wealthtech, digital banking, banque digitale,
-      innovation, venture, digital transformation, api, psd2, instant payment,
-      cards, cartes, wallet, lending, credit tech]
-  - key: sales
-    label: Sales
-    score: 75
-    keywords: [sales, vente, ventes, commercial, commerciale, account executive,
-      account manager, business developer sales, sdr, bdr, sales development,
-      inside sales, key account, grands comptes, sales ops, sales operations,
-      revenue operations, revops, pre-sales, avant-vente, sales strategy]
-  - key: strategy
-    label: Strategy
-    score: 70
-    keywords: [strategy, strategie, strategic, strategique, corporate development,
-      corp dev, ops strategy, strategy & operations, strategy and operations,
-      bizops, business operations, product strategy, business analyst,
-      chief of staff, transformation, consulting, conseil, strategy analyst,
-      program manager, project manager, chef de projet, pmo, operations analyst]
-  - key: ecommerce
-    label: E-commerce
-    score: 60
-    keywords: [e-commerce, ecommerce, e-commerce manager,
-      marketplace, retail media, category manager, category management,
-      merchandising, trade marketing, online sales, d2c, dtc, e-merchandising,
-      ecommerce manager, e-retail, retail]
-  - key: bizdev
-    label: BizDev
-    score: 55
-    keywords: [business development, business developer, developpement commercial,
-      bizdev, partnerships, partenariats, partner manager, alliances,
-      channel partnerships, expansion, launch, go-to-market, gtm]
-  - key: finance
-    label: Finance
-    score: 45                      # lower priority by default...
-    concrete_score: 80             # ...boosted when the mission is concrete
-    concrete_min_hits: 2           # how many concrete-finance keywords needed
-    concrete_keywords: [financial model, financial modeling, financial modelling,
-      modelisation financiere, modelisation, valuation, valorisation, lbo, dcf,
-      due diligence, deal, deals, transaction, transactions, m&a, fusions,
-      acquisitions, pitch, investment memo, business plan, fp&a, budget, forecast,
-      forecasting, closing, reporting financier, financial planning,
-      controle de gestion, controlling, deal sourcing, portfolio monitoring,
-      cap table, fundraising, levee de fonds]
-    keywords: [finance, financial, financier, financiere, corporate finance,
-      m&a, merger, mergers, private equity, venture capital, vc, investment,
-      investissement, investment banking, fp&a, controlling, controle de gestion,
-      controller, audit, treasury, tresorerie, accounting, comptabilite,
-      financial analyst, analyste financier, equity research, asset management,
-      gestion d'actifs, transaction services, capital markets, structured finance,
-      summer analyst, credit analyst, risk, risques]
+# ---------------------------------------------------------------- relevance
+# An offer is shown only if BOTH gates pass (scanner/relevance.py):
+#  1. COMPANY in a target sector (start-up / fintech, VC, private equity,
+#     asset management, M&A / banking, insurance, consulting). Large
+#     corporates outside these sectors: only strategy / investment / finance roles.
+#  2. ROLE names a target function. Engineering, quant and marketing roles
+#     (and support, HR, legal, admin) are hidden everywhere.
+# Then the score rewards famous companies and roles where you actually LEARN.
+relevance:
+  sectors:
+    fintech:          {label: Fintech, target: true}
+    startup:          {label: Start-up, target: true}
+    vc:               {label: Venture capital, target: true}
+    private_equity:   {label: Private equity, target: true}
+    asset_management: {label: Asset management, target: true}
+    investment_bank:  {label: M&A / Investment banking, target: true}
+    bank:             {label: Banking, target: true}
+    insurance:        {label: Insurance / Risk, target: true}
+    consulting:       {label: Consulting, target: true}
+    corporate:        {label: Large corporate, target: false,
+                       allowed_functions: [investment, strategy, consulting, finance]}
 
-# Pharma companies (type: pharma): only these kinds of roles are kept.
-pharma_allowed_keywords: [commercial, commerciale, business development, bizdev,
-  strategy, strategie, strategic, market access, brand, marketing strategy,
-  finance, financial, controlling, controle de gestion, controller, fp&a,
-  business analyst, sales, ventes, key account, insights, forecasting,
-  pricing, new product planning, portfolio]
+  # company fame / exposure: tier 1 = household name in its field,
+  # 2 = well known, 3 = smaller, 4 = unknown company recognised from the offer text
+  tier_scores: {1: 100, 2: 85, 3: 70, 4: 55}
 
-# Pharma roles with these words in the title are hidden even if they also say
-# "strategy" etc. (regulatory, quality, clinical, manufacturing...).
-pharma_excluded_keywords: [regulatory, reglementaire, reglementaires, cmc, quality,
-  qualite, clinical, clinique, medical, medicale, pharmacovigilance, manufacturing,
-  production, laboratory, laboratoire, r&d, research, recherche, scientific]
+  # Unknown companies (Adzuna / France Travail): sector recognised from the
+  # offer text. No hit -> hidden.
+  sector_keywords:
+    vc: [venture capital, capital-risque, capital risque, fonds de capital-risque,
+      vc fund, fonds vc, seed fund, fonds d'amorcage, early-stage investor,
+      early stage investor, business angels, venture studio, start-up studio,
+      startup studio]
+    private_equity: [private equity, capital-investissement, capital investissement,
+      fonds d'investissement, investment fund, investment firm, buyout, mid-cap,
+      small-cap, growth equity, capital-developpement, capital developpement,
+      capital-transmission, private debt, dette privee, infrastructure fund,
+      family office]
+    asset_management: [asset management, asset manager, gestion d'actifs,
+      societe de gestion, societe de gestion de portefeuille, gestion de portefeuille,
+      portfolio management, opcvm, sicav, fund management, gestion privee,
+      multi-family office, wealth management firm]
+    investment_bank: [banque d'affaires, investment bank, boutique m&a, m&a boutique,
+      conseil en fusions-acquisitions, conseil en fusions et acquisitions,
+      fusions-acquisitions, m&a advisory, corporate finance advisory,
+      conseil en financement, debt advisory, transaction services]
+    bank: [groupe bancaire, banque de financement, banque d'investissement,
+      etablissement bancaire, banque privee, private bank, corporate and investment bank]
+    insurance: [assureur, compagnie d'assurance, groupe d'assurance, insurance company,
+      insurer, reassurance, reinsurance, reassureur, insurtech]
+    consulting: [cabinet de conseil, consulting firm, conseil en strategie,
+      strategy consulting, management consulting, conseil en management,
+      consultancy, advisory firm, conseil en transformation, cabinet de conseil en strategie]
+    fintech: [fintech, neobanque, neobank, neo-banque, plateforme de paiement,
+      payment platform, solution de paiement, open banking, wealthtech, regtech,
+      crypto, blockchain, actifs numeriques, digital assets]
+    startup: [start-up, startup, scale-up, scaleup, jeune pousse, serie a, series a,
+      serie b, series b, seed round, levee de fonds de, venture-backed, vc-backed,
+      station f, hypercroissance, licorne, unicorn, french tech, next40, ft120]
 
-# Hidden completely (matched on the TITLE).
-exclude_roles:
-  customer_support: [customer support, customer success, customer care,
-    service client, support client, relation client, customer service,
-    customer experience agent, help desk, helpdesk, charge de clientele,
-    customer operations]
-  hr: [hr, human resources, ressources humaines, rh, recruiting, recruiter,
-    recrutement, recrutement, talent acquisition, talent, people, people ops,
-    people partner, payroll, paie, sirh, chargee de recrutement]
-  non_business: [software engineer, software engineering, software developer,
-    web developer, developpeur web, developpeur logiciel, developpeuse, backend, back-end, frontend, front-end, fullstack, full-stack,
-    devops, sre, data engineer, data scientist, machine learning, ml engineer,
-    ai engineer, qa, test automation, designer, ux, ui,
-    security engineer, cybersecurite, mobile developer, ios, android,
-    infrastructure, embedded, hardware, laboratoire, laboratory, chemist,
-    biologist, clinical research, pharmacovigilance, regulatory affairs,
-    affaires reglementaires, medical affairs, scientific, scientist, research
-    scientist, juriste, legal counsel, avocat, solutions architect, architect,
-    cloud, security specialist, physical security, it support]
-  # roles outside sales / strategy / e-commerce / bizdev / finance
-  off_path: [scriptwriter, script writer, scenariste, content creator,
-    createur de contenu, createurs de contenu, video, videaste, video editor,
-    monteur, monteuse, motion designer, graphic designer, graphiste, copywriter,
-    redacteur, redactrice, community manager, social media, photographer,
-    photographe, journalist, journaliste, legal, juridique, privacy, paralegal,
-    compliance, conformite, aml, kyc, fraud, fraude, content, contenu]
+  # ROLE functions, matched on the TITLE (generic titles like "Summer
+  # Internship" are judged on the description). Highest score wins.
+  # level core = what you want; adjacent = kept but capped (can't rank high).
+  functions:
+    - key: investment
+      label: Investment
+      level: core
+      score: 92
+      keywords: [private equity, venture capital, vc, capital-investissement,
+        capital investissement, capital-risque, capital risque, investment,
+        investments, investissement, investissements, investor, m&a, fusions,
+        fusions-acquisitions, mergers, acquisitions, corporate finance,
+        finance d'entreprise, equity research, recherche actions, asset management,
+        gestion d'actifs, gestion d'actif, portfolio, portefeuille, fund, funds,
+        fonds d'investissement, deal advisory, deal team, deal origination, transaction services, leveraged finance, ecm, dcm,
+        debt advisory, restructuring, investment banking, banque d'affaires,
+        financial advisory, venture, ventures, buy-side, sell-side, public equity,
+        equities, analyste investissement, investment analyst]
+    - key: strategy
+      label: Strategy
+      level: core
+      score: 90
+      keywords: [strategy, strategie, strategic, strategique, corporate development,
+        corp dev, corpdev, developpement corporate, chief of staff,
+        founder's associate, founders associate, founder associate, founder,
+        ceo office, office of the ceo, bureau du ceo, ceo associate, bizops,
+        business operations, strategy & operations, strategy and operations,
+        strat ops, stratops, general management, direction generale]
+    - key: consulting
+      label: Consulting
+      level: core
+      score: 88
+      keywords: [consulting, conseil, advisory, transformation, management consulting,
+        conseil en strategie, strategy consultant, consultant en strategie]
+    - key: bizdev
+      label: Business development
+      level: core
+      score: 82
+      keywords: [business development, business developer, developpement commercial,
+        bizdev, biz dev, partnerships, partnership, partenariats, partenariat,
+        partner manager, alliances, expansion, launch, launcher, new markets,
+        nouveaux marches, go-to-market, gtm, international development,
+        developpement international, market development]
+    - key: finance
+      label: Finance & risk
+      level: core
+      score: 80
+      keywords: [finance, financial, financier, financiere, fp&a, financial analyst,
+        analyste financier, financial planning, investor relations,
+        relations investisseurs, risk, risks, risque, risques, risk management,
+        gestion des risques, credit analyst, analyste credit, credit risk,
+        financing, financement, valuation, valorisation]
+    - key: analysis
+      label: Business analysis
+      level: core
+      score: 70
+      keywords: [business analyst, strategy analyst, analyste strategique, market analyst,
+        commercial analyst, investment analyst]
+    - key: markets
+      label: Markets
+      level: core
+      score: 72
+      keywords: [trading, trader, markets, marches, sales & trading, structuring,
+        structuration, wealth management, gestion de patrimoine, private banking,
+        banque privee, gestion privee]
+    - key: sales
+      label: Sales
+      level: adjacent
+      score: 45
+      keywords: [sales, vente, ventes, commercial, commerciale, account executive,
+        account manager, sdr, bdr, sales development, inside sales, key account,
+        grands comptes, revenue operations, revops, sales ops, sales operations,
+        charge d'affaires, conseiller, conseillere]
+    - key: operations
+      label: Operations
+      level: adjacent
+      score: 45
+      keywords: [operations, ops, project manager, chef de projet, chargee de projet,
+        charge de projet, pmo, program manager, programme manager, procurement,
+        achats, pricing, revenue management]
+    - key: accounting
+      label: Accounting & control
+      level: adjacent
+      score: 40
+      override: true       # wins even when the title also says "finance" / "fund"
+      keywords: [accounting, comptabilite, comptable, audit, auditeur, auditrice,
+        controlling, controle de gestion, controleur de gestion, controller,
+        consolidation, treasury, tresorerie, back office, back-office, middle office,
+        middle-office, fund accounting, fund administration, tax, fiscalite,
+        internal control, controle interne, billing, facturation, recouvrement,
+        debt collection, credit management, payment operations, finance ops,
+        finance operations]
+
+  generic_title_penalty: 15
+  # sales-type roles whose description says the job is in a shop -> hidden too
+  in_store_phrases: [en magasin, in-store, in store, en boutique, sur le point de vente,
+    point de vente, points de vente, surface de vente, accueil des clients en magasin,
+    shop floor, retail store, nos boutiques, our stores, nos magasins]
+  adjacent_cap: 55          # adjacent roles (sales, ops, accounting) never score above this
+
+  # Hidden everywhere (matched on the TITLE).
+  excluded_roles:
+    engineering: [engineer, engineers, engineering, ingenieur, ingenieure, software,
+      developer, developpeur, developpeuse, devops, sre, backend, back-end, frontend,
+      front-end, fullstack, full-stack, data engineer, data scientist, data science,
+      machine learning, ml, ai engineer, deep learning, computer vision, nlp, qa,
+      test automation, embedded, hardware, electronique, electronics, mechanical,
+      mecanique, physics, physique, quantum, quantique, chemist, chimiste, chimie,
+      chemistry, biologist, biology, biologie, laboratory, laboratoire, r&d,
+      research scientist, scientist, scientifique, informatique, it support,
+      it project, infrastructure engineer, it infrastructure, cloud, network engineer, cybersecurity,
+      cybersecurite, security engineer, solutions architect, architect, technicien,
+      technicienne, technician, mobile developer, ios, android, designer, design,
+      ux, ui, data analyst, analytics engineer, bi developer, firmware, robotics,
+      robotique, automation, automatisation, manufacturing, production,
+      industrialisation, maintenance, construction, genie civil, electrical,
+      electrique, materials, materiaux, applied science, statistical programming,
+      biostatistics, biostatistique, clinical, clinique, regulatory affairs,
+      affaires reglementaires, pharmacovigilance, medical affairs, quality, qualite,
+      supply chain, logistique, logistics, forward deployed]
+    quant: [quant, quants, quantitative, quantitatif, quantitative research,
+      quantitative analyst, algo, algorithmic, algorithmique, algo trader, strats,
+      systematic, actuarial, actuariat, actuaire, model validation,
+      validation des modeles, risk modelling, risk modeling, modelisation des risques]
+    marketing: [marketing, growth, brand, branding, marque, communication,
+      communications, comms, pr, public relations, relations presse, press, presse,
+      social media, reseaux sociaux, community manager, community, content, contenu,
+      contenus, seo, sea, sem, user acquisition, acquisition manager, paid acquisition,
+      crm, lifecycle, influence, influencer, influenceur, evenementiel, event, events,
+      trade marketing, product marketing, copywriter, redacteur, redactrice, graphic,
+      graphiste, video, motion, photographer, photographe, creative, creatif,
+      advertising, publicite, publicitaire, media, ads, emailing, newsletter, chef de
+      produit, product manager, merchandising, e-merchandiser, merchandiser, website,
+      scriptwriter, script writer, scenariste, monteur, monteuse, journalist,
+      journaliste, affiliation, insights, etudes de marche]
+    # selling in a shop / store (never shown)
+    retail_sales: [retail sales, retail store, store, stores, magasin, magasins,
+      en boutique, vendeur, vendeuse, vendeurs, vente en magasin, conseiller de vente,
+      conseillere de vente, conseiller vente, conseillere vente, sales associate,
+      sales associates, sales advisor, client advisor, conseiller en boutique,
+      caissier, caissiere, hote de caisse, hotesse de caisse, chef de rayon,
+      responsable de rayon, employe libre service, point de vente, points de vente]
+    support_hr_legal: [customer support, customer success, customer care, service client,
+      support client, relation client, customer service, customer experience,
+      help desk, helpdesk, charge de clientele, customer operations, onboarding,
+      hr, human resources, ressources humaines, rh, recruiting, recruiter,
+      recrutement, talent acquisition, talent, people, people ops, payroll, paie,
+      sirh, juriste, legal, juridique, privacy, paralegal, avocat, compliance,
+      conformite, aml, kyc, fraud, fraude, anti financial crime, financial crime,
+      security, securite, office manager, assistant de direction,
+      assistante de direction, executive assistant, receptionist, accueil,
+      secretariat, secretaire, general secretary, satisfaction, moderation,
+      affaires publiques, public affairs, regulatory, reglementaire, reglementaires, cmc]
+
+  learning:
+    # concrete, high-learning tasks in the description (+4 each, max +20)
+    high_value_tasks: [financial model, financial models, financial modeling,
+      financial modelling, modele financier, modeles financiers, modelisation financiere,
+      valuation, valuations, valorisation, dcf, lbo, comparables, trading comps,
+      due diligence, due diligences, investment memo, investment memos,
+      investment memorandum, note d'investissement, notes d'investissement,
+      memo d'investissement, investment committee, comite d'investissement,
+      deal sourcing, sourcing de deals, sourcing, deal flow, dealflow, pitch deck,
+      pitch book, pitchbook, information memorandum, teaser, business plan,
+      business plans, market study, market studies, etude de marche, etudes de marche,
+      market sizing, competitive analysis, competitive landscape,
+      analyse concurrentielle, benchmark, benchmarks, sector analysis,
+      analyse sectorielle, industry analysis, strategic recommendations,
+      recommandations strategiques, go-to-market strategy, pricing strategy,
+      strategie de prix, fundraising, levee de fonds, levees de fonds,
+      portfolio monitoring, suivi des participations, cap table, term sheet,
+      deal execution, execution de transactions, investment thesis,
+      these d'investissement, financial analysis, analyse financiere,
+      financial statements, etats financiers, p&l, unit economics, business case,
+      business cases, credit analysis, analyse de credit, risk assessment,
+      stress test, stress tests, board, conseil d'administration, equity story,
+      new market, nouveaux marches, market entry, expansion strategy,
+      partnership negotiation, negociation, negotiate, negotiation, client presentations,
+      presentations clients, strategic projects, projets strategiques, m&a,
+      acquisitions, budget, forecast, forecasting, structuring]
+    high_value_points: 4
+    high_value_max: 20
+    # direct contact with decision makers (+5 each, max +10)
+    exposure: [ceo, founder, founders, fondateur, fondateurs, fondatrice, co-founder,
+      co-founders, cofondateur, cofondateurs, c-level, comex, codir,
+      comite de direction, comite executif, executive committee, managing director,
+      managing directors, managing partner, with the partners, avec les associes,
+      aux cotes des associes,
+      directeur general, directrice generale, cfo, coo, investment team,
+      equipe d'investissement, directly with the, directement avec, aux cotes des,
+      alongside the, client meetings, rendez-vous clients, management teams,
+      equipes dirigeantes, dirigeants, portfolio companies, participations]
+    # repetitive / low-learning tasks (-6 each, max -30)
+    repetitive_tasks: [data entry, saisie, saisie de donnees, cold calling, cold call,
+      cold calls, appels a froid, phoning, prospection telephonique, appels sortants,
+      outbound calls, lead generation, generation de leads, lead gen, qualify leads,
+      qualification de leads, qualifier des leads, mise a jour du crm, update the crm,
+      crm updates, crm hygiene, back office, back-office, rapprochement,
+      rapprochements bancaires, reconciliation, reconciliations, lettrage,
+      facturation, invoicing, invoices, factures, encaissements, relances,
+      recouvrement, debt collection, taches administratives,
+      administrative tasks, support administratif, administrative support,
+      archivage, filing, numerisation, gestion des stocks, inventaire,
+      standard telephonique, prise de rendez-vous, booking meetings, appointment setting,
+      porte-a-porte, door to door, flyers, notes de frais, expense reports,
+      expense management, recurring reporting, reporting recurrent,
+      reporting hebdomadaire, weekly reporting, mise en forme, photocopies, courrier,
+      emails entrants, inbound requests, tickets, ticketing, onboarding des clients,
+      customer onboarding, order processing, traitement des commandes, demos a la chaine,
+      100 calls, 50 calls, quotas d'appels, call quota]
+    repetitive_points: 6
+    repetitive_max: 30
+    # "assistant" titles are usually support work, whatever the description says
+    assistant_titles: [assistant, assistante, assistants, aide, auxiliaire, support,
+      employe, employee, coordinateur, coordinatrice, coordinator, administrateur des ventes,
+      adv]
+    assistant_penalty: 15
+    # buzzword-heavy offers with few concrete tasks are penalised
+    buzzwords: [fast-paced, fast paced, dynamic, dynamique, passionate, passionne,
+      passionnee, exciting, excitant, rockstar, ninja, hypergrowth, hyper-growth,
+      hyper growth, hypercroissance, ambitious, ambitieux, ambitieuse, game changer,
+      game-changer, disrupt, disruptive, revolutionize, revolutionner,
+      make an impact, impactful, entrepreneurial mindset, start-up spirit,
+      startup spirit, esprit start-up, esprit startup, energetic, dynamisme,
+      self-starter, go-getter, hustle, wear many hats, thrive, world-class,
+      best-in-class, cutting-edge, unique opportunity, opportunite unique, aventure,
+      bonne humeur, afterwork, afterworks, team building, baby-foot, ping-pong,
+      ownership, high-impact, high impact, fun, cool]
+    buzz_min: 4
+    buzz_penalty: 12
+    short_description_chars: 600     # Adzuna gives only a snippet
+    short_description_penalty: 10
+
+  # Companies NOT scanned directly but often found through Adzuna / France
+  # Travail: their sector and fame tier are known by name. Subsidiaries
+  # ("BNP Paribas Asset Management") match their parent name.
+  known_firms:
+    # --- investment banks / M&A advisory
+    - {name: Goldman Sachs, sector: investment_bank, tier: 1}
+    - {name: Morgan Stanley, sector: investment_bank, tier: 1}
+    - {name: J.P. Morgan, sector: investment_bank, tier: 1, aliases: [JPMorgan, JP Morgan, JPMorgan Chase, J.P. Morgan Chase]}
+    - {name: Bank of America, sector: investment_bank, tier: 1, aliases: [BofA Securities]}
+    - {name: Citi, sector: investment_bank, tier: 1, aliases: [Citigroup, Citibank]}
+    - {name: Barclays, sector: investment_bank, tier: 1}
+    - {name: Deutsche Bank, sector: investment_bank, tier: 1}
+    - {name: UBS, sector: investment_bank, tier: 1}
+    - {name: HSBC, sector: bank, tier: 1}
+    - {name: Lazard, sector: investment_bank, tier: 1}
+    - {name: Rothschild & Co, sector: investment_bank, tier: 1, aliases: [Rothschild, Rothschild and Co]}
+    - {name: Evercore, sector: investment_bank, tier: 1}
+    - {name: Perella Weinberg, sector: investment_bank, tier: 1, aliases: [Perella Weinberg Partners]}
+    - {name: Centerview Partners, sector: investment_bank, tier: 1}
+    - {name: PJT Partners, sector: investment_bank, tier: 1}
+    - {name: Moelis, sector: investment_bank, tier: 1, aliases: [Moelis & Company]}
+    - {name: Jefferies, sector: investment_bank, tier: 2}
+    - {name: Houlihan Lokey, sector: investment_bank, tier: 2}
+    - {name: Nomura, sector: investment_bank, tier: 2}
+    - {name: Mizuho, sector: investment_bank, tier: 2}
+    - {name: Messier & Associés, sector: investment_bank, tier: 2, aliases: [Messier Maris, Messier et Associes]}
+    - {name: DC Advisory, sector: investment_bank, tier: 2}
+    - {name: Clearwater International, sector: investment_bank, tier: 2}
+    - {name: Alantra, sector: investment_bank, tier: 2}
+    - {name: Natixis Partners, sector: investment_bank, tier: 2}
+    - {name: Cambon Partners, sector: investment_bank, tier: 3}
+    - {name: Bryan Garnier, sector: investment_bank, tier: 2, aliases: [Bryan Garnier & Co]}
+    - {name: Oddo BHF, sector: investment_bank, tier: 2, aliases: [Oddo]}
+    - {name: Degroof Petercam, sector: investment_bank, tier: 2}
+    - {name: Translink, sector: investment_bank, tier: 3}
+    - {name: Largillière Finance, sector: investment_bank, tier: 3}
+    - {name: Capitalmind, sector: investment_bank, tier: 3}
+    - {name: Lincoln International, sector: investment_bank, tier: 2}
+    - {name: William Blair, sector: investment_bank, tier: 2}
+    - {name: Rothschild Martin Maurel, sector: bank, tier: 2}
+    # --- banks
+    - {name: BNP Paribas, sector: bank, tier: 1, aliases: [BNP]}
+    - {name: Société Générale, sector: bank, tier: 1, aliases: [Societe Generale, SocGen]}
+    - {name: Crédit Agricole, sector: bank, tier: 1, aliases: [Credit Agricole, CA-CIB, Credit Agricole CIB, Amundi Credit Agricole]}
+    - {name: Natixis, sector: bank, tier: 1}
+    - {name: BPCE, sector: bank, tier: 2, aliases: [Groupe BPCE]}
+    - {name: Crédit Mutuel, sector: bank, tier: 2, aliases: [Credit Mutuel, Credit Mutuel Arkea]}
+    - {name: CIC, sector: bank, tier: 2}
+    - {name: LCL, sector: bank, tier: 2}
+    - {name: La Banque Postale, sector: bank, tier: 2}
+    - {name: Banque Populaire, sector: bank, tier: 3}
+    - {name: Caisse d'Epargne, sector: bank, tier: 3}
+    - {name: Edmond de Rothschild, sector: asset_management, tier: 2}
+    - {name: Banque Transatlantique, sector: bank, tier: 3}
+    - {name: Indosuez, sector: bank, tier: 2, aliases: [Indosuez Wealth Management]}
+    - {name: Neuflize OBC, sector: bank, tier: 3}
+    - {name: Bpifrance, sector: private_equity, tier: 1, aliases: [BPI France, BPI]}
+    # --- private equity / infrastructure / private debt
+    - {name: Ardian, sector: private_equity, tier: 1}
+    - {name: Eurazeo, sector: private_equity, tier: 1}
+    - {name: PAI Partners, sector: private_equity, tier: 1}
+    - {name: Tikehau Capital, sector: private_equity, tier: 1, aliases: [Tikehau]}
+    - {name: Wendel, sector: private_equity, tier: 1}
+    - {name: KKR, sector: private_equity, tier: 1}
+    - {name: Blackstone, sector: private_equity, tier: 1}
+    - {name: Carlyle, sector: private_equity, tier: 1, aliases: [The Carlyle Group]}
+    - {name: Apollo, sector: private_equity, tier: 1, aliases: [Apollo Global Management]}
+    - {name: CVC Capital Partners, sector: private_equity, tier: 1, aliases: [CVC]}
+    - {name: EQT, sector: private_equity, tier: 1}
+    - {name: Cinven, sector: private_equity, tier: 1}
+    - {name: Bridgepoint, sector: private_equity, tier: 1}
+    - {name: Permira, sector: private_equity, tier: 1}
+    - {name: Apax Partners, sector: private_equity, tier: 1, aliases: [Apax, Seven2]}
+    - {name: Astorg, sector: private_equity, tier: 2}
+    - {name: Antin Infrastructure Partners, sector: private_equity, tier: 2, aliases: [Antin]}
+    - {name: Meridiam, sector: private_equity, tier: 2}
+    - {name: Keensight Capital, sector: private_equity, tier: 2}
+    - {name: Siparex, sector: private_equity, tier: 2}
+    - {name: Andera Partners, sector: private_equity, tier: 2}
+    - {name: Sagard, sector: private_equity, tier: 2}
+    - {name: Weinberg Capital Partners, sector: private_equity, tier: 2}
+    - {name: Montefiore Investment, sector: private_equity, tier: 2}
+    - {name: Abenex, sector: private_equity, tier: 3}
+    - {name: Naxicap Partners, sector: private_equity, tier: 2, aliases: [Naxicap]}
+    - {name: Argos Wityu, sector: private_equity, tier: 2}
+    - {name: LBO France, sector: private_equity, tier: 2}
+    - {name: Capza, sector: private_equity, tier: 2}
+    - {name: Five Arrows, sector: private_equity, tier: 2}
+    - {name: IK Partners, sector: private_equity, tier: 2}
+    - {name: Ciclad, sector: private_equity, tier: 3}
+    - {name: Initiative & Finance, sector: private_equity, tier: 3}
+    - {name: Omnes Capital, sector: private_equity, tier: 2}
+    - {name: Idinvest Partners, sector: private_equity, tier: 2}
+    - {name: Mirova, sector: asset_management, tier: 2}
+    - {name: Unigrains, sector: private_equity, tier: 3}
+    - {name: Turenne Capital, sector: private_equity, tier: 3, aliases: [Turenne Groupe]}
+    - {name: 123 Investment Managers, sector: private_equity, tier: 3, aliases: [123 IM]}
+    # --- venture capital / start-up studios
+    - {name: Partech, sector: vc, tier: 1, aliases: [Partech Partners]}
+    - {name: Kima Ventures, sector: vc, tier: 1}
+    - {name: Sequoia Capital, sector: vc, tier: 1}
+    - {name: Accel, sector: vc, tier: 1}
+    - {name: Index Ventures, sector: vc, tier: 1}
+    - {name: Balderton Capital, sector: vc, tier: 1}
+    - {name: Atomico, sector: vc, tier: 1}
+    - {name: Lightspeed, sector: vc, tier: 1}
+    - {name: General Catalyst, sector: vc, tier: 1}
+    - {name: Elaia, sector: vc, tier: 2, aliases: [Elaia Partners]}
+    - {name: Alven, sector: vc, tier: 2}
+    - {name: Daphni, sector: vc, tier: 2}
+    - {name: Serena, sector: vc, tier: 2, aliases: [Serena Capital]}
+    - {name: Breega, sector: vc, tier: 2}
+    - {name: ISAI, sector: vc, tier: 2}
+    - {name: Frst, sector: vc, tier: 2}
+    - {name: XAnge, sector: vc, tier: 2}
+    - {name: Headline, sector: vc, tier: 2}
+    - {name: Eurazeo Growth, sector: vc, tier: 1}
+    - {name: Revaia, sector: vc, tier: 2}
+    - {name: Ring Capital, sector: vc, tier: 2}
+    - {name: Raise, sector: vc, tier: 2, aliases: [Raise Ventures, Groupe Raise]}
+    - {name: Cathay Capital, sector: vc, tier: 2}
+    - {name: 360 Capital, sector: vc, tier: 2}
+    - {name: Seaya, sector: vc, tier: 3}
+    - {name: Kurma Partners, sector: vc, tier: 3}
+    - {name: Jolt Capital, sector: vc, tier: 3}
+    - {name: Educapital, sector: vc, tier: 3}
+    - {name: Side Capital, sector: vc, tier: 3}
+    - {name: Truffle Capital, sector: vc, tier: 3}
+    - {name: Otium Capital, sector: vc, tier: 2}
+    - {name: Sofinnova Partners, sector: vc, tier: 2}
+    - {name: Hexa, sector: vc, tier: 2, aliases: [eFounders]}
+    - {name: Galion.exe, sector: vc, tier: 3}
+    - {name: Founders Future, sector: vc, tier: 3}
+    - {name: Station F, sector: startup, tier: 2}
+    # --- asset management / wealth
+    - {name: BlackRock, sector: asset_management, tier: 1}
+    - {name: Amundi, sector: asset_management, tier: 1}
+    - {name: AXA Investment Managers, sector: asset_management, tier: 1, aliases: [AXA IM]}
+    - {name: Natixis Investment Managers, sector: asset_management, tier: 1}
+    - {name: Carmignac, sector: asset_management, tier: 1}
+    - {name: Comgest, sector: asset_management, tier: 2}
+    - {name: Candriam, sector: asset_management, tier: 2}
+    - {name: Lazard Frères Gestion, sector: asset_management, tier: 2}
+    - {name: Ostrum, sector: asset_management, tier: 2, aliases: [Ostrum Asset Management]}
+    - {name: Ofi Invest, sector: asset_management, tier: 2}
+    - {name: Groupama Asset Management, sector: asset_management, tier: 2}
+    - {name: La Financière de l'Échiquier, sector: asset_management, tier: 2, aliases: [LFDE]}
+    - {name: Sycomore Asset Management, sector: asset_management, tier: 2, aliases: [Sycomore AM, Sycomore]}
+    - {name: DNCA Finance, sector: asset_management, tier: 2, aliases: [DNCA]}
+    - {name: H2O Asset Management, sector: asset_management, tier: 3}
+    - {name: Allianz Global Investors, sector: asset_management, tier: 1}
+    - {name: Fidelity International, sector: asset_management, tier: 1}
+    - {name: Schroders, sector: asset_management, tier: 1}
+    - {name: PIMCO, sector: asset_management, tier: 1}
+    - {name: Generali Investments, sector: asset_management, tier: 2}
+    - {name: Rothschild & Co Asset Management, sector: asset_management, tier: 1}
+    - {name: Tobam, sector: asset_management, tier: 3}
+    - {name: Moneta Asset Management, sector: asset_management, tier: 3}
+    - {name: Dorval Asset Management, sector: asset_management, tier: 3}
+    - {name: Eiffel Investment Group, sector: asset_management, tier: 2}
+    - {name: Muzinich, sector: asset_management, tier: 3}
+    - {name: Pictet, sector: asset_management, tier: 1}
+    - {name: Lombard Odier, sector: asset_management, tier: 1}
+    # --- insurance
+    - {name: AXA, sector: insurance, tier: 1}
+    - {name: Allianz, sector: insurance, tier: 1}
+    - {name: Generali, sector: insurance, tier: 2}
+    - {name: CNP Assurances, sector: insurance, tier: 2}
+    - {name: SCOR, sector: insurance, tier: 1}
+    - {name: Covéa, sector: insurance, tier: 2, aliases: [Covea]}
+    - {name: AG2R La Mondiale, sector: insurance, tier: 3}
+    - {name: Swiss Re, sector: insurance, tier: 1}
+    - {name: Munich Re, sector: insurance, tier: 1}
+    - {name: Groupama, sector: insurance, tier: 2}
+    # --- consulting / advisory
+    - {name: McKinsey & Company, sector: consulting, tier: 1, aliases: [McKinsey]}
+    - {name: Boston Consulting Group, sector: consulting, tier: 1, aliases: [BCG]}
+    - {name: Bain & Company, sector: consulting, tier: 1, aliases: [Bain]}
+    - {name: Oliver Wyman, sector: consulting, tier: 1}
+    - {name: Roland Berger, sector: consulting, tier: 1}
+    - {name: Kearney, sector: consulting, tier: 1, aliases: [A.T. Kearney]}
+    - {name: Arthur D. Little, sector: consulting, tier: 2}
+    - {name: L.E.K. Consulting, sector: consulting, tier: 2, aliases: [LEK Consulting]}
+    - {name: Strategy&, sector: consulting, tier: 1}
+    - {name: EY-Parthenon, sector: consulting, tier: 1, aliases: [EY Parthenon]}
+    - {name: Simon-Kucher, sector: consulting, tier: 2, aliases: [Simon-Kucher & Partners]}
+    - {name: Eleven Strategy, sector: consulting, tier: 2, aliases: [Eleven]}
+    - {name: Advancy, sector: consulting, tier: 2}
+    - {name: Kea, sector: consulting, tier: 2, aliases: [Kea & Partners]}
+    - {name: Estin & Co, sector: consulting, tier: 2}
+    - {name: Indefi, sector: consulting, tier: 2}
+    - {name: Circle Strategy, sector: consulting, tier: 3}
+    - {name: Accuracy, sector: consulting, tier: 2}
+    - {name: Alvarez & Marsal, sector: consulting, tier: 1}
+    - {name: FTI Consulting, sector: consulting, tier: 2}
+    - {name: Deloitte, sector: consulting, tier: 1, aliases: [Monitor Deloitte]}
+    - {name: EY, sector: consulting, tier: 1, aliases: [Ernst & Young]}
+    - {name: PwC, sector: consulting, tier: 1, aliases: [PricewaterhouseCoopers]}
+    - {name: KPMG, sector: consulting, tier: 1}
+    - {name: Forvis Mazars, sector: consulting, tier: 2, aliases: [Mazars]}
+    - {name: Grant Thornton, sector: consulting, tier: 2}
+    - {name: Accenture, sector: consulting, tier: 2}
+    - {name: Capgemini Invent, sector: consulting, tier: 2}
+    - {name: Wavestone, sector: consulting, tier: 2}
+    - {name: Sia Partners, sector: consulting, tier: 2}
+    - {name: BearingPoint, sector: consulting, tier: 2}
+    - {name: Onepoint, sector: consulting, tier: 3}
+    - {name: Exton Consulting, sector: consulting, tier: 3}
+    - {name: Square Management, sector: consulting, tier: 3}
+    - {name: Oddo BHF Corporate Finance, sector: investment_bank, tier: 2}
+    # --- large corporates (only strategy / investment / finance roles are kept)
+    - {name: LVMH, sector: corporate, tier: 1}
+    - {name: L'Oréal, sector: corporate, tier: 1, aliases: [L'Oreal, Loreal]}
+    - {name: Kering, sector: corporate, tier: 1}
+    - {name: Hermès, sector: corporate, tier: 1, aliases: [Hermes]}
+    - {name: Chanel, sector: corporate, tier: 1}
+    - {name: TotalEnergies, sector: corporate, tier: 1}
+    - {name: Airbus, sector: corporate, tier: 1}
+    - {name: Safran, sector: corporate, tier: 1}
+    - {name: Thales, sector: corporate, tier: 1}
+    - {name: Renault, sector: corporate, tier: 1, aliases: [Renault Group, Groupe Renault]}
+    - {name: Stellantis, sector: corporate, tier: 1}
+    - {name: Michelin, sector: corporate, tier: 1}
+    - {name: Danone, sector: corporate, tier: 1}
+    - {name: Pernod Ricard, sector: corporate, tier: 1}
+    - {name: Schneider Electric, sector: corporate, tier: 1}
+    - {name: Saint-Gobain, sector: corporate, tier: 1}
+    - {name: Engie, sector: corporate, tier: 1}
+    - {name: EDF, sector: corporate, tier: 1}
+    - {name: Orange, sector: corporate, tier: 1}
+    - {name: Vivendi, sector: corporate, tier: 1}
+    - {name: Publicis, sector: corporate, tier: 1, aliases: [Publicis Groupe]}
+    - {name: Capgemini, sector: corporate, tier: 1}
+    - {name: Dassault Systèmes, sector: corporate, tier: 1}
+    - {name: Air Liquide, sector: corporate, tier: 1}
+    - {name: Veolia, sector: corporate, tier: 1}
+    - {name: Bouygues, sector: corporate, tier: 1}
+    - {name: Vinci, sector: corporate, tier: 1}
+    - {name: Carrefour, sector: corporate, tier: 1}
+    - {name: Accor, sector: corporate, tier: 1}
+    - {name: Alstom, sector: corporate, tier: 1}
+    - {name: EssilorLuxottica, sector: corporate, tier: 1}
+    - {name: Unibail-Rodamco-Westfield, sector: corporate, tier: 1}
+    - {name: Google, sector: corporate, tier: 1}
+    - {name: Microsoft, sector: corporate, tier: 1}
+    - {name: Meta, sector: corporate, tier: 1}
+    - {name: Apple, sector: corporate, tier: 1}
+    - {name: Uber, sector: corporate, tier: 1}
+    - {name: Nestlé, sector: corporate, tier: 1, aliases: [Nestle]}
+    - {name: Unilever, sector: corporate, tier: 1}
+    - {name: Procter & Gamble, sector: corporate, tier: 1, aliases: [P&G]}
+    - {name: Ubisoft, sector: corporate, tier: 1}
+    - {name: Decathlon, sector: corporate, tier: 1}
+    - {name: SNCF, sector: corporate, tier: 2}
 
 # ---------------------------------------------------------------- language
 language:
@@ -214,10 +663,6 @@ language:
     fluency in english, english is our working language, international team,
     anglais courant, anglais professionnel, langue de travail est l'anglais]
   scores: {english: 100, french: 60, german: 60, unknown: 60}
-
-# ---------------------------------------------------------------- company types
-company_type_scores: {fintech: 100, ecommerce: 80, bank: 70, insurance: 70,
-  asset_management: 65, pharma: 60, other: 50}
 
 # ---------------------------------------------------------------- clarity
 clarity:
@@ -244,18 +689,11 @@ clarity:
 
 # ---------------------------------------------------------------- score
 weights:            # must add up to 1.0
-  role: 0.40        # is the ROLE itself sales / strategy / e-commerce / bizdev / finance?
-  dates: 0.30       # clear start + end inside 1 May - 31 Jul 2027
-  clarity: 0.15
-  language: 0.08
-  company: 0.07
-
-# How the role score works (scanner/scoring.py):
-role_rules:
-  no_function_score: 10          # title names none of the target functions
-  generic_title_penalty: 20      # e.g. "Summer Internship Program": judged on the description
-  min_role_for_full_score: 40    # roles below this...
-  off_path_cap: 30               # ...can never score more than this overall
+  role: 0.45        # target function + how much you LEARN (tasks, exposure, no grunt work)
+  company: 0.30     # target sector + how well known the company is (tier)
+  clarity: 0.10     # concrete, well-described mission
+  dates: 0.10       # stated dates inside 1 May - 31 Jul 2027 (not stated = neutral)
+  language: 0.05
 
 # ---------------------------------------------------------------- outputs
 notifications:
@@ -273,8 +711,8 @@ enrichment:
 
 # "Search elsewhere" links (LinkedIn, Indeed, Welcome to the Jungle).
 search_links:
-  roles: ["fintech", "sales", "strategy", "e-commerce", "business development",
-    "corporate finance"]
+  roles: ["private equity", "venture capital", "M&A", "asset management", "strategy",
+    "business development", "corporate finance", "founder's associate"]
 
 # ---------------------------------------------------------------- sources
 sources:
@@ -284,176 +722,190 @@ sources:
     ignore_robots: false         # robots.txt blocks bots -> off unless you set true
   adzuna:
     enabled: true                # runs only when ADZUNA_APP_ID/KEY secrets exist
-    queries: [stage, stagiaire, internship, "summer internship"]
+    # targeted searches: one per target function / sector (generic "stage"
+    # searches mostly returned off-target offers)
+    queries: ["stage private equity", "stage capital investissement",
+      "stage venture capital", "stage M&A", "stage fusions acquisitions",
+      "stage corporate finance", "stage asset management", "stage gestion d'actifs",
+      "stage analyste investissement", "stage equity research",
+      "stage risk management", "stage strategie", "stage strategy",
+      "stage business development", "stage startup", "stage chief of staff",
+      "stage founder associate", "stage conseil en strategie", "stage financial analyst",
+      "summer internship", "stage analyste financier", "internship"]
     distance_km: 15              # around Paris
     max_days_old: 30
-    max_pages: 4                 # x 50 results per query
+    max_pages: 2                 # x 50 results per query
   francetravail:
     enabled: true                # runs only when FT_CLIENT_ID/SECRET secrets exist
     keywords: [stage, stagiaire, internship]
     departements: ["75", "92", "93", "94"]
 
 # ---------------------------------------------------------------- companies
-# name: display name.  type: fintech | bank | insurance | asset_management |
-#   ecommerce | pharma | other.
+# name: display name.  type = sector: fintech | startup | vc | private_equity |
+#   asset_management | investment_bank | bank | insurance | consulting | corporate
+#   (corporate = outside your sectors: only strategy / investment / finance roles kept).
+# tier: 1 = household name, 2 = well known, 3 = smaller (higher = lower company score).
 # Optional: careers_url (helps auto-detection), slugs (ATS names to try),
 #   or force the platform with  ats: greenhouse|lever|ashby|workable|teamtailor|
 #   smartrecruiters|workday|successfactors  and  id: <board id or URL>.
 companies:
   # ---------------------------------------------------------- fintech
-  - {name: Qonto, type: fintech}
-  - {name: Pennylane, type: fintech}
-  - {name: Swile, type: fintech}
-  - {name: Spendesk, type: fintech}
-  - {name: Agicap, type: fintech}
-  - {name: "Sumeria (ex-Lydia)", type: fintech, slugs: [lydia, sumeria, lydiasolutions], careers_url: "https://lydia-app.com/en/careers"}
-  - {name: Shine, type: fintech}
-  - {name: Mangopay, type: fintech}
-  - {name: Lemonway, type: fintech, careers_url: "https://www.lemonway.com/en/careers"}
-  - {name: Treezor, type: fintech, careers_url: "https://www.treezor.com/careers/"}
-  - {name: Swan, type: fintech, slugs: [swanio, swan]}
-  - {name: Younited, type: fintech, slugs: [younited, younited-credit]}
-  - {name: October, type: fintech, careers_url: "https://october.eu/careers"}
-  - {name: Pretto, type: fintech}
-  - {name: Libeo, type: fintech}
-  - {name: "Youtrust (ex-Yousign)", type: fintech, slugs: [yousign, youtrust]}
-  - {name: Powens, type: fintech}
-  - {name: Bridge, type: fintech, slugs: [bridgeapi, bridge]}
-  - {name: Fintecture, type: fintech}
-  - {name: PayPlug, type: fintech}
-  - {name: Lyra, type: fintech, slugs: [lyra, lyranetwork, lyra-network]}
-  - {name: Mooncard, type: fintech}
-  - {name: Pixpay, type: fintech}
-  - {name: Silvr, type: fintech}
-  - {name: Karmen, type: fintech}
-  - {name: Defacto, type: fintech, slugs: [defacto, getdefacto]}
-  - {name: Indy, type: fintech}
-  - {name: Ramify, type: fintech}
-  - {name: Yomoni, type: fintech}
-  - {name: Nalo, type: fintech}
-  - {name: Goodvest, type: fintech}
-  - {name: Ledger, type: fintech}
-  - {name: Kiln, type: fintech, ats: ashby, id: kiln.fi}
-  - {name: Coinhouse, type: fintech}
-  - {name: Alan, type: fintech}
-  - {name: Leocare, type: fintech}
-  - {name: Seyna, type: fintech}
-  - {name: Stripe, type: fintech}
-  - {name: Adyen, type: fintech}
-  - {name: Checkout.com, type: fintech, ats: ashby, id: checkout.com}
-  - {name: Revolut, type: fintech, careers_url: "https://www.revolut.com/careers/"}
-  - {name: Trade Republic, type: fintech, slugs: [traderepublic, traderepublicbank]}
-  - {name: N26, type: fintech}
+  - {name: Qonto, type: fintech, tier: 1}
+  - {name: Pennylane, type: fintech, tier: 1}
+  - {name: Swile, type: fintech, tier: 1}
+  - {name: Spendesk, type: fintech, tier: 2}
+  - {name: Agicap, type: fintech, tier: 2}
+  - {name: "Sumeria (ex-Lydia)", type: fintech, tier: 2, slugs: [lydia, sumeria, lydiasolutions], careers_url: "https://lydia-app.com/en/careers"}
+  - {name: Shine, type: fintech, tier: 2}
+  - {name: Mangopay, type: fintech, tier: 2}
+  - {name: Lemonway, type: fintech, tier: 3, careers_url: "https://www.lemonway.com/en/careers"}
+  - {name: Treezor, type: fintech, tier: 3, careers_url: "https://www.treezor.com/careers/"}
+  - {name: Swan, type: fintech, tier: 2, slugs: [swanio, swan]}
+  - {name: Younited, type: fintech, tier: 2, slugs: [younited, younited-credit]}
+  - {name: October, type: fintech, tier: 3, careers_url: "https://october.eu/careers"}
+  - {name: Pretto, type: fintech, tier: 3}
+  - {name: Libeo, type: fintech, tier: 3}
+  - {name: "Youtrust (ex-Yousign)", type: fintech, tier: 2, slugs: [yousign, youtrust]}
+  - {name: Powens, type: fintech, tier: 3}
+  - {name: Bridge, type: fintech, tier: 3, slugs: [bridgeapi, bridge]}
+  - {name: Fintecture, type: fintech, tier: 3}
+  - {name: PayPlug, type: fintech, tier: 3}
+  - {name: Lyra, type: fintech, tier: 3, slugs: [lyra, lyranetwork, lyra-network]}
+  - {name: Mooncard, type: fintech, tier: 3}
+  - {name: Pixpay, type: fintech, tier: 3}
+  - {name: Silvr, type: fintech, tier: 3}
+  - {name: Karmen, type: fintech, tier: 3}
+  - {name: Defacto, type: fintech, tier: 3, slugs: [defacto, getdefacto]}
+  - {name: Indy, type: fintech, tier: 3}
+  - {name: Ramify, type: fintech, tier: 3}
+  - {name: Yomoni, type: fintech, tier: 3}
+  - {name: Nalo, type: fintech, tier: 3}
+  - {name: Goodvest, type: fintech, tier: 3}
+  - {name: Ledger, type: fintech, tier: 1}
+  - {name: Kiln, type: fintech, tier: 2, ats: ashby, id: kiln.fi}
+  - {name: Coinhouse, type: fintech, tier: 3}
+  - {name: Alan, type: fintech, tier: 1}
+  - {name: Leocare, type: fintech, tier: 3}
+  - {name: Seyna, type: fintech, tier: 3}
+  - {name: Stripe, type: fintech, tier: 1}
+  - {name: Adyen, type: fintech, tier: 1}
+  - {name: Checkout.com, type: fintech, tier: 1, ats: ashby, id: checkout.com}
+  - {name: Revolut, type: fintech, tier: 1, careers_url: "https://www.revolut.com/careers/"}
+  - {name: Trade Republic, type: fintech, tier: 1, slugs: [traderepublic, traderepublicbank]}
+  - {name: N26, type: fintech, tier: 1}
   # added Nov 2026 (auto-detected, boards with jobs in France)
-  - {name: Alma, type: fintech, ats: ashby, id: alma}
-  - {name: Upflow, type: fintech, ats: ashby, id: upflow}
-  - {name: Pigment, type: fintech, ats: lever, id: pigment}
-  - {name: Memo Bank, type: fintech, ats: teamtailor, id: memobank}
-  - {name: Finary, type: fintech, ats: ashby, id: finary}
-  - {name: Ornikar, type: fintech, ats: teamtailor, id: ornikar}
-  - {name: SumUp, type: fintech, ats: greenhouse, id: sumup}
-  - {name: Airwallex, type: fintech, ats: ashby, id: airwallex}
-  - {name: Ebury, type: fintech, ats: greenhouse, id: ebury}
-  - {name: Deblock, type: fintech, ats: workable, id: deblock}
-  - {name: Bitstack, type: fintech, ats: ashby, id: bitstack}
-  - {name: Morpho, type: fintech, ats: ashby, id: morpho}
-  - {name: Flowdesk, type: fintech, ats: greenhouse, id: flowdesk}
-  - {name: Kaiko, type: fintech, ats: links, careers_url: "https://www.kaiko.com/careers"}   # Lever board closed (Nov 2026)
-  - {name: Sunday, type: fintech, ats: teamtailor, id: sunday}
+  - {name: Alma, type: fintech, tier: 2, ats: ashby, id: alma}
+  - {name: Upflow, type: fintech, tier: 3, ats: ashby, id: upflow}
+  - {name: Pigment, type: startup, tier: 1, ats: lever, id: pigment}
+  - {name: Memo Bank, type: fintech, tier: 2, ats: teamtailor, id: memobank}
+  - {name: Finary, type: fintech, tier: 2, ats: ashby, id: finary}
+  - {name: Ornikar, type: fintech, tier: 2, ats: teamtailor, id: ornikar}
+  - {name: SumUp, type: fintech, tier: 1, ats: greenhouse, id: sumup}
+  - {name: Airwallex, type: fintech, tier: 1, ats: ashby, id: airwallex}
+  - {name: Ebury, type: fintech, tier: 2, ats: greenhouse, id: ebury}
+  - {name: Deblock, type: fintech, tier: 3, ats: workable, id: deblock}
+  - {name: Bitstack, type: fintech, tier: 3, ats: ashby, id: bitstack}
+  - {name: Morpho, type: fintech, tier: 2, ats: ashby, id: morpho}
+  - {name: Flowdesk, type: fintech, tier: 2, ats: greenhouse, id: flowdesk}
+  - {name: Kaiko, type: fintech, tier: 2, ats: links, careers_url: "https://www.kaiko.com/careers"}   # Lever board closed (Nov 2026)
+  - {name: Sunday, type: fintech, tier: 2, ats: teamtailor, id: sunday}
   # ---------------------------------------------------------- banks / insurance / AM
   # These run their own in-house career sites (no public ATS API, BNP's site
   # blocks bots) -> they appear as one-click links in "Search elsewhere".
-  - {name: BNP Paribas, type: bank, ats: links, careers_url: "https://group.bnpparibas/en/careers/all-job-offers?contract_type=internship&location=paris"}
-  - {name: Société Générale, type: bank, ats: links, careers_url: "https://careers.societegenerale.com/en/search?refinementList%5BjobType%5D%5B0%5D=INTERNSHIP"}
-  - {name: Crédit Agricole CIB, type: bank, ats: links, careers_url: "https://jobs.ca-cib.com/"}
-  - {name: Natixis, type: bank, ats: links, careers_url: "https://www.natixis.com/en/careers"}
-  - {name: AXA, type: insurance, ats: links, careers_url: "https://recrutement.axa.fr/"}
-  - {name: Amundi, type: asset_management, ats: links, careers_url: "https://jobs.amundi.com/"}
+  - {name: BNP Paribas, type: bank, tier: 1, ats: links, careers_url: "https://group.bnpparibas/en/careers/all-job-offers?contract_type=internship&location=paris"}
+  - {name: Société Générale, type: bank, tier: 1, ats: links, careers_url: "https://careers.societegenerale.com/en/search?refinementList%5BjobType%5D%5B0%5D=INTERNSHIP"}
+  - {name: Crédit Agricole CIB, type: bank, tier: 1, ats: links, careers_url: "https://jobs.ca-cib.com/"}
+  - {name: Natixis, type: bank, tier: 1, ats: links, careers_url: "https://www.natixis.com/en/careers"}
+  - {name: AXA, type: insurance, tier: 1, ats: links, careers_url: "https://recrutement.axa.fr/"}
+  - {name: Amundi, type: asset_management, tier: 1, ats: links, careers_url: "https://jobs.amundi.com/"}
   # ---------------------------------------------------------- e-commerce
-  - {name: Vinted, type: ecommerce, ats: links, careers_url: "https://careers.vinted.com/"}
-  - {name: Back Market, type: ecommerce, slugs: [backmarket]}
-  - {name: ManoMano, type: ecommerce, ats: links, careers_url: "https://careers.manomano.com/"}
-  - {name: Veepee, type: ecommerce}
-  - {name: Vestiaire Collective, type: ecommerce, slugs: [vestiairecollective]}
-  - {name: Showroomprivé, type: ecommerce, ats: links, careers_url: "https://careers.showroomprive.com/"}
-  - {name: Sézane, type: ecommerce, ats: links, careers_url: "https://careers.sezane.com/"}
-  - {name: Mirakl, type: ecommerce}
-  - {name: Contentsquare, type: ecommerce}
-  - {name: Zalando, type: ecommerce, ats: links, careers_url: "https://jobs.zalando.com/en/jobs?location=Paris"}
-  - {name: Amazon, type: ecommerce, ats: amazonjobs, id: FRA}
-  - {name: Ankorstore, type: ecommerce, ats: ashby, id: ankorstore}
-  - {name: Malt, type: ecommerce, ats: lever, id: malt}
-  - {name: BlaBlaCar, type: ecommerce, ats: lever, id: blablacar}
+  - {name: Vinted, type: startup, tier: 1, ats: links, careers_url: "https://careers.vinted.com/"}
+  - {name: Back Market, type: startup, tier: 1, slugs: [backmarket]}
+  - {name: ManoMano, type: startup, tier: 2, ats: links, careers_url: "https://careers.manomano.com/"}
+  - {name: Veepee, type: corporate, tier: 2}
+  - {name: Vestiaire Collective, type: startup, tier: 1, slugs: [vestiairecollective]}
+  - {name: Showroomprivé, type: corporate, tier: 2, ats: links, careers_url: "https://careers.showroomprive.com/"}
+  - {name: Sézane, type: startup, tier: 2, ats: links, careers_url: "https://careers.sezane.com/"}
+  - {name: Mirakl, type: startup, tier: 1}
+  - {name: Contentsquare, type: startup, tier: 1}
+  - {name: Zalando, type: corporate, tier: 1, ats: links, careers_url: "https://jobs.zalando.com/en/jobs?location=Paris"}
+  - {name: Amazon, type: corporate, tier: 1, ats: amazonjobs, id: FRA}
+  - {name: Ankorstore, type: startup, tier: 2, ats: ashby, id: ankorstore}
+  - {name: Malt, type: startup, tier: 2, ats: lever, id: malt}
+  - {name: BlaBlaCar, type: startup, tier: 1, ats: lever, id: blablacar}
   # ---------------------------------------------------------- pharma / health
-  - {name: Sanofi, type: pharma, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
-  - {name: Servier, type: pharma, ats: links, careers_url: "https://servier.com/en/careers/"}
-  - {name: Ipsen, type: pharma, ats: workday, id: "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers"}
-  - {name: Novartis France, type: pharma, ats: workday, id: "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers"}
-  - {name: Pfizer France, type: pharma, ats: workday, id: "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers"}
-  - {name: MSD France, type: pharma, ats: workday, id: "https://msd.wd5.myworkdayjobs.com/SearchJobs"}
-  - {name: AstraZeneca France, type: pharma, ats: workday, id: "https://astrazeneca.wd3.myworkdayjobs.com/Careers"}
-  - {name: GSK France, type: pharma, ats: workday, id: "https://gsk.wd5.myworkdayjobs.com/GSKCareers"}
-  - {name: Roche France, type: pharma, ats: workday, id: "https://roche.wd3.myworkdayjobs.com/roche-ext"}
-  - {name: Johnson & Johnson France, type: pharma, ats: workday, id: "https://jj.wd5.myworkdayjobs.com/JJ"}
-  - {name: Bristol Myers Squibb France, type: pharma, ats: workday, id: "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS"}
-  - {name: Lilly France, type: pharma, ats: links, careers_url: "https://careers.lilly.com/"}
-  - {name: Boehringer Ingelheim France, type: pharma, ats: links, careers_url: "https://jobs.boehringer-ingelheim.com/"}
-  - {name: Doctolib, type: other}
-  - {name: Owkin, type: other}
+  - {name: Sanofi, type: corporate, tier: 1, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
+  - {name: Servier, type: corporate, tier: 1, ats: links, careers_url: "https://servier.com/en/careers/"}
+  - {name: Ipsen, type: corporate, tier: 1, ats: workday, id: "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers"}
+  - {name: Novartis France, type: corporate, tier: 1, ats: workday, id: "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers"}
+  - {name: Pfizer France, type: corporate, tier: 1, ats: workday, id: "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers"}
+  - {name: MSD France, type: corporate, tier: 1, ats: workday, id: "https://msd.wd5.myworkdayjobs.com/SearchJobs"}
+  - {name: AstraZeneca France, type: corporate, tier: 1, ats: workday, id: "https://astrazeneca.wd3.myworkdayjobs.com/Careers"}
+  - {name: GSK France, type: corporate, tier: 1, ats: workday, id: "https://gsk.wd5.myworkdayjobs.com/GSKCareers"}
+  - {name: Roche France, type: corporate, tier: 1, ats: workday, id: "https://roche.wd3.myworkdayjobs.com/roche-ext"}
+  - {name: Johnson & Johnson France, type: corporate, tier: 1, ats: workday, id: "https://jj.wd5.myworkdayjobs.com/JJ"}
+  - {name: Bristol Myers Squibb France, type: corporate, tier: 1, ats: workday, id: "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS"}
+  - {name: Lilly France, type: corporate, tier: 1, ats: links, careers_url: "https://careers.lilly.com/"}
+  - {name: Boehringer Ingelheim France, type: corporate, tier: 1, ats: links, careers_url: "https://jobs.boehringer-ingelheim.com/"}
+  - {name: Doctolib, type: startup, tier: 1}
+  - {name: Owkin, type: startup, tier: 2}
   # ---------------------------------------------------------- added Nov 2026 (2nd discovery pass)
-  - {name: Shift Technology, type: fintech, ats: greenhouse, id: shifttechnology}
-  - {name: Akur8, type: fintech, ats: ashby, id: akur8}
-  - {name: Descartes Underwriting, type: insurance, ats: teamtailor, id: descartesunderwriting}
-  - {name: Stoïk, type: insurance, ats: teamtailor, id: stoik}
-  - {name: Plaid, type: fintech, ats: ashby, id: plaid}
-  - {name: Deliveroo, type: ecommerce, ats: greenhouse, id: deliveroo}
-  - {name: Murfy, type: ecommerce, ats: teamtailor, id: murfy}
-  - {name: Too Good To Go, type: ecommerce, ats: ashby, id: toogoodtogo}
-  - {name: Aroma-Zone, type: ecommerce, ats: teamtailor, id: aromazone}
-  - {name: Airbnb, type: ecommerce, ats: greenhouse, id: airbnb}
-  - {name: Sorare, type: other, ats: ashby, id: sorare}
-  - {name: Botify, type: other, ats: teamtailor, id: botify}
-  - {name: Algolia, type: other, ats: greenhouse, id: algolia}
-  - {name: Lemlist, type: other, ats: ashby, id: lemlist}
-  - {name: Brevo, type: other, ats: lever, id: brevo}
-  - {name: Datadog, type: other, ats: greenhouse, id: datadog}
-  - {name: MongoDB, type: other, ats: greenhouse, id: mongodb}
-  - {name: Elastic, type: other, ats: greenhouse, id: elastic}
-  - {name: Snowflake, type: other, ats: ashby, id: snowflake}
-  - {name: Spotify, type: other, ats: lever, id: spotify}
-  - {name: Ivalua, type: other, ats: greenhouse, id: ivalua}
-  - {name: Dataiku, type: other, ats: greenhouse, id: dataiku}
-  - {name: Hugging Face, type: other, ats: workable, id: huggingface}
-  - {name: Photoroom, type: other, ats: ashby, id: photoroom}
-  - {name: Dust, type: other, ats: ashby, id: dust}
-  - {name: Exotec, type: other, ats: workable, id: exotec}
-  - {name: Welcome to the Jungle, type: other, ats: teamtailor, id: welcometothejungle}
+  - {name: Shift Technology, type: fintech, tier: 2, ats: greenhouse, id: shifttechnology}
+  - {name: Akur8, type: fintech, tier: 2, ats: ashby, id: akur8}
+  - {name: Descartes Underwriting, type: fintech, tier: 2, ats: teamtailor, id: descartesunderwriting}
+  - {name: Stoïk, type: fintech, tier: 2, ats: teamtailor, id: stoik}
+  - {name: Plaid, type: fintech, tier: 1, ats: ashby, id: plaid}
+  - {name: Deliveroo, type: corporate, tier: 1, ats: greenhouse, id: deliveroo}
+  - {name: Murfy, type: startup, tier: 3, ats: teamtailor, id: murfy}
+  - {name: Too Good To Go, type: startup, tier: 2, ats: ashby, id: toogoodtogo}
+  - {name: Aroma-Zone, type: corporate, tier: 3, ats: teamtailor, id: aromazone}
+  - {name: Airbnb, type: corporate, tier: 1, ats: greenhouse, id: airbnb}
+  - {name: Sorare, type: startup, tier: 2, ats: ashby, id: sorare}
+  - {name: Botify, type: startup, tier: 3, ats: teamtailor, id: botify}
+  - {name: Algolia, type: startup, tier: 2, ats: greenhouse, id: algolia}
+  - {name: Lemlist, type: startup, tier: 2, ats: ashby, id: lemlist}
+  - {name: Brevo, type: startup, tier: 2, ats: lever, id: brevo}
+  - {name: Datadog, type: corporate, tier: 1, ats: greenhouse, id: datadog}
+  - {name: MongoDB, type: corporate, tier: 1, ats: greenhouse, id: mongodb}
+  - {name: Elastic, type: corporate, tier: 1, ats: greenhouse, id: elastic}
+  - {name: Snowflake, type: corporate, tier: 1, ats: ashby, id: snowflake}
+  - {name: Spotify, type: corporate, tier: 1, ats: lever, id: spotify}
+  - {name: Ivalua, type: startup, tier: 3, ats: greenhouse, id: ivalua}
+  - {name: Dataiku, type: startup, tier: 1, ats: greenhouse, id: dataiku}
+  - {name: Hugging Face, type: startup, tier: 1, ats: workable, id: huggingface}
+  - {name: Photoroom, type: startup, tier: 2, ats: ashby, id: photoroom}
+  - {name: Dust, type: startup, tier: 2, ats: ashby, id: dust}
+  - {name: Exotec, type: startup, tier: 2, ats: workable, id: exotec}
+  - {name: Welcome to the Jungle, type: startup, tier: 2, ats: teamtailor, id: welcometothejungle}
   # big brands without a public job feed -> one-click links in "Search elsewhere"
-  - {name: PayPal, type: fintech, ats: links, careers_url: "https://careers.pypl.com/"}
-  - {name: Mastercard, type: fintech, ats: links, careers_url: "https://careers.mastercard.com/"}
-  - {name: Visa, type: fintech, ats: links, careers_url: "https://corporate.visa.com/en/jobs/"}
-  - {name: Worldline, type: fintech, ats: links, careers_url: "https://jobs.worldline.com/"}
-  - {name: Edenred, type: fintech, ats: links, careers_url: "https://careers.edenred.com/"}
-  - {name: Lazard, type: bank, ats: links, careers_url: "https://www.lazard.com/careers/"}
-  - {name: Rothschild & Co, type: bank, ats: links, careers_url: "https://www.rothschildandco.com/en/careers/"}
-  - {name: BCG, type: other, ats: links, careers_url: "https://careers.bcg.com/"}
-  - {name: Bain & Company, type: other, ats: links, careers_url: "https://www.bain.com/careers/"}
-  - {name: Roland Berger, type: other, ats: links, careers_url: "https://www.rolandberger.com/en/Join/"}
-  - {name: Kearney, type: other, ats: links, careers_url: "https://www.kearney.com/careers"}
-  - {name: Simon-Kucher, type: other, ats: links, careers_url: "https://www.simon-kucher.com/en/careers"}
-  - {name: L'Oréal, type: ecommerce, ats: links, careers_url: "https://careers.loreal.com/"}
-  - {name: LVMH, type: ecommerce, ats: links, careers_url: "https://www.lvmh.com/join-us/our-job-offers"}
-  - {name: Kering, type: ecommerce, ats: links, careers_url: "https://www.kering.com/en/talent/job-offers/"}
-  - {name: Hermès, type: ecommerce, ats: links, careers_url: "https://hermes.careers/"}
-  - {name: Chanel, type: ecommerce, ats: links, careers_url: "https://careers.chanel.com/"}
-  - {name: Pernod Ricard, type: other, ats: links, careers_url: "https://www.pernod-ricard.com/en/careers"}
-  - {name: Danone, type: other, ats: links, careers_url: "https://careers.danone.com/"}
-  - {name: Criteo, type: other, ats: links, careers_url: "https://careers.criteo.com/"}
+  - {name: PayPal, type: fintech, tier: 1, ats: links, careers_url: "https://careers.pypl.com/"}
+  - {name: Mastercard, type: fintech, tier: 1, ats: links, careers_url: "https://careers.mastercard.com/"}
+  - {name: Visa, type: fintech, tier: 1, ats: links, careers_url: "https://corporate.visa.com/en/jobs/"}
+  - {name: Worldline, type: fintech, tier: 2, ats: links, careers_url: "https://jobs.worldline.com/"}
+  - {name: Edenred, type: fintech, tier: 2, ats: links, careers_url: "https://careers.edenred.com/"}
+  - {name: Lazard, type: investment_bank, tier: 1, ats: links, careers_url: "https://www.lazard.com/careers/"}
+  - {name: Rothschild & Co, type: investment_bank, tier: 1, ats: links, careers_url: "https://www.rothschildandco.com/en/careers/"}
+  - {name: BCG, type: consulting, tier: 1, ats: links, careers_url: "https://careers.bcg.com/"}
+  - {name: Bain & Company, type: consulting, tier: 1, ats: links, careers_url: "https://www.bain.com/careers/"}
+  - {name: Roland Berger, type: consulting, tier: 1, ats: links, careers_url: "https://www.rolandberger.com/en/Join/"}
+  - {name: Kearney, type: consulting, tier: 1, ats: links, careers_url: "https://www.kearney.com/careers"}
+  - {name: Simon-Kucher, type: consulting, tier: 2, ats: links, careers_url: "https://www.simon-kucher.com/en/careers"}
+  - {name: L'Oréal, type: corporate, tier: 1, ats: links, careers_url: "https://careers.loreal.com/"}
+  - {name: LVMH, type: corporate, tier: 1, ats: links, careers_url: "https://www.lvmh.com/join-us/our-job-offers"}
+  - {name: Kering, type: corporate, tier: 1, ats: links, careers_url: "https://www.kering.com/en/talent/job-offers/"}
+  - {name: Hermès, type: corporate, tier: 1, ats: links, careers_url: "https://hermes.careers/"}
+  - {name: Chanel, type: corporate, tier: 1, ats: links, careers_url: "https://careers.chanel.com/"}
+  - {name: Pernod Ricard, type: corporate, tier: 1, ats: links, careers_url: "https://www.pernod-ricard.com/en/careers"}
+  - {name: Danone, type: corporate, tier: 1, ats: links, careers_url: "https://careers.danone.com/"}
+  - {name: Criteo, type: corporate, tier: 2, ats: links, careers_url: "https://careers.criteo.com/"}
   # ---------------------------------------------------------- added Nov 2026 (3rd pass: fintech)
-  - {name: Mollie, type: fintech, ats: ashby, id: mollie}
-  - {name: Trustpair, type: fintech, ats: teamtailor, id: trustpair}
-  - {name: IDnow, type: fintech, ats: greenhouse, id: idnow}
-  - {name: Floa, type: fintech, ats: teamtailor, id: floa}
-  - {name: PayFit, type: fintech, ats: teamtailor, id: payfit}
-  - {name: Sidetrade, type: fintech, ats: workable, id: sidetrade}
-  - {name: Numbr, type: fintech, ats: teamtailor, id: numbr}
+  - {name: Mollie, type: fintech, tier: 2, ats: ashby, id: mollie}
+  - {name: Trustpair, type: fintech, tier: 3, ats: teamtailor, id: trustpair}
+  - {name: IDnow, type: fintech, tier: 3, ats: greenhouse, id: idnow}
+  - {name: Floa, type: fintech, tier: 3, ats: teamtailor, id: floa}
+  - {name: PayFit, type: fintech, tier: 1, ats: teamtailor, id: payfit}
+  - {name: Sidetrade, type: fintech, tier: 3, ats: workable, id: sidetrade}
+  - {name: Numbr, type: fintech, tier: 3, ats: teamtailor, id: numbr}
+  # ---------------------------------------------------------- added Nov 2026 (start-up studio)
+  - {name: Hexa, type: vc, tier: 2, ats: ashby, id: hexa}    # ex-eFounders: builds start-ups
+  - {name: Spiko, type: fintech, tier: 3, ats: teamtailor, id: spiko}   # tokenised money-market funds

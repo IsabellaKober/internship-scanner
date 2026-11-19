@@ -19,7 +19,7 @@ from urllib.parse import quote, quote_plus
 
 import requests
 
-from . import detect_ats, filters, scoring
+from . import detect_ats, filters, relevance, scoring
 from .config import load_config
 from .crypto import decrypt_json, encrypt_json
 from .dedupe import company_key, dedupe
@@ -38,9 +38,6 @@ LAST_RUN = ROOT / "data" / "last_run.json"
 
 ADAPTERS = {m.NAME: m for m in (greenhouse, lever, ashby, workable, teamtailor,
                                 smartrecruiters, workday, successfactors, amazonjobs)}
-CAT_LABELS = {"fintech": "Fintech", "sales": "Sales", "strategy": "Strategy",
-              "ecommerce": "E-commerce", "bizdev": "BizDev", "finance": "Finance",
-              "pharma": "Pharma"}
 
 
 # ---------------------------------------------------------------- helpers
@@ -202,11 +199,23 @@ def process(o, cfg, today: date):
     deadline = parse_deadline(text, today)
 
     tags = []
+    rel = {}
+
+    def check_relevance():
+        # company in a target sector + role in a target function (relevance.py)
+        res, why = relevance.evaluate(o.title, text, o.company, o.company_type, cfg)
+        if res:
+            rel.update(res)
+        return bool(res), why or "", []
+
     for check in (
         lambda: filters.check_contract(o.title, o.employment_type, cfg),
         lambda: filters.check_location(o.location, text, cfg),
-        lambda: filters.check_role(o.title, text, o.company_type, cfg),
-        lambda: filters.check_dates(dur, start, cfg),
+        check_relevance,
+        lambda: filters.check_dates(
+            dur, start, cfg,
+            top_role=rel.get("level") == "core" and
+            rel.get("role_score", 0) >= cfg["dates"].get("top_role_min_score", 101)),
         lambda: filters.check_pay(pay, cfg),
         lambda: filters.check_workplace(o.location, text, cfg),
         lambda: filters.check_eligibility(text, cfg),
@@ -217,20 +226,24 @@ def process(o, cfg, today: date):
         tags += t
 
     clarity, clarity_why = scoring.clarity_score(text, cfg)
-    role, cats = scoring.role_score(o.title, text, o.company_type, clarity, cfg, o.company)
     dates_s = scoring.date_score(dur, start, cfg)
     lang, lang_s = scoring.language_info(o.title, text, cfg)
-    comp_s = cfg["company_type_scores"].get(o.company_type, 50)
-    parts = {"role": role, "clarity": clarity, "dates": dates_s,
-             "language": lang_s, "company": comp_s}
-    score = scoring.total_score(parts, cfg)
+    parts = {"role": rel["role_score"], "company": rel["company_score"],
+             "clarity": clarity, "dates": dates_s, "language": lang_s}
+    score = scoring.total_score(parts, cfg, rel["level"])
+    if rel["level"] == "adjacent":
+        tags.append(f"{rel['function_label']}: secondary role (capped)")
+    if rel["sector_how"] == "content":
+        tags.append("Check company")
 
     d = o.to_dict()
     d.update({
         "sources": [o.source],
         "score": score, "breakdown": parts, "clarity_notes": clarity_why,
-        "categories": cats,
-        "category_labels": [CAT_LABELS[c] for c in cats if c in CAT_LABELS],
+        "categories": [rel["function"], rel["sector"]],
+        "category_labels": [rel["function_label"], rel["sector_label"]],
+        "sector": rel["sector_label"], "company_tier": rel["tier"],
+        "role_level": rel["level"], "learning_notes": rel["learning_notes"],
         "language": lang,
         "duration": dur.label(), "duration_months": [dur.min_months, dur.max_months],
         "start": start.label(),
@@ -374,7 +387,7 @@ def report(payload, found, kept, reasons, src_status):
     for o in live[:10]:
         b = o["breakdown"]
         print(f" {o['score']:3}  {o['company'][:22]:22} {o['title'][:60]:60} "
-              f"[role {b['role']} clar {b['clarity']} date {b['dates']} lang {b['language']}]"
+              f"[role {b['role']} co {b['company']} clar {b['clarity']} date {b['dates']}]"
               f"  {o['duration']} | {o['start']} | {o['pay']}")
 
 

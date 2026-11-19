@@ -58,10 +58,20 @@ icon. Make your change, then click **Commit changes**. The next run uses it.
 
 - **Dates:** `dates:`. Earliest/latest start, maximum months.
 - **Minimum pay:** `pay: min_monthly_eur`.
-- **Role priorities & keywords:** `categories:`. The list order = priority, and `score` = how
-  much it counts.
-- **Roles to hide:** `exclude_roles:`.
-- **Score weights:** `weights:` (role / clarity / dates / language / company; must add up to 1).
+- **What gets shown (two gates):** `relevance:`.
+  1. The **company** must be in a target sector (`relevance: sectors`): start-up / fintech,
+     venture capital, private equity, asset management, M&A / banking, insurance, consulting.
+     Large corporates (`corporate`) only show strategy / investment / finance roles.
+     Known firms get their sector and fame `tier` from `companies:` and `relevance: known_firms`;
+     unknown companies are recognised from the offer text (`sector_keywords`) or hidden.
+  2. The **role** must name a target function (`relevance: functions`). Engineering, quant and
+     marketing roles (and support, HR, legal) are always hidden (`excluded_roles`).
+- **How much you learn:** `relevance: learning`. Concrete tasks (models, valuation, due
+  diligence, market studies...) and direct work with founders / partners raise the score;
+  grunt work (cold calling, data entry, CRM updates, admin, "assistant" titles) and
+  buzzword-heavy offers with no concrete tasks lower it. Sales / operations / accounting roles
+  are kept but capped at 55.
+- **Score weights:** `weights:` (role & learning / company / clarity / dates / language; must add up to 1).
 - **Notification threshold:** `notifications: min_score` (default 75).
 
 Keywords ignore capitals and accents ("stratégie" = "strategie").
@@ -73,17 +83,19 @@ open it to see which rule your change affected.
 Add one line under `companies:` in `config.yaml`:
 
 ```yaml
-  - {name: Alma, type: fintech}
+  - {name: Alma, type: fintech, tier: 2}
 ```
 
-`type` is one of `fintech, bank, insurance, asset_management, ecommerce, pharma, other`.
+`type` (sector) is one of `fintech, startup, vc, private_equity, asset_management,
+investment_bank, bank, insurance, consulting, corporate`; `tier` is 1 (household name),
+2 (well known) or 3 (smaller).
 The next run auto-detects the company's job platform (Greenhouse, Lever, Ashby, Workable,
 Teamtailor, Workday…). If it can't find it, the company still appears as a link in
 *Search elsewhere*. You can help detection with either of:
 
 ```yaml
   - {name: Alma, type: fintech, careers_url: "https://alma.eu/careers"}
-  - {name: Sanofi, type: pharma, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
+  - {name: Sanofi, type: corporate, ats: workday, id: "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers"}
 ```
 
 ## Notifications (ntfy)

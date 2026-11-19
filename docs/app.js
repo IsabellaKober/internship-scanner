@@ -245,13 +245,16 @@ function renderOffer(o) {
   for (const s of o.enrichment?.skills || []) sk.append(el("span", "tag", s));
   if (!sk.children.length) sk.append(el("span", "muted small", "Not stated"));
   const bd = $(".breakdown", node);
-  for (const [k, label] of [["role", "Role"], ["clarity", "Clarity"], ["dates", "Dates"], ["language", "Language"], ["company", "Company"]]) {
+  for (const [k, label] of [["role", "Role & learning"], ["company", "Company"], ["clarity", "Clarity"], ["dates", "Dates"], ["language", "Language"]]) {
     const v = o.breakdown?.[k] ?? 0;
     const row = el("div", "bd-row");
     const m = el("span", "meter"); const fill = el("span", "meter-fill"); fill.style.width = v + "%"; m.append(fill);
     row.append(el("span", null, label), m, el("b", null, String(v)));
     bd.append(row);
   }
+  if (o.sector) bd.append(el("div", "bd-note", "Company: " + o.sector +
+    (o.company_tier ? ` · tier ${o.company_tier}${o.company_tier === 4 ? " (sector guessed from the offer)" : ""}` : "")));
+  if (o.learning_notes?.length) bd.append(el("div", "bd-note", "Learning: " + o.learning_notes.join(" · ")));
   if (o.clarity_notes?.length) bd.append(el("div", "bd-note", "Clarity: " + o.clarity_notes.join(" · ")));
   if (o.enrichment?.method) bd.append(el("div", "bd-note",
     o.enrichment.method === "ai" ? "Summary by Claude Haiku" : "Summary extracted automatically (rules)"));

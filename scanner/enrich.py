@@ -96,11 +96,8 @@ def why_fit_rules(offer: dict, description: str, profile: dict) -> str:
     if not hits:
         hits = profile.get("default_fit", ["business-school background with finance "
                                            "internship experience"])[:1]
-    cats = offer.get("categories") or []
-    lead = {"fintech": "Fintech role",
-            "sales": "Sales role", "strategy": "Strategy role",
-            "ecommerce": "E-commerce role", "bizdev": "BizDev role",
-            "finance": "Finance role"}.get(cats[0] if cats else "", "Business role")
+    labels = offer.get("category_labels") or []
+    lead = f"{labels[0]} role" if labels else "Business role"
     return f"{lead} — draws on " + " and ".join(dict.fromkeys(hits)) + "."
 
 

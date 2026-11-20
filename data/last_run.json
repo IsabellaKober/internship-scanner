@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-20T15:02:25+00:00",
- "raw": 6708,
+ "generated_at": "2026-11-20T20:55:52+00:00",
+ "raw": 6683,
  "kept": 36,
- "new": 4,
+ "new": 2,
  "found_per_source": {
-  "ashby": 2057,
-  "lever": 465,
-  "teamtailor": 427,
-  "greenhouse": 3233,
-  "workable": 147,
-  "amazonjobs": 51,
-  "workday": 16,
-  "adzuna": 312
+  "ashby": 2058,
+  "lever": 464,
+  "teamtailor": 429,
+  "greenhouse": 3267,
+  "workable": 148,
+  "amazonjobs": 52,
+  "workday": 5,
+  "adzuna": 260
  },
  "kept_per_source": {
   "teamtailor": 2,
@@ -19,36 +19,36 @@
   "adzuna": 34
  },
  "rejected": {
-  "not an internship": 6110,
-  "role excluded": 157,
-  "contract": 128,
-  "location": 125,
-  "company not in a target sector": 50,
+  "not an internship": 6103,
+  "role excluded": 144,
+  "contract": 130,
+  "location": 119,
+  "company not in a target sector": 48,
   "role not in target functions": 40,
-  "duration 6 months": 26,
-  "company sector corporate": 17,
+  "duration 6 months": 27,
+  "company sector corporate": 16,
   "stage de fin d'etudes": 9,
   "not fully on-site": 2,
   "start Jan 2027": 2,
+  "start ASAP": 2,
   "long internship": 1,
   "final-year students only": 1,
   "start Jul 2027": 1,
-  "start Mar 2027": 1,
-  "start ASAP": 1
+  "start Mar 2027": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2057,
+   "offers": 2058,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 465,
+   "offers": 464,
    "state": "ok"
   },
   {
@@ -60,33 +60,33 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 427,
+   "offers": 429,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3233,
+   "offers": 3267,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 147,
+   "offers": 148,
    "state": "ok"
   },
   {
    "source": "amazonjobs",
    "companies_ok": 1,
    "failed": [],
-   "offers": 51,
+   "offers": 52,
    "state": "ok"
   },
   {
    "source": "workday",
-   "companies_ok": 3,
+   "companies_ok": 1,
    "failed": [
     {
      "company": "Sanofi",
@@ -99,6 +99,14 @@
     {
      "company": "Novartis France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
+    },
+    {
+     "company": "Pfizer France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/job/United-States---New-York---New-Yor"
+    },
+    {
+     "company": "MSD France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
     },
     {
      "company": "AstraZeneca France",
@@ -117,7 +125,7 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 16,
+   "offers": 5,
    "state": "partial"
   },
   {
@@ -136,7 +144,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 312,
+   "offers": 260,
    "state": "ok"
   }
  ],

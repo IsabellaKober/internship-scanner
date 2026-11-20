@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-11-19T21:11:50+00:00",
- "raw": 6719,
- "kept": 34,
- "new": 2,
+ "generated_at": "2026-11-20T15:02:25+00:00",
+ "raw": 6708,
+ "kept": 36,
+ "new": 4,
  "found_per_source": {
-  "ashby": 2058,
-  "lever": 473,
-  "teamtailor": 433,
-  "greenhouse": 3220,
-  "workable": 145,
+  "ashby": 2057,
+  "lever": 465,
+  "teamtailor": 427,
+  "greenhouse": 3233,
+  "workable": 147,
   "amazonjobs": 51,
-  "adzuna": 339
+  "workday": 16,
+  "adzuna": 312
  },
  "kept_per_source": {
   "teamtailor": 2,
   "ashby": 1,
-  "adzuna": 32
+  "adzuna": 34
  },
  "rejected": {
-  "not an internship": 6121,
+  "not an internship": 6110,
   "role excluded": 157,
-  "contract": 131,
-  "location": 116,
-  "company not in a target sector": 51,
-  "role not in target functions": 39,
-  "duration 6 months": 28,
-  "company sector corporate": 18,
+  "contract": 128,
+  "location": 125,
+  "company not in a target sector": 50,
+  "role not in target functions": 40,
+  "duration 6 months": 26,
+  "company sector corporate": 17,
   "stage de fin d'etudes": 9,
-  "start Jan 2027": 5,
   "not fully on-site": 2,
-  "start Mar 2027": 2,
+  "start Jan 2027": 2,
   "long internship": 1,
   "final-year students only": 1,
-  "Master's students only": 1,
   "start Jul 2027": 1,
+  "start Mar 2027": 1,
   "start ASAP": 1
  },
  "sources": [
@@ -41,14 +41,14 @@
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2058,
+   "offers": 2057,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 473,
+   "offers": 465,
    "state": "ok"
   },
   {
@@ -60,21 +60,21 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 433,
+   "offers": 427,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3220,
+   "offers": 3233,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 145,
+   "offers": 147,
    "state": "ok"
   },
   {
@@ -86,7 +86,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 0,
+   "companies_ok": 3,
    "failed": [
     {
      "company": "Sanofi",
@@ -101,36 +101,24 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
     },
     {
-     "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
-    },
-    {
-     "company": "MSD France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
-    },
-    {
      "company": "AstraZeneca France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs"
     },
     {
      "company": "GSK France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/job/Singapore---Rochester-Park/Register-Your-In"
     },
     {
      "company": "Roche France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
     },
     {
-     "company": "Johnson & Johnson France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
-    },
-    {
      "company": "Bristol Myers Squibb France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 0,
-   "state": "failed"
+   "offers": 16,
+   "state": "partial"
   },
   {
    "source": "francetravail",
@@ -138,7 +126,7 @@
    "failed": [
     {
      "company": "France Travail API",
-     "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+     "error": "HTTPError: 400 Client Error: Bad Request for url: https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=%2Fpartenaire"
     }
    ],
    "offers": 0,
@@ -148,7 +136,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 339,
+   "offers": 312,
    "state": "ok"
   }
  ],

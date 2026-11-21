@@ -1,40 +1,38 @@
 {
- "generated_at": "2026-11-21T14:24:33+00:00",
- "raw": 6723,
- "kept": 47,
- "new": 14,
+ "generated_at": "2026-11-21T19:56:07+00:00",
+ "raw": 6808,
+ "kept": 50,
+ "new": 3,
  "found_per_source": {
-  "ashby": 2059,
+  "ashby": 2061,
   "lever": 466,
-  "teamtailor": 427,
-  "greenhouse": 3263,
+  "teamtailor": 426,
+  "greenhouse": 3266,
   "workable": 148,
   "amazonjobs": 52,
-  "workday": 2,
-  "adzuna": 306
+  "adzuna": 389
  },
  "kept_per_source": {
   "teamtailor": 2,
   "ashby": 1,
-  "adzuna": 46
+  "adzuna": 50
  },
  "rejected": {
-  "not an internship": 6100,
-  "role excluded": 148,
-  "contract": 131,
-  "location": 118,
-  "company not in a target sector": 62,
-  "role not in target functions": 39,
+  "not an internship": 6169,
+  "role excluded": 152,
+  "contract": 132,
+  "location": 117,
+  "company not in a target sector": 72,
+  "role not in target functions": 38,
   "duration 6 months": 37,
-  "company sector corporate": 17,
+  "company sector corporate": 16,
   "stage de fin d'etudes": 10,
+  "start Mar 2027": 3,
   "not fully on-site": 2,
   "start Jan 2027": 2,
-  "start Mar 2027": 2,
   "start ASAP": 2,
   "long internship": 1,
   "final-year students only": 1,
-  "remote-only": 1,
   "start Jul 2027": 1
  },
  "sources": [
@@ -42,7 +40,7 @@
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2059,
+   "offers": 2061,
    "state": "ok"
   },
   {
@@ -61,14 +59,14 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 427,
+   "offers": 426,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3263,
+   "offers": 3266,
    "state": "ok"
   },
   {
@@ -87,7 +85,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 1,
+   "companies_ok": 0,
    "failed": [
     {
      "company": "Sanofi",
@@ -95,7 +93,7 @@
     },
     {
      "company": "Ipsen",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/job/Paris/Etudiants-en-Ecoles-d-Ingeni"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/jobs"
     },
     {
      "company": "Novartis France",
@@ -124,10 +122,14 @@
     {
      "company": "Johnson & Johnson France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+    },
+    {
+     "company": "Bristol Myers Squibb France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 2,
-   "state": "partial"
+   "offers": 0,
+   "state": "failed"
   },
   {
    "source": "francetravail",
@@ -145,7 +147,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 306,
+   "offers": 389,
    "state": "ok"
   }
  ],

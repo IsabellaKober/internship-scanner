@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-11-22T14:17:22+00:00",
- "raw": 6753,
+ "generated_at": "2026-11-22T20:09:06+00:00",
+ "raw": 6715,
  "kept": 34,
- "new": 1,
+ "new": 0,
  "found_per_source": {
   "ashby": 2061,
   "lever": 466,
   "teamtailor": 426,
-  "greenhouse": 3265,
+  "greenhouse": 3266,
   "workable": 148,
   "amazonjobs": 52,
-  "workday": 7,
-  "adzuna": 328
+  "adzuna": 296
  },
  "kept_per_source": {
   "teamtailor": 2,
@@ -19,21 +18,20 @@
   "adzuna": 32
  },
  "rejected": {
-  "not an internship": 6160,
-  "role excluded": 151,
+  "not an internship": 6134,
+  "role excluded": 144,
   "contract": 132,
-  "location": 118,
-  "company not in a target sector": 55,
+  "location": 114,
+  "company not in a target sector": 53,
   "role not in target functions": 37,
   "duration 6 months": 29,
-  "company sector corporate": 15,
+  "company sector corporate": 17,
   "stage de fin d'etudes": 9,
   "start Mar 2027": 3,
   "not fully on-site": 2,
   "start ASAP": 2,
   "long internship": 1,
   "final-year students only": 1,
-  "remote-only": 1,
   "start Jul 2027": 1,
   "start Jan 2027": 1
  },
@@ -68,7 +66,7 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3265,
+   "offers": 3266,
    "state": "ok"
   },
   {
@@ -87,7 +85,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 2,
+   "companies_ok": 0,
    "failed": [
     {
      "company": "Sanofi",
@@ -103,7 +101,11 @@
     },
     {
      "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/job/United-States---Texas---Remote/Int"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
+    },
+    {
+     "company": "MSD France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
     },
     {
      "company": "AstraZeneca France",
@@ -120,10 +122,14 @@
     {
      "company": "Johnson & Johnson France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
+    },
+    {
+     "company": "Bristol Myers Squibb France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 7,
-   "state": "partial"
+   "offers": 0,
+   "state": "failed"
   },
   {
    "source": "francetravail",
@@ -141,7 +147,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 328,
+   "offers": 296,
    "state": "ok"
   }
  ],

@@ -1,39 +1,41 @@
 {
- "generated_at": "2026-11-21T19:56:07+00:00",
- "raw": 6808,
- "kept": 50,
- "new": 3,
+ "generated_at": "2026-11-22T14:17:22+00:00",
+ "raw": 6753,
+ "kept": 34,
+ "new": 1,
  "found_per_source": {
   "ashby": 2061,
   "lever": 466,
   "teamtailor": 426,
-  "greenhouse": 3266,
+  "greenhouse": 3265,
   "workable": 148,
   "amazonjobs": 52,
-  "adzuna": 389
+  "workday": 7,
+  "adzuna": 328
  },
  "kept_per_source": {
   "teamtailor": 2,
   "ashby": 1,
-  "adzuna": 50
+  "adzuna": 32
  },
  "rejected": {
-  "not an internship": 6169,
-  "role excluded": 152,
+  "not an internship": 6160,
+  "role excluded": 151,
   "contract": 132,
-  "location": 117,
-  "company not in a target sector": 72,
-  "role not in target functions": 38,
-  "duration 6 months": 37,
-  "company sector corporate": 16,
-  "stage de fin d'etudes": 10,
+  "location": 118,
+  "company not in a target sector": 55,
+  "role not in target functions": 37,
+  "duration 6 months": 29,
+  "company sector corporate": 15,
+  "stage de fin d'etudes": 9,
   "start Mar 2027": 3,
   "not fully on-site": 2,
-  "start Jan 2027": 2,
   "start ASAP": 2,
   "long internship": 1,
   "final-year students only": 1,
-  "start Jul 2027": 1
+  "remote-only": 1,
+  "start Jul 2027": 1,
+  "start Jan 2027": 1
  },
  "sources": [
   {
@@ -66,7 +68,7 @@
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3266,
+   "offers": 3265,
    "state": "ok"
   },
   {
@@ -85,7 +87,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 0,
+   "companies_ok": 2,
    "failed": [
     {
      "company": "Sanofi",
@@ -101,11 +103,7 @@
     },
     {
      "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
-    },
-    {
-     "company": "MSD France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/job/United-States---Texas---Remote/Int"
     },
     {
      "company": "AstraZeneca France",
@@ -122,14 +120,10 @@
     {
      "company": "Johnson & Johnson France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
-    },
-    {
-     "company": "Bristol Myers Squibb France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 0,
-   "state": "failed"
+   "offers": 7,
+   "state": "partial"
   },
   {
    "source": "francetravail",
@@ -147,7 +141,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 389,
+   "offers": 328,
    "state": "ok"
   }
  ],

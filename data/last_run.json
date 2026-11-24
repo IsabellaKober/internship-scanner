@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-11-24T00:36:08+00:00",
- "raw": 6694,
+ "generated_at": "2026-11-24T17:11:00+00:00",
+ "raw": 6766,
  "kept": 34,
  "new": 1,
  "found_per_source": {
-  "ashby": 2051,
-  "lever": 467,
-  "teamtailor": 433,
+  "ashby": 2055,
+  "lever": 461,
+  "teamtailor": 434,
   "greenhouse": 3266,
-  "workable": 150,
-  "amazonjobs": 54,
-  "workday": 10,
-  "adzuna": 263
+  "workable": 149,
+  "amazonjobs": 53,
+  "workday": 16,
+  "adzuna": 332
  },
  "kept_per_source": {
   "teamtailor": 2,
@@ -19,37 +19,37 @@
   "adzuna": 32
  },
  "rejected": {
-  "not an internship": 6112,
-  "role excluded": 140,
-  "contract": 136,
-  "location": 113,
-  "company not in a target sector": 52,
-  "role not in target functions": 38,
-  "duration 6 months": 28,
-  "company sector corporate": 18,
+  "not an internship": 6181,
+  "contract": 137,
+  "role excluded": 137,
+  "location": 110,
+  "company not in a target sector": 59,
+  "role not in target functions": 40,
+  "duration 6 months": 26,
+  "company sector corporate": 17,
   "stage de fin d'etudes": 9,
+  "start Mar 2027": 4,
   "not fully on-site": 3,
-  "start Mar 2027": 3,
   "start ASAP": 2,
+  "start Jan 2027": 2,
   "long internship": 1,
   "final-year students only": 1,
   "remote-only": 1,
-  "start Jul 2027": 1,
-  "start Jan 2027": 1
+  "start Jul 2027": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2051,
+   "offers": 2055,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 467,
+   "offers": 461,
    "state": "ok"
   },
   {
@@ -61,7 +61,7 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 433,
+   "offers": 434,
    "state": "partial"
   },
   {
@@ -75,20 +75,24 @@
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 150,
+   "offers": 149,
    "state": "ok"
   },
   {
    "source": "amazonjobs",
    "companies_ok": 1,
    "failed": [],
-   "offers": 54,
+   "offers": 53,
    "state": "ok"
   },
   {
    "source": "workday",
-   "companies_ok": 3,
+   "companies_ok": 4,
    "failed": [
+    {
+     "company": "Sanofi",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://sanofi.wd3.myworkdayjobs.com/wday/cxs/sanofi/SanofiCareers/jobs"
+    },
     {
      "company": "Ipsen",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://ipsen.wd103.myworkdayjobs.com/wday/cxs/ipsen/Ipsen_Careers/jobs"
@@ -98,27 +102,19 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
     },
     {
-     "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
+     "company": "MSD France",
+     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://msd.wd5.myworkdayjobs.com/wday/cxs/msd/SearchJobs/jobs"
     },
     {
      "company": "AstraZeneca France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs"
     },
     {
-     "company": "GSK France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://gsk.wd5.myworkdayjobs.com/wday/cxs/gsk/GSKCareers/jobs"
-    },
-    {
      "company": "Roche France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://roche.wd3.myworkdayjobs.com/wday/cxs/roche/roche-ext/jobs"
-    },
-    {
-     "company": "Johnson & Johnson France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://jj.wd5.myworkdayjobs.com/wday/cxs/jj/JJ/jobs"
     }
    ],
-   "offers": 10,
+   "offers": 16,
    "state": "partial"
   },
   {
@@ -137,7 +133,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 263,
+   "offers": 332,
    "state": "ok"
   }
  ],

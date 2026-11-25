@@ -1,29 +1,30 @@
 {
- "generated_at": "2026-11-25T16:57:08+00:00",
- "raw": 6785,
- "kept": 34,
- "new": 3,
+ "generated_at": "2026-11-25T22:08:52+00:00",
+ "raw": 6737,
+ "kept": 33,
+ "new": 0,
  "found_per_source": {
-  "ashby": 2062,
-  "lever": 463,
-  "teamtailor": 431,
-  "greenhouse": 3289,
+  "ashby": 2065,
+  "lever": 466,
+  "teamtailor": 434,
+  "greenhouse": 3294,
   "workable": 152,
   "amazonjobs": 54,
-  "adzuna": 334
+  "workday": 9,
+  "adzuna": 263
  },
  "kept_per_source": {
   "teamtailor": 2,
   "ashby": 1,
-  "adzuna": 32
+  "adzuna": 31
  },
  "rejected": {
-  "not an internship": 6210,
-  "role excluded": 137,
+  "not an internship": 6173,
+  "role excluded": 132,
   "contract": 130,
-  "location": 104,
-  "company not in a target sector": 59,
-  "role not in target functions": 44,
+  "location": 106,
+  "company not in a target sector": 53,
+  "role not in target functions": 43,
   "duration 6 months": 23,
   "company sector corporate": 17,
   "stage de fin d'etudes": 12,
@@ -40,14 +41,14 @@
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2062,
+   "offers": 2065,
    "state": "ok"
   },
   {
    "source": "lever",
    "companies_ok": 11,
    "failed": [],
-   "offers": 463,
+   "offers": 466,
    "state": "ok"
   },
   {
@@ -59,14 +60,14 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 431,
+   "offers": 434,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3289,
+   "offers": 3294,
    "state": "ok"
   },
   {
@@ -85,7 +86,7 @@
   },
   {
    "source": "workday",
-   "companies_ok": 0,
+   "companies_ok": 1,
    "failed": [
     {
      "company": "Sanofi",
@@ -98,10 +99,6 @@
     {
      "company": "Novartis France",
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://novartis.wd3.myworkdayjobs.com/wday/cxs/novartis/Novartis_Careers/jobs"
-    },
-    {
-     "company": "Pfizer France",
-     "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://pfizer.wd1.myworkdayjobs.com/wday/cxs/pfizer/PfizerCareers/jobs"
     },
     {
      "company": "MSD France",
@@ -128,8 +125,8 @@
      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://bristolmyerssquibb.wd5.myworkdayjobs.com/wday/cxs/bristolmyerssquibb/BMS/jobs"
     }
    ],
-   "offers": 0,
-   "state": "failed"
+   "offers": 9,
+   "state": "partial"
   },
   {
    "source": "francetravail",
@@ -147,7 +144,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 334,
+   "offers": 263,
    "state": "ok"
   }
  ],

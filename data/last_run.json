@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-11-24T22:54:54+00:00",
- "raw": 6767,
+ "generated_at": "2026-11-25T16:57:08+00:00",
+ "raw": 6785,
  "kept": 34,
- "new": 0,
+ "new": 3,
  "found_per_source": {
-  "ashby": 2056,
+  "ashby": 2062,
   "lever": 463,
-  "teamtailor": 433,
-  "greenhouse": 3281,
-  "workable": 149,
-  "amazonjobs": 53,
-  "adzuna": 332
+  "teamtailor": 431,
+  "greenhouse": 3289,
+  "workable": 152,
+  "amazonjobs": 54,
+  "adzuna": 334
  },
  "kept_per_source": {
   "teamtailor": 2,
@@ -18,29 +18,29 @@
   "adzuna": 32
  },
  "rejected": {
-  "not an internship": 6192,
-  "contract": 136,
-  "role excluded": 136,
-  "location": 103,
+  "not an internship": 6210,
+  "role excluded": 137,
+  "contract": 130,
+  "location": 104,
   "company not in a target sector": 59,
-  "role not in target functions": 40,
-  "duration 6 months": 26,
+  "role not in target functions": 44,
+  "duration 6 months": 23,
   "company sector corporate": 17,
-  "stage de fin d'etudes": 9,
+  "stage de fin d'etudes": 12,
   "start Mar 2027": 4,
   "not fully on-site": 3,
-  "start ASAP": 2,
-  "start Jan 2027": 2,
+  "start Jan 2027": 3,
   "long internship": 1,
   "final-year students only": 1,
-  "start Jul 2027": 1
+  "start Jul 2027": 1,
+  "start ASAP": 1
  },
  "sources": [
   {
    "source": "ashby",
    "companies_ok": 27,
    "failed": [],
-   "offers": 2056,
+   "offers": 2062,
    "state": "ok"
   },
   {
@@ -59,28 +59,28 @@
      "error": "blocked by robots.txt"
     }
    ],
-   "offers": 433,
+   "offers": 431,
    "state": "partial"
   },
   {
    "source": "greenhouse",
    "companies_ok": 18,
    "failed": [],
-   "offers": 3281,
+   "offers": 3289,
    "state": "ok"
   },
   {
    "source": "workable",
    "companies_ok": 4,
    "failed": [],
-   "offers": 149,
+   "offers": 152,
    "state": "ok"
   },
   {
    "source": "amazonjobs",
    "companies_ok": 1,
    "failed": [],
-   "offers": 53,
+   "offers": 54,
    "state": "ok"
   },
   {
@@ -147,7 +147,7 @@
    "source": "adzuna",
    "companies_ok": 1,
    "failed": [],
-   "offers": 332,
+   "offers": 334,
    "state": "ok"
   }
  ],

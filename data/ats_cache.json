@@ -4,7 +4,7 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Adyen": {
     "ats": "greenhouse",
@@ -28,21 +28,21 @@
     "ats_host": null,
     "ats_id": "airbnb",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Airwallex": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "airwallex",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Akur8": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "akur8",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Alan": {
     "ats": "ashby",
@@ -57,63 +57,63 @@
     "ats_host": null,
     "ats_id": "algolia",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Alma": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "alma",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Amazon": {
     "ats": "amazonjobs",
     "ats_host": null,
     "ats_id": "FRA",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Amundi": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Ankorstore": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "ankorstore",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Aroma-Zone": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "aromazone",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "AstraZeneca France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://astrazeneca.wd3.myworkdayjobs.com/Careers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "BCG": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "BNP Paribas": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Back Market": {
     "ats": "ashby",
@@ -128,42 +128,42 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Bitstack": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "bitstack",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "BlaBlaCar": {
     "ats": "lever",
     "ats_host": null,
     "ats_id": "blablacar",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Boehringer Ingelheim France": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Botify": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "botify",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Brevo": {
     "ats": "lever",
     "ats_host": null,
     "ats_id": "brevo",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Bridge": {
     "ats": "teamtailor",
@@ -178,21 +178,21 @@
     "ats_host": null,
     "ats_id": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/BMS",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Chanel": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Checkout.com": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "checkout.com",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Coinhouse": {
     "ats": "unknown",
@@ -214,42 +214,42 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Crédit Agricole CIB": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Danone": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Datadog": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "datadog",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Dataiku": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "dataiku",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Deblock": {
     "ats": "workable",
     "ats_host": null,
     "ats_id": "deblock",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Defacto": {
     "ats": "unknown",
@@ -262,14 +262,14 @@
     "ats_host": null,
     "ats_id": "deliveroo",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Descartes Underwriting": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "descartesunderwriting",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Doctolib": {
     "ats": "ashby",
@@ -284,42 +284,42 @@
     "ats_host": null,
     "ats_id": "dust",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Ebury": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "ebury",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Edenred": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Elastic": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "elastic",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Exotec": {
     "ats": "workable",
     "ats_host": null,
     "ats_id": "exotec",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Finary": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "finary",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Fintecture": {
     "ats": "unknown",
@@ -332,21 +332,21 @@
     "ats_host": null,
     "ats_id": "floa",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Flowdesk": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "flowdesk",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "GSK France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://gsk.wd5.myworkdayjobs.com/GSKCareers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Goodvest": {
     "ats": "unknown",
@@ -359,28 +359,28 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Hexa": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "hexa",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Hugging Face": {
     "ats": "workable",
     "ats_host": null,
     "ats_id": "huggingface",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "IDnow": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "idnow",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Indy": {
     "ats": "teamtailor",
@@ -395,28 +395,28 @@
     "ats_host": null,
     "ats_id": "https://ipsen.wd103.myworkdayjobs.com/Ipsen_Careers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Ivalua": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "ivalua",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Johnson & Johnson France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://jj.wd5.myworkdayjobs.com/JJ",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Kaiko": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Karmen": {
     "ats": "unknown",
@@ -429,42 +429,42 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Kering": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Kiln": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "kiln.fi",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "L'Oréal": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "LVMH": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Lazard": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Ledger": {
     "ats": "ashby",
@@ -479,7 +479,7 @@
     "ats_host": null,
     "ats_id": "lemlist",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Lemonway": {
     "ats": "unknown",
@@ -504,7 +504,7 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Lyra": {
     "ats": "unknown",
@@ -517,14 +517,14 @@
     "ats_host": null,
     "ats_id": "https://msd.wd5.myworkdayjobs.com/SearchJobs",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Malt": {
     "ats": "lever",
     "ats_host": null,
     "ats_id": "malt",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Mangopay": {
     "ats": "teamtailor",
@@ -539,21 +539,21 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Mastercard": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Memo Bank": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "memobank",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Mirakl": {
     "ats": "greenhouse",
@@ -568,14 +568,14 @@
     "ats_host": null,
     "ats_id": "mollie",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "MongoDB": {
     "ats": "greenhouse",
     "ats_host": null,
     "ats_id": "mongodb",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Mooncard": {
     "ats": "unknown",
@@ -588,14 +588,14 @@
     "ats_host": null,
     "ats_id": "morpho",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Murfy": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "murfy",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "N26": {
     "ats": "greenhouse",
@@ -616,21 +616,21 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Novartis France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://novartis.wd3.myworkdayjobs.com/Novartis_Careers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Numbr": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "numbr",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "October": {
     "ats": "unknown",
@@ -643,7 +643,7 @@
     "ats_host": null,
     "ats_id": "ornikar",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Owkin": {
     "ats": "ashby",
@@ -658,14 +658,14 @@
     "ats_host": null,
     "ats_id": "payfit",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "PayPal": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "PayPlug": {
     "ats": "teamtailor",
@@ -688,28 +688,28 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Pfizer France": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Photoroom": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "photoroom",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Pigment": {
     "ats": "lever",
     "ats_host": null,
     "ats_id": "pigment",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Pixpay": {
     "ats": "unknown",
@@ -722,7 +722,7 @@
     "ats_host": null,
     "ats_id": "plaid",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Powens": {
     "ats": "teamtailor",
@@ -763,35 +763,35 @@
     "ats_host": null,
     "ats_id": "https://roche.wd3.myworkdayjobs.com/roche-ext",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Roland Berger": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Rothschild & Co": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Sanofi": {
     "ats": "workday",
     "ats_host": null,
     "ats_id": "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Servier": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Seyna": {
     "ats": "ashby",
@@ -806,7 +806,7 @@
     "ats_host": null,
     "ats_id": "shifttechnology",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Shine": {
     "ats": "teamtailor",
@@ -821,14 +821,14 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Sidetrade": {
     "ats": "workable",
     "ats_host": null,
     "ats_id": "sidetrade",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Silvr": {
     "ats": "unknown",
@@ -841,28 +841,28 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Snowflake": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "snowflake",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Société Générale": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Sorare": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "sorare",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Spendesk": {
     "ats": "unknown",
@@ -875,21 +875,21 @@
     "ats_host": null,
     "ats_id": "spiko",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Spotify": {
     "ats": "lever",
     "ats_host": null,
     "ats_id": "spotify",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Stoïk": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "stoik",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Stripe": {
     "ats": "greenhouse",
@@ -904,7 +904,7 @@
     "ats_host": null,
     "ats_id": "sumup",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Sumeria (ex-Lydia)": {
     "ats": "unknown",
@@ -917,7 +917,7 @@
     "ats_host": null,
     "ats_id": "sunday",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Swan": {
     "ats": "teamtailor",
@@ -941,14 +941,14 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Too Good To Go": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "toogoodtogo",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Trade Republic": {
     "ats": "greenhouse",
@@ -969,14 +969,14 @@
     "ats_host": null,
     "ats_id": "trustpair",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Upflow": {
     "ats": "ashby",
     "ats_host": null,
     "ats_id": "upflow",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Veepee": {
     "ats": "lever",
@@ -1001,28 +1001,28 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Visa": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Welcome to the Jungle": {
     "ats": "teamtailor",
     "ats_host": null,
     "ats_id": "welcometothejungle",
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Worldline": {
     "ats": "links",
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   },
   "Yomoni": {
     "ats": "unknown",
@@ -1052,6 +1052,6 @@
     "ats_host": null,
     "ats_id": null,
     "confidence": "config",
-    "detected": "2026-11-25"
+    "detected": "2026-11-26"
   }
 }
